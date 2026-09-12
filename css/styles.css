@@ -1,0 +1,556 @@
+/* Swing Theory Tracker — styles
+   Mobile-first, large tap targets, dark-mode-friendly. */
+
+:root {
+  --bg: #f5f6f8;
+  --bg-elevated: #ffffff;
+  --text: #14181d;
+  --text-dim: #5b6570;
+  --accent: #1d6fa5;
+  --accent-text: #ffffff;
+  --border: #d8dde3;
+  --danger: #b3402f;
+  --success: #2f8f5b;
+  --radius: 14px;
+  --tap-min: 56px;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #0b0f14;
+    --bg-elevated: #161c23;
+    --text: #eef1f4;
+    --text-dim: #98a3ad;
+    --accent: #5ec8f2;
+    --accent-text: #06222f;
+    --border: #2a323b;
+    --danger: #e07a68;
+    --success: #6fd39b;
+  }
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  -webkit-tap-highlight-color: transparent;
+}
+
+body {
+  min-height: 100vh;
+  min-height: 100dvh;
+}
+
+.screen-root {
+  max-width: 520px;
+  margin: 0 auto;
+  padding: 20px 16px calc(24px + env(safe-area-inset-bottom));
+  min-height: 100vh;
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+}
+
+.boot-msg {
+  text-align: center;
+  color: var(--text-dim);
+  margin-top: 40vh;
+}
+
+h1 {
+  font-size: 1.5rem;
+  margin: 0 0 4px;
+}
+
+h2 {
+  font-size: 1.2rem;
+  margin: 0 0 8px;
+}
+
+h3 {
+  font-size: 1rem;
+  margin: 0 0 8px;
+  color: var(--text-dim);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+p {
+  line-height: 1.4;
+}
+
+.subtitle {
+  color: var(--text-dim);
+  margin: 0 0 20px;
+}
+
+/* Top bar */
+.topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.link-btn {
+  background: none;
+  border: none;
+  color: var(--accent);
+  font-size: 1rem;
+  padding: 10px 4px;
+  cursor: pointer;
+  min-height: var(--tap-min);
+}
+
+/* Buttons */
+button {
+  font: inherit;
+}
+
+.primary-btn {
+  display: block;
+  width: 100%;
+  background: var(--accent);
+  color: var(--accent-text);
+  border: none;
+  border-radius: var(--radius);
+  padding: 18px 20px;
+  font-size: 1.15rem;
+  font-weight: 600;
+  min-height: var(--tap-min);
+  cursor: pointer;
+  margin: 8px 0;
+}
+
+.primary-btn.big {
+  font-size: 1.3rem;
+  padding: 22px 20px;
+}
+
+.primary-btn:disabled {
+  opacity: 0.5;
+}
+
+.secondary-btn {
+  display: block;
+  width: 100%;
+  background: var(--bg-elevated);
+  color: var(--text);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 16px 20px;
+  font-size: 1rem;
+  font-weight: 600;
+  min-height: var(--tap-min);
+  cursor: pointer;
+  margin: 8px 0;
+}
+
+.danger-btn {
+  background: transparent;
+  color: var(--danger);
+  border: 1px solid var(--danger);
+}
+
+.small-btn {
+  padding: 10px 14px;
+  font-size: 0.9rem;
+  min-height: 44px;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  background: var(--bg-elevated);
+  color: var(--text);
+  cursor: pointer;
+}
+
+/* Program picker */
+.program-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.program-card {
+  text-align: left;
+  background: var(--bg-elevated);
+  border: 2px solid var(--border);
+  border-radius: var(--radius);
+  padding: 16px;
+  cursor: pointer;
+  min-height: var(--tap-min);
+}
+
+.program-card.active {
+  border-color: var(--accent);
+}
+
+.program-card-name {
+  font-size: 1.1rem;
+  font-weight: 700;
+}
+
+.program-card-meta {
+  color: var(--text-dim);
+  font-size: 0.9rem;
+  margin-top: 2px;
+}
+
+.program-card-progress {
+  margin-top: 8px;
+  font-size: 0.9rem;
+  color: var(--accent);
+  font-weight: 600;
+}
+
+.program-card-badge {
+  display: inline-block;
+  background: var(--accent);
+  color: var(--accent-text);
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 2px 8px;
+  border-radius: 999px;
+  margin-bottom: 8px;
+}
+
+/* Day view */
+.day-card {
+  background: var(--bg-elevated);
+  border-radius: var(--radius);
+  padding: 24px 20px;
+  margin: 16px 0 24px;
+  text-align: center;
+}
+
+.day-week-label {
+  color: var(--accent);
+  font-weight: 700;
+  font-size: 0.95rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.day-name {
+  font-size: 1.6rem;
+  font-weight: 800;
+  margin-top: 6px;
+}
+
+.day-id-label {
+  color: var(--text-dim);
+  margin-top: 4px;
+}
+
+.jump-panel {
+  background: var(--bg-elevated);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 12px 16px;
+  margin-top: 12px;
+}
+
+.jump-panel summary {
+  cursor: pointer;
+  font-weight: 600;
+  padding: 8px 0;
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+}
+
+.jump-row {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin: 10px 0;
+}
+
+.jump-row label {
+  font-size: 0.85rem;
+  color: var(--text-dim);
+}
+
+select {
+  font: inherit;
+  padding: 12px;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  background: var(--bg);
+  color: var(--text);
+  min-height: 48px;
+}
+
+/* Warm-up / EMOM full-focus timer */
+.timer-focus {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 20px 0;
+}
+
+.timer-phase-label {
+  font-size: 1rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--accent);
+  margin-bottom: 10px;
+}
+
+.timer-phase-label.rest {
+  color: var(--text-dim);
+}
+
+.timer-exercise-name {
+  font-size: 2rem;
+  font-weight: 800;
+  line-height: 1.2;
+  margin-bottom: 20px;
+  min-height: 2.4em;
+  display: flex;
+  align-items: center;
+}
+
+.timer-countdown {
+  font-size: 4.5rem;
+  font-weight: 800;
+  font-variant-numeric: tabular-nums;
+  margin-bottom: 20px;
+}
+
+.timer-sub {
+  color: var(--text-dim);
+  font-size: 1rem;
+  margin-bottom: 20px;
+}
+
+.timer-controls {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.timer-controls .small-btn {
+  flex: 1;
+}
+
+/* Workout screen */
+.block {
+  background: var(--bg-elevated);
+  border-radius: var(--radius);
+  padding: 16px;
+  margin-bottom: 14px;
+}
+
+.exercise-name {
+  font-size: 1.15rem;
+  font-weight: 700;
+  margin-bottom: 2px;
+}
+
+.exercise-meta {
+  color: var(--text-dim);
+  margin-bottom: 12px;
+}
+
+.set-checklist, .circuit-rounds {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.round-group {
+  margin-bottom: 10px;
+}
+
+.round-title {
+  font-weight: 700;
+  color: var(--text-dim);
+  margin: 6px 0 6px;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+.set-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 14px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  min-height: var(--tap-min);
+  cursor: pointer;
+}
+
+.set-row input[type="checkbox"] {
+  width: 26px;
+  height: 26px;
+  flex-shrink: 0;
+  accent-color: var(--accent);
+}
+
+.set-row.checked {
+  border-color: var(--success);
+  background: color-mix(in srgb, var(--success) 12%, var(--bg-elevated));
+}
+
+.set-row span {
+  font-size: 1rem;
+}
+
+.rest-btn {
+  margin-top: 12px;
+  width: 100%;
+  padding: 14px;
+  border-radius: 10px;
+  border: 1px solid var(--accent);
+  background: transparent;
+  color: var(--accent);
+  font-weight: 700;
+  min-height: var(--tap-min);
+  cursor: pointer;
+}
+
+.rest-btn:disabled {
+  opacity: 0.7;
+}
+
+.emom-status {
+  text-align: center;
+  padding: 10px 0;
+}
+
+.emom-minute {
+  color: var(--accent);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  font-size: 0.85rem;
+}
+
+.emom-exercise {
+  font-size: 1.3rem;
+  font-weight: 800;
+  margin: 8px 0;
+}
+
+.emom-countdown {
+  font-size: 2.6rem;
+  font-weight: 800;
+  font-variant-numeric: tabular-nums;
+}
+
+.emom-done {
+  color: var(--success);
+  font-weight: 700;
+  text-align: center;
+  padding: 10px 0;
+}
+
+.closer-note {
+  background: var(--bg-elevated);
+  border-left: 4px solid var(--accent);
+  border-radius: 10px;
+  padding: 14px 16px;
+  margin-bottom: 14px;
+  font-style: italic;
+  color: var(--text-dim);
+}
+
+/* Sticky workout footer */
+.workout-footer {
+  position: sticky;
+  bottom: 0;
+  background: var(--bg);
+  padding-top: 10px;
+  margin-top: auto;
+  border-top: 1px solid var(--border);
+}
+
+.stopwatch-bar {
+  text-align: center;
+  font-variant-numeric: tabular-nums;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--text-dim);
+  margin-bottom: 8px;
+}
+
+/* Finish / complete summary */
+.summary-card {
+  background: var(--bg-elevated);
+  border-radius: var(--radius);
+  padding: 28px 20px;
+  text-align: center;
+  margin: 20px 0;
+}
+
+.summary-card .big-check {
+  font-size: 3rem;
+  margin-bottom: 8px;
+}
+
+.summary-duration {
+  font-size: 2.2rem;
+  font-weight: 800;
+  font-variant-numeric: tabular-nums;
+  margin: 8px 0;
+}
+
+/* History */
+.history-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.history-row {
+  background: var(--bg-elevated);
+  border-radius: 12px;
+  padding: 14px 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.history-row-main {
+  font-weight: 700;
+}
+
+.history-row-meta {
+  color: var(--text-dim);
+  font-size: 0.85rem;
+  margin-top: 2px;
+}
+
+.history-row-duration {
+  font-variant-numeric: tabular-nums;
+  font-weight: 700;
+  color: var(--accent);
+}
+
+.empty-state {
+  color: var(--text-dim);
+  text-align: center;
+  padding: 40px 20px;
+}
+
+.error-box {
+  background: color-mix(in srgb, var(--danger) 14%, var(--bg-elevated));
+  border: 1px solid var(--danger);
+  color: var(--text);
+  border-radius: var(--radius);
+  padding: 16px;
+  margin: 16px 0;
+}

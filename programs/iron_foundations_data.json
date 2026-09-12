@@ -1,0 +1,307 @@
+{
+  "program": {
+    "name": "Iron Foundations",
+    "format": "Straight sets + short circuits",
+    "targetSessionMinutes": 32,
+    "daysPerWeek": 4,
+    "totalWeeks": 7,
+    "note": "Weeks 1-6 are training, week 7 is deload. Warm-up (below) precedes every training-week session, not the deload sessions."
+  },
+  "warmup": {
+    "format": "50s on / 10s off, 6 exercises, 1 round (~6 min total)",
+    "fixed": ["Jumping Jacks", "World's Greatest Stretch - Right", "World's Greatest Stretch - Left"],
+    "rotatingPool": ["Down Dog to Cobra", "Cat/Cow", "Squat Hold", "Lateral Lunges", "Cossack Squats", "Waiter's March (R/L)"],
+    "rotationByDay": {
+      "Day 1": ["Down Dog to Cobra", "Cat/Cow", "Squat Hold"],
+      "Day 2": ["Lateral Lunges", "Cossack Squats", "Waiter's March (R/L)"],
+      "Day 3": ["Down Dog to Cobra", "Cat/Cow", "Squat Hold"],
+      "Day 4": ["Lateral Lunges", "Cossack Squats", "Waiter's March (R/L)"]
+    }
+  },
+  "weeks": [
+    {
+      "week": 1, "phase": "Base",
+      "days": [
+        {
+          "day": "Day 1", "name": "Clean & Press",
+          "blocks": [
+            { "type": "straight_sets", "label": "Main lift", "exercise": "Double KB Clean & Press", "reps": 5, "sets": 5, "restSeconds": 90 },
+            { "type": "circuit", "label": "Accessory circuit", "rounds": 4, "exercises": ["6/side Reverse Lunge", "8/side Single-Arm Row", "10 Push-ups"] },
+            { "type": "circuit", "label": "Arms", "rounds": 3, "exercises": ["12 Bicep Curls", "10 Bench Dips"] },
+            { "type": "circuit", "label": "Core", "rounds": 3, "exercises": ["30s Plank"] }
+          ]
+        },
+        {
+          "day": "Day 2", "name": "Hinge Complex",
+          "blocks": [
+            { "type": "circuit", "label": "Complex", "rounds": 5, "exercises": ["5 Swings", "4 High Pulls", "3 Snatches (both sides)"] },
+            { "type": "circuit", "label": "Superset", "rounds": 4, "exercises": ["6 Goblet Squats", "8 Push-ups"] },
+            { "type": "circuit", "label": "Arms", "rounds": 3, "exercises": ["12 Hammer Curls", "12 Overhead Tricep Extension"] },
+            { "type": "circuit", "label": "Core", "rounds": 3, "exercises": ["20 Hollow Rocks"] }
+          ]
+        },
+        {
+          "day": "Day 3", "name": "Turkish Get-Up",
+          "blocks": [
+            { "type": "straight_sets", "label": "Main lift", "exercise": "Turkish Get-Up", "reps": "3/side", "sets": 4, "restSeconds": 60 },
+            { "type": "emom", "label": "EMOM 10", "totalMinutes": 10, "pattern": [{ "minute": "odd", "exercise": "8 Swings" }, { "minute": "even", "exercise": "Max Push-ups" }] },
+            { "type": "emom", "label": "EMOM 10", "totalMinutes": 10, "pattern": [{ "minute": "odd", "exercise": "6/side Cossack Squat" }, { "minute": "even", "exercise": "8/side Plank Drag" }] },
+            { "type": "circuit", "label": "Arms", "rounds": 3, "exercises": ["12 Curls", "Max Dips"] }
+          ]
+        },
+        {
+          "day": "Day 4", "name": "Snatch & Posterior Chain",
+          "blocks": [
+            { "type": "straight_sets", "label": "Main lift", "exercise": "Dead Snatch", "reps": "5/side", "sets": 5, "restSeconds": 90 },
+            { "type": "circuit", "label": "Accessory circuit", "rounds": 4, "exercises": ["8 Front Rack Squats", "10/side Single-Arm Row", "Max Dips"] },
+            { "type": "circuit", "label": "Arms", "rounds": 3, "exercises": ["15 Overhead Tricep Extension", "15 Curls"] },
+            { "type": "circuit", "label": "Core", "rounds": 2, "exercises": ["30s Side Plank each side"] }
+          ]
+        }
+      ]
+    },
+    {
+      "week": 2, "phase": "Base",
+      "days": [
+        {
+          "day": "Day 1", "name": "Clean & Press",
+          "blocks": [
+            { "type": "straight_sets", "label": "Main lift", "exercise": "Double KB Clean & Press", "reps": 6, "sets": 5, "restSeconds": 90 },
+            { "type": "circuit", "label": "Accessory circuit", "rounds": 4, "exercises": ["6/side Rack Lunge", "8/side Single-Arm Swing", "30s Farmer March"] },
+            { "type": "circuit", "label": "Arms", "rounds": 3, "exercises": ["12 Curls", "10/side Mountain Climbers"] },
+            { "type": "circuit", "label": "Core", "rounds": 3, "exercises": ["40s Plank"] }
+          ]
+        },
+        {
+          "day": "Day 2", "name": "Hinge Complex",
+          "blocks": [
+            { "type": "circuit", "label": "Complex", "rounds": 5, "exercises": ["4 Swings", "3 High Pulls", "2 Snatches (both sides)"] },
+            { "type": "circuit", "label": "Superset", "rounds": 4, "exercises": ["3/side Side Lunges", "8 Diamond Push-ups"] },
+            { "type": "circuit", "label": "Arms", "rounds": 3, "exercises": ["12 Curls", "12 Close-Grip Push-ups"] },
+            { "type": "circuit", "label": "Core", "rounds": 3, "exercises": ["15 Heels-to-Heaven"] }
+          ]
+        },
+        {
+          "day": "Day 3", "name": "Turkish Get-Up",
+          "blocks": [
+            { "type": "straight_sets", "label": "Main lift", "exercise": "Turkish Get-Up", "reps": "3/side", "sets": 4, "restSeconds": 60 },
+            { "type": "emom", "label": "EMOM 10", "totalMinutes": 10, "pattern": [{ "minute": "odd", "exercise": "20 Swings" }, { "minute": "even", "exercise": "15 KB Chest Press" }] },
+            { "type": "emom", "label": "EMOM 10", "totalMinutes": 10, "pattern": [{ "minute": "odd", "exercise": "6/side Lateral Lunge" }, { "minute": "even", "exercise": "8/side Half-Kneeling Chop" }] },
+            { "type": "circuit", "label": "Arms", "rounds": 3, "exercises": ["12 Curls", "Max Bench Dips"] }
+          ]
+        },
+        {
+          "day": "Day 4", "name": "Snatch & Posterior Chain",
+          "blocks": [
+            { "type": "straight_sets", "label": "Main lift", "exercise": "Dead Snatch", "reps": "5/side", "sets": 5, "restSeconds": 90 },
+            { "type": "circuit", "label": "Accessory circuit", "rounds": 4, "exercises": ["5/side Front Rack Squat", "8/side Ballistic Row", "Max Push-ups"] },
+            { "type": "circuit", "label": "Arms", "rounds": 3, "exercises": ["15 Overhead Tricep Extension", "15 Curls"] },
+            { "type": "circuit", "label": "Core", "rounds": 2, "exercises": ["30s Side Plank each side"] }
+          ]
+        }
+      ]
+    },
+    {
+      "week": 3, "phase": "Build",
+      "progressionNote": "Main lift +1 set vs Week 1. Day 2 squat swapped to Bulgarian Split Squat. Day 4 front rack squat swapped to goblet squat.",
+      "days": [
+        {
+          "day": "Day 1", "name": "Clean & Press",
+          "blocks": [
+            { "type": "straight_sets", "label": "Main lift", "exercise": "Double KB Clean & Press", "reps": 5, "sets": 6, "restSeconds": 90 },
+            { "type": "circuit", "label": "Accessory circuit", "rounds": 4, "exercises": ["6/side Reverse Lunge", "8/side Single-Arm Row", "10 Push-ups"] },
+            { "type": "circuit", "label": "Arms", "rounds": 3, "exercises": ["12 Bicep Curls", "10 Bench Dips"] },
+            { "type": "circuit", "label": "Core", "rounds": 3, "exercises": ["30s Plank"] }
+          ]
+        },
+        {
+          "day": "Day 2", "name": "Hinge Complex",
+          "blocks": [
+            { "type": "circuit", "label": "Complex", "rounds": 5, "exercises": ["5 Swings", "4 High Pulls", "3 Snatches (both sides)"] },
+            { "type": "circuit", "label": "Superset", "rounds": 4, "exercises": ["6/side Bulgarian Split Squat", "8 Push-ups"] },
+            { "type": "circuit", "label": "Arms", "rounds": 3, "exercises": ["12 Hammer Curls", "12 Overhead Tricep Extension"] },
+            { "type": "circuit", "label": "Core", "rounds": 3, "exercises": ["20 Hollow Rocks"] }
+          ]
+        },
+        {
+          "day": "Day 3", "name": "Turkish Get-Up",
+          "blocks": [
+            { "type": "straight_sets", "label": "Main lift", "exercise": "Turkish Get-Up", "reps": "3/side", "sets": 5, "restSeconds": 60 },
+            { "type": "emom", "label": "EMOM 10", "totalMinutes": 10, "pattern": [{ "minute": "odd", "exercise": "8 Swings" }, { "minute": "even", "exercise": "Max Push-ups" }] },
+            { "type": "emom", "label": "EMOM 10", "totalMinutes": 10, "pattern": [{ "minute": "odd", "exercise": "6/side Cossack Squat" }, { "minute": "even", "exercise": "8/side Plank Drag" }] },
+            { "type": "circuit", "label": "Arms", "rounds": 3, "exercises": ["12 Curls", "Max Dips"] }
+          ]
+        },
+        {
+          "day": "Day 4", "name": "Snatch & Posterior Chain",
+          "blocks": [
+            { "type": "straight_sets", "label": "Main lift", "exercise": "Dead Snatch", "reps": "5/side", "sets": 6, "restSeconds": 90 },
+            { "type": "circuit", "label": "Accessory circuit", "rounds": 4, "exercises": ["8 Goblet Squats", "10/side Single-Arm Row", "Max Dips"] },
+            { "type": "circuit", "label": "Arms", "rounds": 3, "exercises": ["15 Overhead Tricep Extension", "15 Curls"] },
+            { "type": "circuit", "label": "Core", "rounds": 2, "exercises": ["30s Side Plank each side"] }
+          ]
+        }
+      ]
+    },
+    {
+      "week": 4, "phase": "Build",
+      "progressionNote": "Same as Week 2 base, main lift +1 set, Day 2 squat swapped to Bulgarian Split Squat, Day 4 accessory squat swapped to goblet squat.",
+      "days": [
+        {
+          "day": "Day 1", "name": "Clean & Press",
+          "blocks": [
+            { "type": "straight_sets", "label": "Main lift", "exercise": "Double KB Clean & Press", "reps": 6, "sets": 6, "restSeconds": 90 },
+            { "type": "circuit", "label": "Accessory circuit", "rounds": 4, "exercises": ["6/side Rack Lunge", "8/side Single-Arm Swing", "30s Farmer March"] },
+            { "type": "circuit", "label": "Arms", "rounds": 3, "exercises": ["12 Curls", "10/side Mountain Climbers"] },
+            { "type": "circuit", "label": "Core", "rounds": 3, "exercises": ["40s Plank"] }
+          ]
+        },
+        {
+          "day": "Day 2", "name": "Hinge Complex",
+          "blocks": [
+            { "type": "circuit", "label": "Complex", "rounds": 5, "exercises": ["4 Swings", "3 High Pulls", "2 Snatches (both sides)"] },
+            { "type": "circuit", "label": "Superset", "rounds": 4, "exercises": ["6/side Bulgarian Split Squat", "8 Diamond Push-ups"] },
+            { "type": "circuit", "label": "Arms", "rounds": 3, "exercises": ["12 Curls", "12 Close-Grip Push-ups"] },
+            { "type": "circuit", "label": "Core", "rounds": 3, "exercises": ["15 Heels-to-Heaven"] }
+          ]
+        },
+        {
+          "day": "Day 3", "name": "Turkish Get-Up",
+          "blocks": [
+            { "type": "straight_sets", "label": "Main lift", "exercise": "Turkish Get-Up", "reps": "3/side", "sets": 5, "restSeconds": 60 },
+            { "type": "emom", "label": "EMOM 10", "totalMinutes": 10, "pattern": [{ "minute": "odd", "exercise": "20 Swings" }, { "minute": "even", "exercise": "15 KB Chest Press" }] },
+            { "type": "emom", "label": "EMOM 10", "totalMinutes": 10, "pattern": [{ "minute": "odd", "exercise": "6/side Lateral Lunge" }, { "minute": "even", "exercise": "8/side Half-Kneeling Chop" }] },
+            { "type": "circuit", "label": "Arms", "rounds": 3, "exercises": ["12 Curls", "Max Bench Dips"] }
+          ]
+        },
+        {
+          "day": "Day 4", "name": "Snatch & Posterior Chain",
+          "blocks": [
+            { "type": "straight_sets", "label": "Main lift", "exercise": "Dead Snatch", "reps": "5/side", "sets": 6, "restSeconds": 90 },
+            { "type": "circuit", "label": "Accessory circuit", "rounds": 4, "exercises": ["8 Goblet Squats", "8/side Ballistic Row", "Max Push-ups"] },
+            { "type": "circuit", "label": "Arms", "rounds": 3, "exercises": ["15 Overhead Tricep Extension", "15 Curls"] },
+            { "type": "circuit", "label": "Core", "rounds": 2, "exercises": ["30s Side Plank each side"] }
+          ]
+        }
+      ]
+    },
+    {
+      "week": 5, "phase": "Peak",
+      "progressionNote": "Heaviest KB on all main lifts (load cue - not shown in exercise list). Arms +1 set vs weeks 3-4. Day 3 EMOM blocks extended to 12 minutes.",
+      "days": [
+        {
+          "day": "Day 1", "name": "Clean & Press",
+          "blocks": [
+            { "type": "straight_sets", "label": "Main lift (heaviest KB)", "exercise": "Double KB Clean & Press", "reps": 5, "sets": 6, "restSeconds": 90 },
+            { "type": "circuit", "label": "Accessory circuit", "rounds": 4, "exercises": ["6/side Reverse Lunge", "8/side Single-Arm Row", "10 Push-ups"] },
+            { "type": "circuit", "label": "Arms", "rounds": 4, "exercises": ["12 Bicep Curls", "10 Bench Dips"] },
+            { "type": "circuit", "label": "Core", "rounds": 3, "exercises": ["30s Plank"] }
+          ]
+        },
+        {
+          "day": "Day 2", "name": "Hinge Complex",
+          "blocks": [
+            { "type": "circuit", "label": "Complex", "rounds": 5, "exercises": ["5 Swings", "4 High Pulls", "3 Snatches (both sides)"] },
+            { "type": "circuit", "label": "Superset", "rounds": 4, "exercises": ["6/side Bulgarian Split Squat", "8 Push-ups"] },
+            { "type": "circuit", "label": "Arms", "rounds": 4, "exercises": ["12 Hammer Curls", "12 Overhead Tricep Extension"] },
+            { "type": "circuit", "label": "Core", "rounds": 3, "exercises": ["20 Hollow Rocks"] }
+          ]
+        },
+        {
+          "day": "Day 3", "name": "Turkish Get-Up",
+          "blocks": [
+            { "type": "straight_sets", "label": "Main lift (heaviest KB)", "exercise": "Turkish Get-Up", "reps": "3/side", "sets": 5, "restSeconds": 60 },
+            { "type": "emom", "label": "EMOM 12", "totalMinutes": 12, "pattern": [{ "minute": "odd", "exercise": "8 Swings" }, { "minute": "even", "exercise": "Max Push-ups" }] },
+            { "type": "emom", "label": "EMOM 12", "totalMinutes": 12, "pattern": [{ "minute": "odd", "exercise": "6/side Cossack Squat" }, { "minute": "even", "exercise": "8/side Plank Drag" }] },
+            { "type": "circuit", "label": "Arms", "rounds": 4, "exercises": ["12 Curls", "Max Dips"] }
+          ]
+        },
+        {
+          "day": "Day 4", "name": "Snatch & Posterior Chain",
+          "blocks": [
+            { "type": "straight_sets", "label": "Main lift (heaviest KB)", "exercise": "Dead Snatch", "reps": "5/side", "sets": 6, "restSeconds": 90 },
+            { "type": "circuit", "label": "Accessory circuit", "rounds": 4, "exercises": ["8 Goblet Squats", "10/side Single-Arm Row", "Max Dips"] },
+            { "type": "circuit", "label": "Arms", "rounds": 4, "exercises": ["15 Overhead Tricep Extension", "15 Curls"] },
+            { "type": "circuit", "label": "Core", "rounds": 2, "exercises": ["30s Side Plank each side"] }
+          ]
+        }
+      ]
+    },
+    {
+      "week": 6, "phase": "Peak",
+      "progressionNote": "Same as Week 4 build, heaviest KB, arms +1 set, Day 3 EMOM blocks extended to 12 minutes.",
+      "days": [
+        {
+          "day": "Day 1", "name": "Clean & Press",
+          "blocks": [
+            { "type": "straight_sets", "label": "Main lift (heaviest KB)", "exercise": "Double KB Clean & Press", "reps": 6, "sets": 6, "restSeconds": 90 },
+            { "type": "circuit", "label": "Accessory circuit", "rounds": 4, "exercises": ["6/side Rack Lunge", "8/side Single-Arm Swing", "30s Farmer March"] },
+            { "type": "circuit", "label": "Arms", "rounds": 4, "exercises": ["12 Curls", "10/side Mountain Climbers"] },
+            { "type": "circuit", "label": "Core", "rounds": 3, "exercises": ["40s Plank"] }
+          ]
+        },
+        {
+          "day": "Day 2", "name": "Hinge Complex",
+          "blocks": [
+            { "type": "circuit", "label": "Complex", "rounds": 5, "exercises": ["4 Swings", "3 High Pulls", "2 Snatches (both sides)"] },
+            { "type": "circuit", "label": "Superset", "rounds": 4, "exercises": ["6/side Bulgarian Split Squat", "8 Diamond Push-ups"] },
+            { "type": "circuit", "label": "Arms", "rounds": 4, "exercises": ["12 Curls", "12 Close-Grip Push-ups"] },
+            { "type": "circuit", "label": "Core", "rounds": 3, "exercises": ["15 Heels-to-Heaven"] }
+          ]
+        },
+        {
+          "day": "Day 3", "name": "Turkish Get-Up",
+          "blocks": [
+            { "type": "straight_sets", "label": "Main lift (heaviest KB)", "exercise": "Turkish Get-Up", "reps": "3/side", "sets": 5, "restSeconds": 60 },
+            { "type": "emom", "label": "EMOM 12", "totalMinutes": 12, "pattern": [{ "minute": "odd", "exercise": "20 Swings" }, { "minute": "even", "exercise": "15 KB Chest Press" }] },
+            { "type": "emom", "label": "EMOM 12", "totalMinutes": 12, "pattern": [{ "minute": "odd", "exercise": "6/side Lateral Lunge" }, { "minute": "even", "exercise": "8/side Half-Kneeling Chop" }] },
+            { "type": "circuit", "label": "Arms", "rounds": 4, "exercises": ["12 Curls", "Max Bench Dips"] }
+          ]
+        },
+        {
+          "day": "Day 4", "name": "Snatch & Posterior Chain",
+          "blocks": [
+            { "type": "straight_sets", "label": "Main lift (heaviest KB)", "exercise": "Dead Snatch", "reps": "5/side", "sets": 6, "restSeconds": 90 },
+            { "type": "circuit", "label": "Accessory circuit", "rounds": 4, "exercises": ["8 Goblet Squats", "8/side Ballistic Row", "Max Push-ups"] },
+            { "type": "circuit", "label": "Arms", "rounds": 4, "exercises": ["15 Overhead Tricep Extension", "15 Curls"] },
+            { "type": "circuit", "label": "Core", "rounds": 2, "exercises": ["30s Side Plank each side"] }
+          ]
+        }
+      ]
+    },
+    {
+      "week": 7, "phase": "Deload",
+      "progressionNote": "70-75% intensity. No warm-up protocol required (light full-body stretch instead if desired). No EMOMs this week.",
+      "days": [
+        {
+          "day": "Day 1", "name": "Deload - Press & Core",
+          "blocks": [
+            { "type": "straight_sets", "label": "Main", "exercise": "3/side Clean & Press + 15 Sit-ups", "reps": null, "sets": 4, "restSeconds": 60 },
+            { "type": "circuit", "label": "Accessory", "rounds": 4, "exercises": ["8 Goblet Squats", "8/side Single-Arm Row"] }
+          ]
+        },
+        {
+          "day": "Day 2", "name": "Deload - Easy Flow",
+          "blocks": [
+            { "type": "circuit", "label": "Main (easy pace)", "rounds": 4, "exercises": ["10 Swings", "10 Push-ups"] },
+            { "type": "circuit", "label": "Core", "rounds": 3, "exercises": ["30s Plank"] }
+          ]
+        },
+        {
+          "day": "Day 3", "name": "Deload - Light Pull & Arms",
+          "blocks": [
+            { "type": "circuit", "label": "Main", "rounds": 3, "exercises": ["6/side Reverse Lunge", "8 Ring/DB Rows"] },
+            { "type": "circuit", "label": "Arms (light)", "rounds": 2, "exercises": ["12 Curls", "12 Overhead Tricep Extension"] }
+          ]
+        },
+        {
+          "day": "Day 4", "name": "Deload - Mobility + Light AMRAP",
+          "blocks": [
+            { "type": "circuit", "label": "AMRAP 6 (easy)", "rounds": 1, "exercises": ["5 Swings", "5 Push-ups", "10 Bodyweight Squats"] }
+          ],
+          "closer": "Full-body stretch"
+        }
+      ]
+    }
+  ]
+}
