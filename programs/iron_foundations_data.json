@@ -41,10 +41,10 @@
           ]
         },
         {
-          "day": "Day 3", "name": "Turkish Get-Up",
+          "day": "Day 3", "name": "Thruster Day",
           "blocks": [
-            { "type": "straight_sets", "label": "Main lift", "exercise": "Turkish Get-Up", "reps": "3/side", "sets": 4, "restSeconds": 60 },
-            { "type": "emom", "label": "EMOM 10", "totalMinutes": 10, "pattern": [{ "minute": "odd", "exercise": "8 Swings" }, { "minute": "even", "exercise": "Max Push-ups" }] },
+            { "type": "straight_sets", "label": "Main lift", "exercise": "Double KB Thruster", "reps": 5, "sets": 5, "restSeconds": 90 },
+            { "type": "emom", "label": "EMOM 10", "totalMinutes": 10, "pattern": [{ "minute": "odd", "exercise": "1/side Turkish Get-Up" }, { "minute": "even", "exercise": "10 Swings" }] },
             { "type": "emom", "label": "EMOM 10", "totalMinutes": 10, "pattern": [{ "minute": "odd", "exercise": "6/side Cossack Squat" }, { "minute": "even", "exercise": "8/side Plank Drag" }] },
             { "type": "circuit", "label": "Arms", "rounds": 3, "exercises": ["12 Curls", "Max Dips"] }
           ]
@@ -82,10 +82,10 @@
           ]
         },
         {
-          "day": "Day 3", "name": "Turkish Get-Up",
+          "day": "Day 3", "name": "Thruster Day",
           "blocks": [
-            { "type": "straight_sets", "label": "Main lift", "exercise": "Turkish Get-Up", "reps": "3/side", "sets": 4, "restSeconds": 60 },
-            { "type": "emom", "label": "EMOM 10", "totalMinutes": 10, "pattern": [{ "minute": "odd", "exercise": "20 Swings" }, { "minute": "even", "exercise": "15 KB Chest Press" }] },
+            { "type": "straight_sets", "label": "Main lift", "exercise": "Double KB Thruster", "reps": 6, "sets": 5, "restSeconds": 90 },
+            { "type": "emom", "label": "EMOM 10", "totalMinutes": 10, "pattern": [{ "minute": "odd", "exercise": "1/side Turkish Get-Up" }, { "minute": "even", "exercise": "12 Swings" }] },
             { "type": "emom", "label": "EMOM 10", "totalMinutes": 10, "pattern": [{ "minute": "odd", "exercise": "6/side Lateral Lunge" }, { "minute": "even", "exercise": "8/side Half-Kneeling Chop" }] },
             { "type": "circuit", "label": "Arms", "rounds": 3, "exercises": ["12 Curls", "Max Bench Dips"] }
           ]
@@ -124,10 +124,10 @@
           ]
         },
         {
-          "day": "Day 3", "name": "Turkish Get-Up",
+          "day": "Day 3", "name": "Thruster Day",
           "blocks": [
-            { "type": "straight_sets", "label": "Main lift", "exercise": "Turkish Get-Up", "reps": "3/side", "sets": 5, "restSeconds": 60 },
-            { "type": "emom", "label": "EMOM 10", "totalMinutes": 10, "pattern": [{ "minute": "odd", "exercise": "8 Swings" }, { "minute": "even", "exercise": "Max Push-ups" }] },
+            { "type": "straight_sets", "label": "Main lift", "exercise": "Double KB Thruster", "reps": 5, "sets": 6, "restSeconds": 90 },
+            { "type": "emom", "label": "EMOM 10", "totalMinutes": 10, "pattern": [{ "minute": "odd", "exercise": "1/side Turkish Get-Up" }, { "minute": "even", "exercise": "10 Swings" }] },
             { "type": "emom", "label": "EMOM 10", "totalMinutes": 10, "pattern": [{ "minute": "odd", "exercise": "6/side Cossack Squat" }, { "minute": "even", "exercise": "8/side Plank Drag" }] },
             { "type": "circuit", "label": "Arms", "rounds": 3, "exercises": ["12 Curls", "Max Dips"] }
           ]
@@ -166,10 +166,10 @@
           ]
         },
         {
-          "day": "Day 3", "name": "Turkish Get-Up",
+          "day": "Day 3", "name": "Thruster Day",
           "blocks": [
-            { "type": "straight_sets", "label": "Main lift", "exercise": "Turkish Get-Up", "reps": "3/side", "sets": 5, "restSeconds": 60 },
-            { "type": "emom", "label": "EMOM 10", "totalMinutes": 10, "pattern": [{ "minute": "odd", "exercise": "20 Swings" }, { "minute": "even", "exercise": "15 KB Chest Press" }] },
+            { "type": "straight_sets", "label": "Main lift", "exercise": "Double KB Thruster", "reps": 6, "sets": 6, "restSeconds": 90 },
+            { "type": "emom", "label": "EMOM 10", "totalMinutes": 10, "pattern": [{ "minute": "odd", "exercise": "1/side Turkish Get-Up" }, { "minute": "even", "exercise": "12 Swings" }] },
             { "type": "emom", "label": "EMOM 10", "totalMinutes": 10, "pattern": [{ "minute": "odd", "exercise": "6/side Lateral Lunge" }, { "minute": "even", "exercise": "8/side Half-Kneeling Chop" }] },
             { "type": "circuit", "label": "Arms", "rounds": 3, "exercises": ["12 Curls", "Max Bench Dips"] }
           ]
@@ -208,10 +208,10 @@
           ]
         },
         {
-          "day": "Day 3", "name": "Turkish Get-Up",
+          "day": "Day 3", "name": "Thruster Day",
           "blocks": [
-            { "type": "straight_sets", "label": "Main lift (heaviest KB)", "exercise": "Turkish Get-Up", "reps": "3/side", "sets": 5, "restSeconds": 60 },
-            { "type": "emom", "label": "EMOM 12", "totalMinutes": 12, "pattern": [{ "minute": "odd", "exercise": "8 Swings" }, { "minute": "even", "exercise": "Max Push-ups" }] },
+            { "type": "straight_sets", "label": "Main lift (heaviest KB)", "exercise": "Double KB Thruster", "reps": 5, "sets": 6, "restSeconds": 90 },
+            { "type": "emom", "label": "EMOM 12", "totalMinutes": 12, "pattern": [{ "minute": "odd", "exercise": "1/side Turkish Get-Up" }, { "minute": "even", "exercise": "10 Swings" }] },
             { "type": "emom", "label": "EMOM 12", "totalMinutes": 12, "pattern": [{ "minute": "odd", "exercise": "6/side Cossack Squat" }, { "minute": "even", "exercise": "8/side Plank Drag" }] },
             { "type": "circuit", "label": "Arms", "rounds": 4, "exercises": ["12 Curls", "Max Dips"] }
           ]
@@ -250,10 +250,10 @@
           ]
         },
         {
-          "day": "Day 3", "name": "Turkish Get-Up",
+          "day": "Day 3", "name": "Thruster Day",
           "blocks": [
-            { "type": "straight_sets", "label": "Main lift (heaviest KB)", "exercise": "Turkish Get-Up", "reps": "3/side", "sets": 5, "restSeconds": 60 },
-            { "type": "emom", "label": "EMOM 12", "totalMinutes": 12, "pattern": [{ "minute": "odd", "exercise": "20 Swings" }, { "minute": "even", "exercise": "15 KB Chest Press" }] },
+            { "type": "straight_sets", "label": "Main lift (heaviest KB)", "exercise": "Double KB Thruster", "reps": 6, "sets": 6, "restSeconds": 90 },
+            { "type": "emom", "label": "EMOM 12", "totalMinutes": 12, "pattern": [{ "minute": "odd", "exercise": "1/side Turkish Get-Up" }, { "minute": "even", "exercise": "12 Swings" }] },
             { "type": "emom", "label": "EMOM 12", "totalMinutes": 12, "pattern": [{ "minute": "odd", "exercise": "6/side Lateral Lunge" }, { "minute": "even", "exercise": "8/side Half-Kneeling Chop" }] },
             { "type": "circuit", "label": "Arms", "rounds": 4, "exercises": ["12 Curls", "Max Bench Dips"] }
           ]
