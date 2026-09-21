@@ -33,6 +33,31 @@ this whole folder as-is; nothing needs to change. Then visit that HTTPS
 URL on your phone once (while online) and use "Add to Home Screen".
 After that first load, it works offline.
 
+## Deploying a code change (important — do this every time)
+
+Whenever you (or a future Claude Code session) change any of `index.html`,
+`css/styles.css`, any `js/*.js` file, `manifest.webmanifest`, or the icons,
+**bump `CACHE_VERSION` at the top of [`sw.js`](sw.js)** before pushing —
+just increment it (`'v3'` → `'v4'`, or a date, anything unique).
+
+This is what makes an update actually reach your phone automatically. The
+service worker caches the app's files by that version string; bumping it
+gives the new deploy a fresh cache, and the old one gets deleted
+automatically the next time you open the app — no manual "clear site
+data" needed, and your saved progress/history (which lives in
+`localStorage`, never in that cache) is untouched by any of this.
+
+One thing no service worker can avoid: a tab that's *already open* when
+you deploy keeps running the old code until it's reloaded — the update
+installs quietly in the background first. The next time you open the app
+after that, you get the new version. Also, on GitHub Pages specifically,
+a push can take a few minutes to actually go live (its CDN needs to catch
+up), so don't expect it instantly.
+
+If you ever forget to bump it and a change doesn't seem to show up, bump
+`CACHE_VERSION` and push again — that alone forces every open tab to pick
+up the latest files on its next reload.
+
 ## Adding a new program
 
 See [`programs/README.md`](programs/README.md) — in short: drop a new
