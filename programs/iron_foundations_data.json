@@ -35,7 +35,7 @@
           "day": "Day 2", "name": "Hinge Complex",
           "blocks": [
             { "type": "circuit", "label": "Complex", "rounds": 5, "exercises": ["5 Swings", "4 High Pulls", "3 Snatches (both sides)"] },
-            { "type": "circuit", "label": "Superset", "rounds": 4, "exercises": ["6 Goblet Squats", "8 Push-ups"] },
+            { "type": "circuit", "label": "Superset", "rounds": 4, "exercises": ["6 Goblet Squats", "8/side Single-Arm Row"] },
             { "type": "circuit", "label": "Arms", "rounds": 3, "exercises": ["12 Hammer Curls", "12 Overhead Tricep Extension"] },
             { "type": "circuit", "label": "Core", "rounds": 3, "exercises": ["20 Hollow Rocks"] }
           ]
@@ -45,7 +45,7 @@
           "blocks": [
             { "type": "straight_sets", "label": "Main lift", "exercise": "Double KB Thruster", "reps": 5, "sets": 5, "restSeconds": 90 },
             { "type": "emom", "label": "EMOM 10", "totalMinutes": 10, "pattern": [{ "minute": "odd", "exercise": "1/side Turkish Get-Up" }, { "minute": "even", "exercise": "10 Swings" }] },
-            { "type": "emom", "label": "EMOM 10", "totalMinutes": 10, "pattern": [{ "minute": "odd", "exercise": "6/side Cossack Squat" }, { "minute": "even", "exercise": "8/side Plank Drag" }] },
+            { "type": "emom", "label": "EMOM 10", "totalMinutes": 10, "pattern": [{ "minute": "odd", "exercise": "6/side Cossack Squat" }, { "minute": "even", "exercise": "6/side Renegade Row" }] },
             { "type": "circuit", "label": "Arms", "rounds": 3, "exercises": ["12 Curls", "Max Dips"] }
           ]
         },
@@ -76,7 +76,7 @@
           "day": "Day 2", "name": "Hinge Complex",
           "blocks": [
             { "type": "circuit", "label": "Complex", "rounds": 5, "exercises": ["4 Swings", "3 High Pulls", "2 Snatches (both sides)"] },
-            { "type": "circuit", "label": "Superset", "rounds": 4, "exercises": ["3/side Side Lunges", "8 Diamond Push-ups"] },
+            { "type": "circuit", "label": "Superset", "rounds": 4, "exercises": ["3/side Side Lunges", "8/side Single-Arm Row"] },
             { "type": "circuit", "label": "Arms", "rounds": 3, "exercises": ["12 Curls", "12 Close-Grip Push-ups"] },
             { "type": "circuit", "label": "Core", "rounds": 3, "exercises": ["15 Heels-to-Heaven"] }
           ]
@@ -86,7 +86,7 @@
           "blocks": [
             { "type": "straight_sets", "label": "Main lift", "exercise": "Double KB Thruster", "reps": 6, "sets": 5, "restSeconds": 90 },
             { "type": "emom", "label": "EMOM 10", "totalMinutes": 10, "pattern": [{ "minute": "odd", "exercise": "1/side Turkish Get-Up" }, { "minute": "even", "exercise": "12 Swings" }] },
-            { "type": "emom", "label": "EMOM 10", "totalMinutes": 10, "pattern": [{ "minute": "odd", "exercise": "6/side Lateral Lunge" }, { "minute": "even", "exercise": "8/side Half-Kneeling Chop" }] },
+            { "type": "emom", "label": "EMOM 10", "totalMinutes": 10, "pattern": [{ "minute": "odd", "exercise": "6/side Lateral Lunge" }, { "minute": "even", "exercise": "6/side Renegade Row" }] },
             { "type": "circuit", "label": "Arms", "rounds": 3, "exercises": ["12 Curls", "Max Bench Dips"] }
           ]
         },
@@ -118,7 +118,7 @@
           "day": "Day 2", "name": "Hinge Complex",
           "blocks": [
             { "type": "circuit", "label": "Complex", "rounds": 5, "exercises": ["5 Swings", "4 High Pulls", "3 Snatches (both sides)"] },
-            { "type": "circuit", "label": "Superset", "rounds": 4, "exercises": ["6/side Bulgarian Split Squat", "8 Push-ups"] },
+            { "type": "circuit", "label": "Superset", "rounds": 4, "exercises": ["6/side Bulgarian Split Squat", "8/side Single-Arm Row"] },
             { "type": "circuit", "label": "Arms", "rounds": 3, "exercises": ["12 Hammer Curls", "12 Overhead Tricep Extension"] },
             { "type": "circuit", "label": "Core", "rounds": 3, "exercises": ["20 Hollow Rocks"] }
           ]
@@ -128,7 +128,7 @@
           "blocks": [
             { "type": "straight_sets", "label": "Main lift", "exercise": "Double KB Thruster", "reps": 5, "sets": 6, "restSeconds": 90 },
             { "type": "emom", "label": "EMOM 10", "totalMinutes": 10, "pattern": [{ "minute": "odd", "exercise": "1/side Turkish Get-Up" }, { "minute": "even", "exercise": "10 Swings" }] },
-            { "type": "emom", "label": "EMOM 10", "totalMinutes": 10, "pattern": [{ "minute": "odd", "exercise": "6/side Cossack Squat" }, { "minute": "even", "exercise": "8/side Plank Drag" }] },
+            { "type": "emom", "label": "EMOM 10", "totalMinutes": 10, "pattern": [{ "minute": "odd", "exercise": "6/side Cossack Squat" }, { "minute": "even", "exercise": "6/side Renegade Row" }] },
             { "type": "circuit", "label": "Arms", "rounds": 3, "exercises": ["12 Curls", "Max Dips"] }
           ]
         },
@@ -160,7 +160,7 @@
           "day": "Day 2", "name": "Hinge Complex",
           "blocks": [
             { "type": "circuit", "label": "Complex", "rounds": 5, "exercises": ["4 Swings", "3 High Pulls", "2 Snatches (both sides)"] },
-            { "type": "circuit", "label": "Superset", "rounds": 4, "exercises": ["6/side Bulgarian Split Squat", "8 Diamond Push-ups"] },
+            { "type": "circuit", "label": "Superset", "rounds": 4, "exercises": ["6/side Bulgarian Split Squat", "8/side Single-Arm Row"] },
             { "type": "circuit", "label": "Arms", "rounds": 3, "exercises": ["12 Curls", "12 Close-Grip Push-ups"] },
             { "type": "circuit", "label": "Core", "rounds": 3, "exercises": ["15 Heels-to-Heaven"] }
           ]
@@ -170,7 +170,7 @@
           "blocks": [
             { "type": "straight_sets", "label": "Main lift", "exercise": "Double KB Thruster", "reps": 6, "sets": 6, "restSeconds": 90 },
             { "type": "emom", "label": "EMOM 10", "totalMinutes": 10, "pattern": [{ "minute": "odd", "exercise": "1/side Turkish Get-Up" }, { "minute": "even", "exercise": "12 Swings" }] },
-            { "type": "emom", "label": "EMOM 10", "totalMinutes": 10, "pattern": [{ "minute": "odd", "exercise": "6/side Lateral Lunge" }, { "minute": "even", "exercise": "8/side Half-Kneeling Chop" }] },
+            { "type": "emom", "label": "EMOM 10", "totalMinutes": 10, "pattern": [{ "minute": "odd", "exercise": "6/side Lateral Lunge" }, { "minute": "even", "exercise": "6/side Renegade Row" }] },
             { "type": "circuit", "label": "Arms", "rounds": 3, "exercises": ["12 Curls", "Max Bench Dips"] }
           ]
         },
@@ -202,7 +202,7 @@
           "day": "Day 2", "name": "Hinge Complex",
           "blocks": [
             { "type": "circuit", "label": "Complex", "rounds": 5, "exercises": ["5 Swings", "4 High Pulls", "3 Snatches (both sides)"] },
-            { "type": "circuit", "label": "Superset", "rounds": 4, "exercises": ["6/side Bulgarian Split Squat", "8 Push-ups"] },
+            { "type": "circuit", "label": "Superset", "rounds": 4, "exercises": ["6/side Bulgarian Split Squat", "8/side Single-Arm Row"] },
             { "type": "circuit", "label": "Arms", "rounds": 4, "exercises": ["12 Hammer Curls", "12 Overhead Tricep Extension"] },
             { "type": "circuit", "label": "Core", "rounds": 3, "exercises": ["20 Hollow Rocks"] }
           ]
@@ -212,7 +212,7 @@
           "blocks": [
             { "type": "straight_sets", "label": "Main lift (heaviest KB)", "exercise": "Double KB Thruster", "reps": 5, "sets": 6, "restSeconds": 90 },
             { "type": "emom", "label": "EMOM 12", "totalMinutes": 12, "pattern": [{ "minute": "odd", "exercise": "1/side Turkish Get-Up" }, { "minute": "even", "exercise": "10 Swings" }] },
-            { "type": "emom", "label": "EMOM 12", "totalMinutes": 12, "pattern": [{ "minute": "odd", "exercise": "6/side Cossack Squat" }, { "minute": "even", "exercise": "8/side Plank Drag" }] },
+            { "type": "emom", "label": "EMOM 12", "totalMinutes": 12, "pattern": [{ "minute": "odd", "exercise": "6/side Cossack Squat" }, { "minute": "even", "exercise": "6/side Renegade Row" }] },
             { "type": "circuit", "label": "Arms", "rounds": 4, "exercises": ["12 Curls", "Max Dips"] }
           ]
         },
@@ -244,7 +244,7 @@
           "day": "Day 2", "name": "Hinge Complex",
           "blocks": [
             { "type": "circuit", "label": "Complex", "rounds": 5, "exercises": ["4 Swings", "3 High Pulls", "2 Snatches (both sides)"] },
-            { "type": "circuit", "label": "Superset", "rounds": 4, "exercises": ["6/side Bulgarian Split Squat", "8 Diamond Push-ups"] },
+            { "type": "circuit", "label": "Superset", "rounds": 4, "exercises": ["6/side Bulgarian Split Squat", "8/side Single-Arm Row"] },
             { "type": "circuit", "label": "Arms", "rounds": 4, "exercises": ["12 Curls", "12 Close-Grip Push-ups"] },
             { "type": "circuit", "label": "Core", "rounds": 3, "exercises": ["15 Heels-to-Heaven"] }
           ]
@@ -254,7 +254,7 @@
           "blocks": [
             { "type": "straight_sets", "label": "Main lift (heaviest KB)", "exercise": "Double KB Thruster", "reps": 6, "sets": 6, "restSeconds": 90 },
             { "type": "emom", "label": "EMOM 12", "totalMinutes": 12, "pattern": [{ "minute": "odd", "exercise": "1/side Turkish Get-Up" }, { "minute": "even", "exercise": "12 Swings" }] },
-            { "type": "emom", "label": "EMOM 12", "totalMinutes": 12, "pattern": [{ "minute": "odd", "exercise": "6/side Lateral Lunge" }, { "minute": "even", "exercise": "8/side Half-Kneeling Chop" }] },
+            { "type": "emom", "label": "EMOM 12", "totalMinutes": 12, "pattern": [{ "minute": "odd", "exercise": "6/side Lateral Lunge" }, { "minute": "even", "exercise": "6/side Renegade Row" }] },
             { "type": "circuit", "label": "Arms", "rounds": 4, "exercises": ["12 Curls", "Max Bench Dips"] }
           ]
         },

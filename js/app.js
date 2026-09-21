@@ -166,7 +166,6 @@ function renderDay() {
       <div class="day-name">${escapeHtml(day.name)}</div>
       <div class="day-id-label">${escapeHtml(day.day)}</div>
     </div>
-    <button class="primary-btn big" data-action="start-day">Start Workout</button>
 
     <details class="jump-panel">
       <summary>Jump to a different week/day</summary>
@@ -180,6 +179,10 @@ function renderDay() {
       </div>
       <button class="secondary-btn" data-action="jump-go">Go to this week/day</button>
     </details>
+
+    ${renderDayPreview(week, day)}
+
+    <button class="primary-btn big" data-action="start-day">Start Workout</button>
   `;
 
   const weekSelect = document.getElementById('jump-week');
@@ -190,6 +193,82 @@ function renderDay() {
       `<option value="${i}">${escapeHtml(d.day)} — ${escapeHtml(d.name)}</option>`
     ).join('');
   });
+}
+
+// Read-only breakdown of the whole session (warm-up + every block + closer),
+// shown on the Day view before "Start Workout". Mirrors the wording of the
+// actual warm-up/workout screens so the preview matches what you'll see.
+
+function renderPreviewWarmup(week, day) {
+  if (week.phase === 'Deload') {
+    return `
+      <section class="block">
+        <h3>Warm-up</h3>
+        <div class="exercise-meta">No warm-up this week — deload week.</div>
+      </section>
+    `;
+  }
+  const exercises = buildWarmupExercises(day);
+  const items = exercises.map((ex) => `<li>${escapeHtml(ex)}</li>`).join('');
+  return `
+    <section class="block">
+      <h3>Warm-up</h3>
+      <div class="exercise-meta">50s work / 10s rest · ${exercises.length} exercises</div>
+      <ol class="preview-list">${items}</ol>
+    </section>
+  `;
+}
+
+function renderPreviewBlock(block) {
+  const labelHtml = block.label ? `<h3>${escapeHtml(block.label)}</h3>` : '';
+
+  if (block.type === 'straight_sets') {
+    const repsText = (block.reps === null || block.reps === undefined || block.reps === '')
+      ? ''
+      : `${escapeHtml(block.reps)} reps`;
+    return `
+      <section class="block">
+        ${labelHtml}
+        <div class="exercise-name">${escapeHtml(block.exercise)}</div>
+        <div class="exercise-meta">${block.sets} sets${repsText ? ' × ' + repsText : ''}</div>
+      </section>
+    `;
+  }
+
+  if (block.type === 'circuit') {
+    const items = (block.exercises || []).map((ex) => `<li>${escapeHtml(ex)}</li>`).join('');
+    return `
+      <section class="block">
+        ${labelHtml}
+        <div class="exercise-meta">${block.rounds} rounds</div>
+        <ul class="preview-list">${items}</ul>
+      </section>
+    `;
+  }
+
+  if (block.type === 'emom') {
+    const patternMap = {};
+    (block.pattern || []).forEach((p) => { patternMap[p.minute] = p.exercise; });
+    return `
+      <section class="block">
+        ${labelHtml}
+        <div class="exercise-meta">${block.totalMinutes} min total</div>
+        <ul class="preview-list">
+          <li><strong>Odd minute:</strong> ${escapeHtml(patternMap.odd || '')}</li>
+          <li><strong>Even minute:</strong> ${escapeHtml(patternMap.even || '')}</li>
+        </ul>
+      </section>
+    `;
+  }
+
+  return `<section class="block"><em>Unknown block type: ${escapeHtml(block.type)}</em></section>`;
+}
+
+function renderDayPreview(week, day) {
+  const warmupHtml = renderPreviewWarmup(week, day);
+  const blocksHtml = day.blocks.map(renderPreviewBlock).join('');
+  const closerHtml = day.closer ? `<div class="closer-note">${escapeHtml(day.closer)}</div>` : '';
+  return `${warmupHtml}${blocksHtml}${closerHtml}`;
 }
 
 function jumpToSelection() {
