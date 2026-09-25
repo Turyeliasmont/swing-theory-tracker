@@ -1,0 +1,1275 @@
+{
+  "program": {
+    "name": "Iron Foundations v2",
+    "format": "Straight sets + EMOM (Days 2-3) + short circuits",
+    "targetSessionMinutes": 32,
+    "daysPerWeek": 4,
+    "totalWeeks": 7,
+    "note": "Weeks 1-6 are training, week 7 is deload. Warm-up (shared, below) precedes every training-week session. New, independent program design (not adapted from any external source). Week 4 main-lift progression depends on Week 3 self-assessment (see 'note' fields) - the app displays the guidance, the athlete self-regulates; no automatic branching."
+  },
+  "warmup": {
+    "format": "50s on / 10s off, 6 exercises, 1 round (~6 min total)",
+    "fixed": [
+      "Jumping Jacks",
+      "World's Greatest Stretch - Right",
+      "World's Greatest Stretch - Left"
+    ],
+    "rotatingPool": [
+      "Down Dog to Cobra",
+      "Cat/Cow",
+      "Squat Hold",
+      "Lateral Lunges",
+      "Cossack Squats",
+      "Waiter's March (R/L)"
+    ],
+    "rotationByDay": {
+      "Day 1": [
+        "Down Dog to Cobra",
+        "Cat/Cow",
+        "Squat Hold"
+      ],
+      "Day 2": [
+        "Lateral Lunges",
+        "Cossack Squats",
+        "Waiter's March (R/L)"
+      ],
+      "Day 3": [
+        "Down Dog to Cobra",
+        "Cat/Cow",
+        "Squat Hold"
+      ],
+      "Day 4": [
+        "Lateral Lunges",
+        "Cossack Squats",
+        "Waiter's March (R/L)"
+      ]
+    }
+  },
+  "weeks": [
+    {
+      "week": 1,
+      "phase": "Base",
+      "days": [
+        {
+          "day": "Day 1",
+          "name": "Clean & Press",
+          "blocks": [
+            {
+              "type": "straight_sets",
+              "label": "Main lift",
+              "exercise": "Double KB Clean & Press",
+              "restSeconds": 120,
+              "reps": 5,
+              "sets": 4,
+              "note": "16kg dobles. Semanas 1-2: tecnica y ritmo, RIR 2-3."
+            },
+            {
+              "type": "circuit",
+              "label": "Accessory circuit",
+              "rounds": 3,
+              "restSeconds": 70,
+              "exercises": [
+                "6 Double KB Front Squat",
+                "8/side Single-Arm Row"
+              ]
+            },
+            {
+              "type": "circuit",
+              "label": "Arms",
+              "rounds": 2,
+              "exercises": [
+                "10/side Alternating Curl",
+                "8 Bench/Station Dips"
+              ]
+            }
+          ]
+        },
+        {
+          "day": "Day 2",
+          "name": "Hinge, Pull & Calisthenics",
+          "blocks": [
+            {
+              "type": "straight_sets",
+              "label": "Main lift",
+              "exercise": "Double KB Deadlift",
+              "restSeconds": 120,
+              "reps": 6,
+              "sets": 4,
+              "note": "16kg dobles. Semanas 1-2: tecnica y ritmo, RIR 2-3."
+            },
+            {
+              "type": "emom",
+              "label": "EMOM 10",
+              "totalMinutes": 10,
+              "pattern": [
+                {
+                  "minute": "odd",
+                  "exercise": "6/side Single-Arm Row (controlled, no ballistic)"
+                },
+                {
+                  "minute": "even",
+                  "exercise": "8-10 Push-ups, RIR 1-2"
+                }
+              ]
+            },
+            {
+              "type": "circuit",
+              "label": "Arms",
+              "rounds": 2,
+              "exercises": [
+                "10/side Hammer Curl",
+                "10 Overhead Tricep Extension"
+              ]
+            },
+            {
+              "type": "circuit",
+              "label": "Core",
+              "rounds": 2,
+              "exercises": [
+                "30s KB Plank Drag"
+              ]
+            }
+          ]
+        },
+        {
+          "day": "Day 3",
+          "name": "Squat & Controlled Conditioning",
+          "blocks": [
+            {
+              "type": "straight_sets",
+              "label": "Main lift",
+              "exercise": "Double KB Front Squat",
+              "restSeconds": 120,
+              "reps": 6,
+              "sets": 4,
+              "note": "16kg dobles. Semanas 1-2: tecnica y ritmo, RIR 2-3."
+            },
+            {
+              "type": "emom",
+              "label": "EMOM 12",
+              "totalMinutes": 12,
+              "cycleLength": 3,
+              "note": "Rotacion de 3 minutos (no odd/even): minuto 1, 2, 3, se repite. Farmer March en el lugar para quedar en cuadro filmando.",
+              "pattern": [
+                {
+                  "minute": 1,
+                  "exercise": "12-15 KB Swings"
+                },
+                {
+                  "minute": 2,
+                  "exercise": "6/side Single-Arm Row"
+                },
+                {
+                  "minute": 3,
+                  "exercise": "30s Farmer March (en el lugar)"
+                }
+              ]
+            },
+            {
+              "type": "circuit",
+              "label": "Arms",
+              "rounds": 2,
+              "exercises": [
+                "10/side Curl",
+                "9 Close-Grip Push-ups"
+              ]
+            }
+          ]
+        },
+        {
+          "day": "Day 4",
+          "name": "Snatch, Unilateral & Posterior Chain",
+          "blocks": [
+            {
+              "type": "straight_sets",
+              "label": "Main lift",
+              "exercise": "KB Snatch",
+              "restSeconds": 90,
+              "reps": 3,
+              "sets": 5,
+              "note": "16kg simple. Descanso 75-90s. Tecnica primero: para la serie si la forma se degrada."
+            },
+            {
+              "type": "circuit",
+              "label": "Accessory circuit",
+              "rounds": 3,
+              "restSeconds": 70,
+              "exercises": [
+                "6/side Single-Leg RDL",
+                "5/side Cossack Squat"
+              ]
+            },
+            {
+              "type": "straight_sets",
+              "label": "Core / Estabilidad",
+              "exercise": "1/side Turkish Get-Up",
+              "reps": 1,
+              "sets": 2,
+              "restSeconds": 60,
+              "note": "Volumen deliberadamente bajo (solo 1/lado por serie) - el TGU es lento y tecnico, no necesita mas para cumplir su funcion de estabilidad."
+            },
+            {
+              "type": "circuit",
+              "label": "Arms",
+              "rounds": 2,
+              "exercises": [
+                "10/side Hammer Curl",
+                "10 Overhead Tricep Extension"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "week": 2,
+      "phase": "Base",
+      "days": [
+        {
+          "day": "Day 1",
+          "name": "Clean & Press",
+          "blocks": [
+            {
+              "type": "straight_sets",
+              "label": "Main lift",
+              "exercise": "Double KB Clean & Press",
+              "restSeconds": 120,
+              "reps": 5,
+              "sets": 4,
+              "note": "16kg dobles. Semanas 1-2: tecnica y ritmo, RIR 2-3."
+            },
+            {
+              "type": "circuit",
+              "label": "Accessory circuit",
+              "rounds": 3,
+              "restSeconds": 70,
+              "exercises": [
+                "6 Double KB Front Squat",
+                "8/side Single-Arm Row"
+              ]
+            },
+            {
+              "type": "circuit",
+              "label": "Arms",
+              "rounds": 2,
+              "exercises": [
+                "10/side Alternating Curl",
+                "8 Bench/Station Dips"
+              ]
+            }
+          ]
+        },
+        {
+          "day": "Day 2",
+          "name": "Hinge, Pull & Calisthenics",
+          "blocks": [
+            {
+              "type": "straight_sets",
+              "label": "Main lift",
+              "exercise": "Double KB Deadlift",
+              "restSeconds": 120,
+              "reps": 6,
+              "sets": 4,
+              "note": "16kg dobles. Semanas 1-2: tecnica y ritmo, RIR 2-3."
+            },
+            {
+              "type": "emom",
+              "label": "EMOM 10",
+              "totalMinutes": 10,
+              "pattern": [
+                {
+                  "minute": "odd",
+                  "exercise": "6/side Single-Arm Row (controlled, no ballistic)"
+                },
+                {
+                  "minute": "even",
+                  "exercise": "8-10 Push-ups, RIR 1-2"
+                }
+              ]
+            },
+            {
+              "type": "circuit",
+              "label": "Arms",
+              "rounds": 2,
+              "exercises": [
+                "10/side Hammer Curl",
+                "10 Overhead Tricep Extension"
+              ]
+            },
+            {
+              "type": "circuit",
+              "label": "Core",
+              "rounds": 2,
+              "exercises": [
+                "30s KB Plank Drag"
+              ]
+            }
+          ]
+        },
+        {
+          "day": "Day 3",
+          "name": "Squat & Controlled Conditioning",
+          "blocks": [
+            {
+              "type": "straight_sets",
+              "label": "Main lift",
+              "exercise": "Double KB Front Squat",
+              "restSeconds": 120,
+              "reps": 6,
+              "sets": 4,
+              "note": "16kg dobles. Semanas 1-2: tecnica y ritmo, RIR 2-3."
+            },
+            {
+              "type": "emom",
+              "label": "EMOM 12",
+              "totalMinutes": 12,
+              "cycleLength": 3,
+              "note": "Rotacion de 3 minutos (no odd/even): minuto 1, 2, 3, se repite. Farmer March en el lugar para quedar en cuadro filmando.",
+              "pattern": [
+                {
+                  "minute": 1,
+                  "exercise": "12-15 KB Swings"
+                },
+                {
+                  "minute": 2,
+                  "exercise": "6/side Single-Arm Row"
+                },
+                {
+                  "minute": 3,
+                  "exercise": "30s Farmer March (en el lugar)"
+                }
+              ]
+            },
+            {
+              "type": "circuit",
+              "label": "Arms",
+              "rounds": 2,
+              "exercises": [
+                "10/side Curl",
+                "9 Close-Grip Push-ups"
+              ]
+            }
+          ]
+        },
+        {
+          "day": "Day 4",
+          "name": "Snatch, Unilateral & Posterior Chain",
+          "blocks": [
+            {
+              "type": "straight_sets",
+              "label": "Main lift",
+              "exercise": "KB Snatch",
+              "restSeconds": 90,
+              "reps": 3,
+              "sets": 5,
+              "note": "16kg simple. Descanso 75-90s. Tecnica primero: para la serie si la forma se degrada."
+            },
+            {
+              "type": "circuit",
+              "label": "Accessory circuit",
+              "rounds": 3,
+              "restSeconds": 70,
+              "exercises": [
+                "6/side Single-Leg RDL",
+                "5/side Cossack Squat"
+              ]
+            },
+            {
+              "type": "straight_sets",
+              "label": "Core / Estabilidad",
+              "exercise": "1/side Turkish Get-Up",
+              "reps": 1,
+              "sets": 2,
+              "restSeconds": 60,
+              "note": "Volumen deliberadamente bajo (solo 1/lado por serie) - el TGU es lento y tecnico, no necesita mas para cumplir su funcion de estabilidad."
+            },
+            {
+              "type": "circuit",
+              "label": "Arms",
+              "rounds": 2,
+              "exercises": [
+                "10/side Hammer Curl",
+                "10 Overhead Tricep Extension"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "week": 3,
+      "phase": "Build",
+      "days": [
+        {
+          "day": "Day 1",
+          "name": "Clean & Press",
+          "blocks": [
+            {
+              "type": "straight_sets",
+              "label": "Main lift",
+              "exercise": "Double KB Clean & Press",
+              "restSeconds": 120,
+              "reps": 6,
+              "sets": 4,
+              "note": "16kg dobles, +1 rep."
+            },
+            {
+              "type": "circuit",
+              "label": "Accessory circuit",
+              "rounds": 3,
+              "restSeconds": 70,
+              "exercises": [
+                "7 Double KB Front Squat",
+                "9/side Single-Arm Row"
+              ]
+            },
+            {
+              "type": "circuit",
+              "label": "Arms",
+              "rounds": 2,
+              "exercises": [
+                "11/side Alternating Curl",
+                "9 Bench/Station Dips"
+              ]
+            }
+          ]
+        },
+        {
+          "day": "Day 2",
+          "name": "Hinge, Pull & Calisthenics",
+          "blocks": [
+            {
+              "type": "straight_sets",
+              "label": "Main lift",
+              "exercise": "Double KB Deadlift",
+              "restSeconds": 120,
+              "reps": 7,
+              "sets": 4,
+              "note": "16kg dobles, +1 rep."
+            },
+            {
+              "type": "emom",
+              "label": "EMOM 10",
+              "totalMinutes": 10,
+              "pattern": [
+                {
+                  "minute": "odd",
+                  "exercise": "7/side Single-Arm Row (controlled, no ballistic)"
+                },
+                {
+                  "minute": "even",
+                  "exercise": "8-10 Push-ups, RIR 1-2"
+                }
+              ]
+            },
+            {
+              "type": "circuit",
+              "label": "Arms",
+              "rounds": 2,
+              "exercises": [
+                "11/side Hammer Curl",
+                "11 Overhead Tricep Extension"
+              ]
+            },
+            {
+              "type": "circuit",
+              "label": "Core",
+              "rounds": 2,
+              "exercises": [
+                "35s KB Plank Drag"
+              ]
+            }
+          ]
+        },
+        {
+          "day": "Day 3",
+          "name": "Squat & Controlled Conditioning",
+          "blocks": [
+            {
+              "type": "straight_sets",
+              "label": "Main lift",
+              "exercise": "Double KB Front Squat",
+              "restSeconds": 120,
+              "reps": 7,
+              "sets": 4,
+              "note": "16kg dobles, +1 rep."
+            },
+            {
+              "type": "emom",
+              "label": "EMOM 12",
+              "totalMinutes": 12,
+              "cycleLength": 3,
+              "note": "Rotacion de 3 minutos (no odd/even): minuto 1, 2, 3, se repite. Farmer March en el lugar para quedar en cuadro filmando.",
+              "pattern": [
+                {
+                  "minute": 1,
+                  "exercise": "13-15 KB Swings"
+                },
+                {
+                  "minute": 2,
+                  "exercise": "7/side Single-Arm Row"
+                },
+                {
+                  "minute": 3,
+                  "exercise": "35s Farmer March (en el lugar)"
+                }
+              ]
+            },
+            {
+              "type": "circuit",
+              "label": "Arms",
+              "rounds": 2,
+              "exercises": [
+                "11/side Curl",
+                "10 Close-Grip Push-ups"
+              ]
+            }
+          ]
+        },
+        {
+          "day": "Day 4",
+          "name": "Snatch, Unilateral & Posterior Chain",
+          "blocks": [
+            {
+              "type": "straight_sets",
+              "label": "Main lift",
+              "exercise": "KB Snatch",
+              "restSeconds": 90,
+              "reps": 4,
+              "sets": 5,
+              "note": "16kg simple, +1 rep/lado. Descanso 75-90s."
+            },
+            {
+              "type": "circuit",
+              "label": "Accessory circuit",
+              "rounds": 3,
+              "restSeconds": 70,
+              "exercises": [
+                "7/side Single-Leg RDL",
+                "6/side Cossack Squat"
+              ]
+            },
+            {
+              "type": "straight_sets",
+              "label": "Core / Estabilidad",
+              "exercise": "1/side Turkish Get-Up",
+              "reps": 1,
+              "sets": 2,
+              "restSeconds": 60,
+              "note": "Volumen deliberadamente bajo (solo 1/lado por serie) - el TGU es lento y tecnico, no necesita mas para cumplir su funcion de estabilidad."
+            },
+            {
+              "type": "circuit",
+              "label": "Arms",
+              "rounds": 2,
+              "exercises": [
+                "11/side Hammer Curl",
+                "11 Overhead Tricep Extension"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "week": 4,
+      "phase": "Build",
+      "days": [
+        {
+          "day": "Day 1",
+          "name": "Clean & Press",
+          "blocks": [
+            {
+              "type": "straight_sets",
+              "label": "Main lift",
+              "exercise": "Double KB Clean & Press",
+              "restSeconds": 120,
+              "reps": 5,
+              "sets": 4,
+              "note": "Si semana 3 saliste a RIR<=2 en las 4 series, sube a 20kg dobles y vuelve a 5 reps. Si no, quedate en 16kg y agrega 1 serie (5 series)."
+            },
+            {
+              "type": "circuit",
+              "label": "Accessory circuit",
+              "rounds": 3,
+              "restSeconds": 70,
+              "exercises": [
+                "7 Double KB Front Squat",
+                "9/side Single-Arm Row"
+              ]
+            },
+            {
+              "type": "circuit",
+              "label": "Arms",
+              "rounds": 2,
+              "exercises": [
+                "11/side Alternating Curl",
+                "9 Bench/Station Dips"
+              ]
+            }
+          ]
+        },
+        {
+          "day": "Day 2",
+          "name": "Hinge, Pull & Calisthenics",
+          "blocks": [
+            {
+              "type": "straight_sets",
+              "label": "Main lift",
+              "exercise": "Double KB Deadlift",
+              "restSeconds": 120,
+              "reps": 6,
+              "sets": 4,
+              "note": "Si semana 3 saliste a RIR<=2 en las 4 series, sube a 20kg dobles y vuelve a 6 reps. Si no, quedate en 16kg y agrega 1 serie (5 series)."
+            },
+            {
+              "type": "emom",
+              "label": "EMOM 10",
+              "totalMinutes": 10,
+              "pattern": [
+                {
+                  "minute": "odd",
+                  "exercise": "7/side Single-Arm Row (controlled, no ballistic)"
+                },
+                {
+                  "minute": "even",
+                  "exercise": "8-10 Push-ups, RIR 1-2"
+                }
+              ]
+            },
+            {
+              "type": "circuit",
+              "label": "Arms",
+              "rounds": 2,
+              "exercises": [
+                "11/side Hammer Curl",
+                "11 Overhead Tricep Extension"
+              ]
+            },
+            {
+              "type": "circuit",
+              "label": "Core",
+              "rounds": 2,
+              "exercises": [
+                "35s KB Plank Drag"
+              ]
+            }
+          ]
+        },
+        {
+          "day": "Day 3",
+          "name": "Squat & Controlled Conditioning",
+          "blocks": [
+            {
+              "type": "straight_sets",
+              "label": "Main lift",
+              "exercise": "Double KB Front Squat",
+              "restSeconds": 120,
+              "reps": 6,
+              "sets": 4,
+              "note": "Si semana 3 saliste a RIR<=2 en las 4 series, sube a 20kg dobles y vuelve a 6 reps. Si no, quedate en 16kg y agrega 1 serie (5 series)."
+            },
+            {
+              "type": "emom",
+              "label": "EMOM 12",
+              "totalMinutes": 12,
+              "cycleLength": 3,
+              "note": "Rotacion de 3 minutos (no odd/even): minuto 1, 2, 3, se repite. Farmer March en el lugar para quedar en cuadro filmando.",
+              "pattern": [
+                {
+                  "minute": 1,
+                  "exercise": "13-15 KB Swings"
+                },
+                {
+                  "minute": 2,
+                  "exercise": "7/side Single-Arm Row"
+                },
+                {
+                  "minute": 3,
+                  "exercise": "35s Farmer March (en el lugar)"
+                }
+              ]
+            },
+            {
+              "type": "circuit",
+              "label": "Arms",
+              "rounds": 2,
+              "exercises": [
+                "11/side Curl",
+                "10 Close-Grip Push-ups"
+              ]
+            }
+          ]
+        },
+        {
+          "day": "Day 4",
+          "name": "Snatch, Unilateral & Posterior Chain",
+          "blocks": [
+            {
+              "type": "straight_sets",
+              "label": "Main lift",
+              "exercise": "KB Snatch",
+              "restSeconds": 90,
+              "reps": 3,
+              "sets": 5,
+              "note": "Si semana 3 saliste tecnica limpia en todas las series, sube a 20kg y vuelve a 3 reps/lado. Si no, quedate en 16kg y agrega 1 serie (6 series). Descanso 75-90s."
+            },
+            {
+              "type": "circuit",
+              "label": "Accessory circuit",
+              "rounds": 3,
+              "restSeconds": 70,
+              "exercises": [
+                "7/side Single-Leg RDL",
+                "6/side Cossack Squat"
+              ]
+            },
+            {
+              "type": "straight_sets",
+              "label": "Core / Estabilidad",
+              "exercise": "1/side Turkish Get-Up",
+              "reps": 1,
+              "sets": 2,
+              "restSeconds": 60,
+              "note": "Volumen deliberadamente bajo (solo 1/lado por serie) - el TGU es lento y tecnico, no necesita mas para cumplir su funcion de estabilidad."
+            },
+            {
+              "type": "circuit",
+              "label": "Arms",
+              "rounds": 2,
+              "exercises": [
+                "11/side Hammer Curl",
+                "11 Overhead Tricep Extension"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "week": 5,
+      "phase": "Peak (Benchmark)",
+      "days": [
+        {
+          "day": "Day 1",
+          "name": "Clean & Press",
+          "blocks": [
+            {
+              "type": "straight_sets",
+              "label": "Main lift",
+              "exercise": "Double KB Clean & Press",
+              "restSeconds": 120,
+              "reps": 5,
+              "sets": 5,
+              "note": "Benchmark: 20kg dobles (o tu maximo limpio), RIR 1. Registra series x reps."
+            },
+            {
+              "type": "circuit",
+              "label": "Accessory circuit",
+              "rounds": 3,
+              "restSeconds": 70,
+              "exercises": [
+                "8 Double KB Front Squat",
+                "10/side Single-Arm Row"
+              ]
+            },
+            {
+              "type": "circuit",
+              "label": "Arms",
+              "rounds": 2,
+              "exercises": [
+                "12/side Alternating Curl",
+                "10 Bench/Station Dips"
+              ]
+            }
+          ]
+        },
+        {
+          "day": "Day 2",
+          "name": "Hinge, Pull & Calisthenics",
+          "blocks": [
+            {
+              "type": "straight_sets",
+              "label": "Main lift",
+              "exercise": "Double KB Deadlift",
+              "restSeconds": 120,
+              "reps": 6,
+              "sets": 5,
+              "note": "Benchmark: 20kg dobles (o tu maximo limpio), RIR 1. Registra series x reps."
+            },
+            {
+              "type": "emom",
+              "label": "EMOM 12",
+              "totalMinutes": 12,
+              "pattern": [
+                {
+                  "minute": "odd",
+                  "exercise": "8/side Single-Arm Row (controlled, no ballistic)"
+                },
+                {
+                  "minute": "even",
+                  "exercise": "8-10 Push-ups, RIR 1-2"
+                }
+              ]
+            },
+            {
+              "type": "circuit",
+              "label": "Arms",
+              "rounds": 2,
+              "exercises": [
+                "12/side Hammer Curl",
+                "12 Overhead Tricep Extension"
+              ]
+            },
+            {
+              "type": "circuit",
+              "label": "Core",
+              "rounds": 2,
+              "exercises": [
+                "40s KB Plank Drag"
+              ]
+            }
+          ]
+        },
+        {
+          "day": "Day 3",
+          "name": "Squat & Controlled Conditioning",
+          "blocks": [
+            {
+              "type": "straight_sets",
+              "label": "Main lift",
+              "exercise": "Double KB Front Squat",
+              "restSeconds": 120,
+              "reps": 6,
+              "sets": 5,
+              "note": "Benchmark: 20kg dobles (o tu maximo limpio), RIR 1. Registra series x reps."
+            },
+            {
+              "type": "emom",
+              "label": "EMOM 15",
+              "totalMinutes": 15,
+              "cycleLength": 3,
+              "note": "Rotacion de 3 minutos (no odd/even): minuto 1, 2, 3, se repite. Farmer March en el lugar para quedar en cuadro filmando.",
+              "pattern": [
+                {
+                  "minute": 1,
+                  "exercise": "15 KB Swings"
+                },
+                {
+                  "minute": 2,
+                  "exercise": "8/side Single-Arm Row"
+                },
+                {
+                  "minute": 3,
+                  "exercise": "40s Farmer March (en el lugar)"
+                }
+              ]
+            },
+            {
+              "type": "circuit",
+              "label": "Arms",
+              "rounds": 2,
+              "exercises": [
+                "12/side Curl",
+                "11 Close-Grip Push-ups"
+              ]
+            }
+          ]
+        },
+        {
+          "day": "Day 4",
+          "name": "Snatch, Unilateral & Posterior Chain",
+          "blocks": [
+            {
+              "type": "straight_sets",
+              "label": "Main lift",
+              "exercise": "KB Snatch",
+              "restSeconds": 90,
+              "reps": 3,
+              "sets": 6,
+              "note": "Benchmark: 20kg (o tu maximo con tecnica limpia). Registra series x reps por lado. Descanso 75-90s."
+            },
+            {
+              "type": "circuit",
+              "label": "Accessory circuit",
+              "rounds": 3,
+              "restSeconds": 70,
+              "exercises": [
+                "8/side Single-Leg RDL",
+                "7/side Cossack Squat"
+              ]
+            },
+            {
+              "type": "straight_sets",
+              "label": "Core / Estabilidad",
+              "exercise": "1/side Turkish Get-Up",
+              "reps": 1,
+              "sets": 2,
+              "restSeconds": 60,
+              "note": "Volumen deliberadamente bajo (solo 1/lado por serie) - el TGU es lento y tecnico, no necesita mas para cumplir su funcion de estabilidad."
+            },
+            {
+              "type": "circuit",
+              "label": "Arms",
+              "rounds": 2,
+              "exercises": [
+                "12/side Hammer Curl",
+                "12 Overhead Tricep Extension"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "week": 6,
+      "phase": "Peak (Consolidation)",
+      "days": [
+        {
+          "day": "Day 1",
+          "name": "Clean & Press",
+          "blocks": [
+            {
+              "type": "straight_sets",
+              "label": "Main lift",
+              "exercise": "Double KB Clean & Press",
+              "restSeconds": 120,
+              "reps": 5,
+              "sets": 5,
+              "note": "Repite exacto el benchmark de semana 5, mejor ejecucion, no mas volumen."
+            },
+            {
+              "type": "circuit",
+              "label": "Accessory circuit",
+              "rounds": 3,
+              "restSeconds": 70,
+              "exercises": [
+                "8 Double KB Front Squat",
+                "10/side Single-Arm Row"
+              ]
+            },
+            {
+              "type": "circuit",
+              "label": "Arms",
+              "rounds": 2,
+              "exercises": [
+                "12/side Alternating Curl",
+                "10 Bench/Station Dips"
+              ]
+            }
+          ]
+        },
+        {
+          "day": "Day 2",
+          "name": "Hinge, Pull & Calisthenics",
+          "blocks": [
+            {
+              "type": "straight_sets",
+              "label": "Main lift",
+              "exercise": "Double KB Deadlift",
+              "restSeconds": 120,
+              "reps": 6,
+              "sets": 5,
+              "note": "Repite exacto el benchmark de semana 5, mejor ejecucion, no mas volumen."
+            },
+            {
+              "type": "emom",
+              "label": "EMOM 12",
+              "totalMinutes": 12,
+              "pattern": [
+                {
+                  "minute": "odd",
+                  "exercise": "8/side Single-Arm Row (controlled, no ballistic)"
+                },
+                {
+                  "minute": "even",
+                  "exercise": "8-10 Push-ups, RIR 1-2"
+                }
+              ]
+            },
+            {
+              "type": "circuit",
+              "label": "Arms",
+              "rounds": 2,
+              "exercises": [
+                "12/side Hammer Curl",
+                "12 Overhead Tricep Extension"
+              ]
+            },
+            {
+              "type": "circuit",
+              "label": "Core",
+              "rounds": 2,
+              "exercises": [
+                "40s KB Plank Drag"
+              ]
+            }
+          ]
+        },
+        {
+          "day": "Day 3",
+          "name": "Squat & Controlled Conditioning",
+          "blocks": [
+            {
+              "type": "straight_sets",
+              "label": "Main lift",
+              "exercise": "Double KB Front Squat",
+              "restSeconds": 120,
+              "reps": 6,
+              "sets": 5,
+              "note": "Repite exacto el benchmark de semana 5, mejor ejecucion, no mas volumen."
+            },
+            {
+              "type": "emom",
+              "label": "EMOM 15",
+              "totalMinutes": 15,
+              "cycleLength": 3,
+              "note": "Rotacion de 3 minutos (no odd/even): minuto 1, 2, 3, se repite. Farmer March en el lugar para quedar en cuadro filmando.",
+              "pattern": [
+                {
+                  "minute": 1,
+                  "exercise": "15 KB Swings"
+                },
+                {
+                  "minute": 2,
+                  "exercise": "8/side Single-Arm Row"
+                },
+                {
+                  "minute": 3,
+                  "exercise": "40s Farmer March (en el lugar)"
+                }
+              ]
+            },
+            {
+              "type": "circuit",
+              "label": "Arms",
+              "rounds": 2,
+              "exercises": [
+                "12/side Curl",
+                "11 Close-Grip Push-ups"
+              ]
+            }
+          ]
+        },
+        {
+          "day": "Day 4",
+          "name": "Snatch, Unilateral & Posterior Chain",
+          "blocks": [
+            {
+              "type": "straight_sets",
+              "label": "Main lift",
+              "exercise": "KB Snatch",
+              "restSeconds": 90,
+              "reps": 3,
+              "sets": 6,
+              "note": "Repite exacto el benchmark de semana 5, mejor ejecucion, no mas volumen."
+            },
+            {
+              "type": "circuit",
+              "label": "Accessory circuit",
+              "rounds": 3,
+              "restSeconds": 70,
+              "exercises": [
+                "8/side Single-Leg RDL",
+                "7/side Cossack Squat"
+              ]
+            },
+            {
+              "type": "straight_sets",
+              "label": "Core / Estabilidad",
+              "exercise": "1/side Turkish Get-Up",
+              "reps": 1,
+              "sets": 2,
+              "restSeconds": 60,
+              "note": "Volumen deliberadamente bajo (solo 1/lado por serie) - el TGU es lento y tecnico, no necesita mas para cumplir su funcion de estabilidad."
+            },
+            {
+              "type": "circuit",
+              "label": "Arms",
+              "rounds": 2,
+              "exercises": [
+                "12/side Hammer Curl",
+                "12 Overhead Tricep Extension"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "week": 7,
+      "phase": "Deload",
+      "days": [
+        {
+          "day": "Day 1",
+          "name": "Clean & Press",
+          "blocks": [
+            {
+              "type": "straight_sets",
+              "label": "Main lift",
+              "exercise": "Double KB Clean & Press",
+              "restSeconds": 120,
+              "reps": 5,
+              "sets": 3,
+              "note": "Deload: 16kg o 12kg, RIR 4-5."
+            },
+            {
+              "type": "circuit",
+              "label": "Accessory circuit",
+              "rounds": 2,
+              "restSeconds": 70,
+              "exercises": [
+                "5 Double KB Front Squat",
+                "6/side Single-Arm Row"
+              ]
+            },
+            {
+              "type": "circuit",
+              "label": "Arms",
+              "rounds": 2,
+              "exercises": [
+                "8/side Alternating Curl",
+                "6 Bench/Station Dips"
+              ]
+            }
+          ]
+        },
+        {
+          "day": "Day 2",
+          "name": "Hinge, Pull & Calisthenics",
+          "blocks": [
+            {
+              "type": "straight_sets",
+              "label": "Main lift",
+              "exercise": "Double KB Deadlift",
+              "restSeconds": 120,
+              "reps": 6,
+              "sets": 3,
+              "note": "Deload: 16kg o 12kg, RIR 4-5."
+            },
+            {
+              "type": "emom",
+              "label": "EMOM 8",
+              "totalMinutes": 8,
+              "pattern": [
+                {
+                  "minute": "odd",
+                  "exercise": "4/side Single-Arm Row (controlled, no ballistic)"
+                },
+                {
+                  "minute": "even",
+                  "exercise": "6-8 Push-ups, RIR 1-2"
+                }
+              ]
+            },
+            {
+              "type": "circuit",
+              "label": "Arms",
+              "rounds": 2,
+              "exercises": [
+                "8/side Hammer Curl",
+                "8 Overhead Tricep Extension"
+              ]
+            },
+            {
+              "type": "circuit",
+              "label": "Core",
+              "rounds": 2,
+              "exercises": [
+                "20s KB Plank Drag"
+              ]
+            }
+          ]
+        },
+        {
+          "day": "Day 3",
+          "name": "Squat & Controlled Conditioning",
+          "blocks": [
+            {
+              "type": "straight_sets",
+              "label": "Main lift",
+              "exercise": "Double KB Front Squat",
+              "restSeconds": 120,
+              "reps": 6,
+              "sets": 3,
+              "note": "Deload: 16kg o 12kg, RIR 4-5."
+            },
+            {
+              "type": "emom",
+              "label": "EMOM 9",
+              "totalMinutes": 9,
+              "cycleLength": 3,
+              "note": "Rotacion de 3 minutos (no odd/even): minuto 1, 2, 3, se repite. Farmer March en el lugar para quedar en cuadro filmando.",
+              "pattern": [
+                {
+                  "minute": 1,
+                  "exercise": "10 KB Swings"
+                },
+                {
+                  "minute": 2,
+                  "exercise": "4/side Single-Arm Row"
+                },
+                {
+                  "minute": 3,
+                  "exercise": "20s Farmer March (en el lugar)"
+                }
+              ]
+            },
+            {
+              "type": "circuit",
+              "label": "Arms",
+              "rounds": 2,
+              "exercises": [
+                "8/side Curl",
+                "6 Close-Grip Push-ups"
+              ]
+            }
+          ]
+        },
+        {
+          "day": "Day 4",
+          "name": "Snatch, Unilateral & Posterior Chain",
+          "blocks": [
+            {
+              "type": "straight_sets",
+              "label": "Main lift",
+              "exercise": "KB Snatch",
+              "restSeconds": 90,
+              "reps": 3,
+              "sets": 3,
+              "note": "Deload: 16kg o 12kg, tecnica facil, sin buscar limite."
+            },
+            {
+              "type": "circuit",
+              "label": "Accessory circuit",
+              "rounds": 2,
+              "restSeconds": 70,
+              "exercises": [
+                "4/side Single-Leg RDL",
+                "3/side Cossack Squat"
+              ]
+            },
+            {
+              "type": "straight_sets",
+              "label": "Core / Estabilidad",
+              "exercise": "1/side Turkish Get-Up",
+              "reps": 1,
+              "sets": 1,
+              "restSeconds": 60,
+              "note": "Volumen deliberadamente bajo (solo 1/lado por serie) - el TGU es lento y tecnico, no necesita mas para cumplir su funcion de estabilidad."
+            },
+            {
+              "type": "circuit",
+              "label": "Arms",
+              "rounds": 2,
+              "exercises": [
+                "8/side Hammer Curl",
+                "8 Overhead Tricep Extension"
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

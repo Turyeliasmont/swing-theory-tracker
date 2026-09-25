@@ -67,7 +67,7 @@
           "day": "Day 1", "name": "Clean & Press",
           "blocks": [
             { "type": "straight_sets", "label": "Main lift", "exercise": "Double KB Clean & Press", "reps": 6, "sets": 5, "restSeconds": 90 },
-            { "type": "circuit", "label": "Accessory circuit", "rounds": 4, "exercises": ["6/side Rack Lunge", "8/side Single-Arm Swing", "30s Farmer March"] },
+            { "type": "circuit", "label": "Accessory circuit", "rounds": 4, "exercises": ["6/side Rack Lunge", "8/side Single-Arm Row", "30s Farmer March"] },
             { "type": "circuit", "label": "Arms", "rounds": 3, "exercises": ["12 Curls", "10/side Mountain Climbers"] },
             { "type": "circuit", "label": "Core", "rounds": 3, "exercises": ["40s Plank"] }
           ]
@@ -151,7 +151,7 @@
           "day": "Day 1", "name": "Clean & Press",
           "blocks": [
             { "type": "straight_sets", "label": "Main lift", "exercise": "Double KB Clean & Press", "reps": 6, "sets": 6, "restSeconds": 90 },
-            { "type": "circuit", "label": "Accessory circuit", "rounds": 4, "exercises": ["6/side Rack Lunge", "8/side Single-Arm Swing", "30s Farmer March"] },
+            { "type": "circuit", "label": "Accessory circuit", "rounds": 4, "exercises": ["6/side Rack Lunge", "8/side Single-Arm Row", "30s Farmer March"] },
             { "type": "circuit", "label": "Arms", "rounds": 3, "exercises": ["12 Curls", "10/side Mountain Climbers"] },
             { "type": "circuit", "label": "Core", "rounds": 3, "exercises": ["40s Plank"] }
           ]
@@ -235,7 +235,7 @@
           "day": "Day 1", "name": "Clean & Press",
           "blocks": [
             { "type": "straight_sets", "label": "Main lift (heaviest KB)", "exercise": "Double KB Clean & Press", "reps": 6, "sets": 6, "restSeconds": 90 },
-            { "type": "circuit", "label": "Accessory circuit", "rounds": 4, "exercises": ["6/side Rack Lunge", "8/side Single-Arm Swing", "30s Farmer March"] },
+            { "type": "circuit", "label": "Accessory circuit", "rounds": 4, "exercises": ["6/side Rack Lunge", "8/side Single-Arm Row", "30s Farmer March"] },
             { "type": "circuit", "label": "Arms", "rounds": 4, "exercises": ["12 Curls", "10/side Mountain Climbers"] },
             { "type": "circuit", "label": "Core", "rounds": 3, "exercises": ["40s Plank"] }
           ]

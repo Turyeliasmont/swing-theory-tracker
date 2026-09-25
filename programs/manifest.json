@@ -1,5 +1,6 @@
 {
   "programs": [
-    "iron_foundations_data.json"
+    "iron_foundations_data.json",
+    "iron_foundations_v2_data.json"
   ]
 }

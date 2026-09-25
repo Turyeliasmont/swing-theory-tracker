@@ -363,6 +363,14 @@ select {
   margin-bottom: 12px;
 }
 
+.block-note {
+  color: var(--accent);
+  font-size: 0.9rem;
+  font-style: italic;
+  margin: -4px 0 12px;
+  line-height: 1.4;
+}
+
 .set-checklist, .circuit-rounds {
   display: flex;
   flex-direction: column;

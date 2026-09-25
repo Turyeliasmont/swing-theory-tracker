@@ -27,7 +27,7 @@
 // first). The very next time you open the app after that, you get the new
 // version — no manual cache-clearing or reinstalling needed.
 
-const CACHE_VERSION = 'v3';
+const CACHE_VERSION = 'v4';
 const SHELL_CACHE = 'stt-shell-' + CACHE_VERSION;
 const RUNTIME_CACHE = 'stt-runtime-' + CACHE_VERSION;
 

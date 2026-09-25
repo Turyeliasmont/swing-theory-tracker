@@ -219,8 +219,21 @@ function renderPreviewWarmup(week, day) {
   `;
 }
 
+// A pattern entry's "minute" is either the string "odd"/"even" (a simple
+// 2-minute alternating EMOM) or a 1-based integer position within a longer
+// cycle (see emomPositionForMinute below). Label each the same way in both
+// the preview and nowhere else needs to know the difference.
+function emomPatternEntryLabel(minute) {
+  return typeof minute === 'number' ? `Minute ${minute}` : `${minute.charAt(0).toUpperCase()}${minute.slice(1)} minute`;
+}
+
+function renderBlockNoteHtml(block) {
+  return block.note ? `<div class="block-note">${escapeHtml(block.note)}</div>` : '';
+}
+
 function renderPreviewBlock(block) {
   const labelHtml = block.label ? `<h3>${escapeHtml(block.label)}</h3>` : '';
+  const noteHtml = renderBlockNoteHtml(block);
 
   if (block.type === 'straight_sets') {
     const repsText = (block.reps === null || block.reps === undefined || block.reps === '')
@@ -231,6 +244,7 @@ function renderPreviewBlock(block) {
         ${labelHtml}
         <div class="exercise-name">${escapeHtml(block.exercise)}</div>
         <div class="exercise-meta">${block.sets} sets${repsText ? ' × ' + repsText : ''}</div>
+        ${noteHtml}
       </section>
     `;
   }
@@ -242,21 +256,21 @@ function renderPreviewBlock(block) {
         ${labelHtml}
         <div class="exercise-meta">${block.rounds} rounds</div>
         <ul class="preview-list">${items}</ul>
+        ${noteHtml}
       </section>
     `;
   }
 
   if (block.type === 'emom') {
-    const patternMap = {};
-    (block.pattern || []).forEach((p) => { patternMap[p.minute] = p.exercise; });
+    const items = (block.pattern || [])
+      .map((p) => `<li><strong>${escapeHtml(emomPatternEntryLabel(p.minute))}:</strong> ${escapeHtml(p.exercise)}</li>`)
+      .join('');
     return `
       <section class="block">
         ${labelHtml}
         <div class="exercise-meta">${block.totalMinutes} min total</div>
-        <ul class="preview-list">
-          <li><strong>Odd minute:</strong> ${escapeHtml(patternMap.odd || '')}</li>
-          <li><strong>Even minute:</strong> ${escapeHtml(patternMap.even || '')}</li>
-        </ul>
+        <ul class="preview-list">${items}</ul>
+        ${noteHtml}
       </section>
     `;
   }
@@ -399,6 +413,7 @@ function runWarmupSteps(steps, stepIndex) {
 
 function renderWorkoutBlock(block, blockIndex) {
   const labelHtml = block.label ? `<h3>${escapeHtml(block.label)}</h3>` : '';
+  const noteHtml = renderBlockNoteHtml(block);
   const restBtnHtml = block.restSeconds
     ? `<button class="rest-btn" data-action="start-rest" data-rest="${block.restSeconds}" data-restid="rest-${blockIndex}">Start Rest (${block.restSeconds}s)</button>
        <div id="rest-${blockIndex}"></div>`
@@ -422,6 +437,7 @@ function renderWorkoutBlock(block, blockIndex) {
         ${labelHtml}
         <div class="exercise-name">${escapeHtml(block.exercise)}</div>
         <div class="exercise-meta">${block.sets} sets${repsText ? ' × ' + repsText : ''}</div>
+        ${noteHtml}
         <div class="set-checklist">${rows.join('')}</div>
         ${restBtnHtml}
       </section>
@@ -447,6 +463,7 @@ function renderWorkoutBlock(block, blockIndex) {
     return `
       <section class="block">
         ${labelHtml}
+        ${noteHtml}
         <div class="circuit-rounds">${rounds.join('')}</div>
         ${restBtnHtml}
       </section>
@@ -457,6 +474,7 @@ function renderWorkoutBlock(block, blockIndex) {
     return `
       <section class="block" data-emom-block="${blockIndex}">
         ${labelHtml}
+        ${noteHtml}
         <div class="emom-status" id="emom-status-${blockIndex}">
           <button class="primary-btn" data-action="start-emom" data-block="${blockIndex}">
             Start EMOM (${block.totalMinutes} min)
@@ -544,7 +562,17 @@ function startEmomTimer(button) {
   const patternMap = {};
   (block.pattern || []).forEach((p) => { patternMap[p.minute] = p.exercise; });
 
+  // Two pattern shapes, picked by whether the block declares a cycleLength:
+  //  - no cycleLength (legacy): simple odd/even alternation, pattern.minute
+  //    is the string "odd" or "even".
+  //  - cycleLength present: an N-minute rotation, pattern.minute is a
+  //    1-based integer position within that cycle (e.g. cycleLength 3 with
+  //    minutes 1/2/3 repeating: minute 4 is position 1 again).
   function exerciseForMinute(minuteNum) {
+    if (block.cycleLength) {
+      const position = ((minuteNum - 1) % block.cycleLength) + 1;
+      return patternMap[position] || '';
+    }
     const key = (minuteNum % 2 === 1) ? 'odd' : 'even';
     return patternMap[key] || '';
   }

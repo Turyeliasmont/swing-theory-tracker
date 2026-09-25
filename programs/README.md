@@ -135,8 +135,15 @@ them — list them start to finish).
 ### Blocks
 
 Every block has `"type"` set to one of `straight_sets`, `circuit`, or
-`emom`. All three support an optional `"label"` (a small heading shown
-above the block, e.g. "Main lift", "Accessory circuit", "Arms", "Core").
+`emom`. All three support:
+
+- an optional `"label"` — a small heading shown above the block, e.g.
+  "Main lift", "Accessory circuit", "Arms", "Core".
+- an optional `"note"` — free text shown to the athlete on both the Day
+  preview and the workout screen (e.g. load guidance, a self-regulated
+  progression rule, a form cue). Use it for anything the athlete actually
+  needs to read before or during the block — it's shown, not just stored.
+  Omit it if a block needs no extra context.
 
 #### `straight_sets`
 
@@ -185,7 +192,10 @@ A group of exercises repeated for a number of rounds.
 
 #### `emom`
 
-"Every Minute On the Minute" — a fully automatic timer block.
+"Every Minute On the Minute" — a fully automatic timer block. Two pattern
+shapes are supported; pick whichever fits the rotation you're writing.
+
+**Odd/even (2-minute alternation)** — omit `cycleLength` entirely:
 
 ```json
 {
@@ -199,15 +209,40 @@ A group of exercises repeated for a number of rounds.
 }
 ```
 
-- `totalMinutes` — how long the EMOM runs, in minutes.
-- `pattern` — which exercise is active each minute. Minute numbering starts
-  at 1 (so minute 1 is `"odd"`, minute 2 is `"even"`, minute 3 is `"odd"`,
-  and so on). The current schema only supports alternating odd/even
-  patterns (exactly what Iron Foundations uses) — every EMOM block needs one
-  `"odd"` entry and one `"even"` entry covering every minute.
+Minute numbering starts at 1, so minute 1 is `"odd"`, minute 2 is
+`"even"`, minute 3 is `"odd"` again, and so on. Needs exactly one `"odd"`
+and one `"even"` entry.
+
+**Longer rotations (3+ minutes)** — add `"cycleLength"` and switch
+`pattern[].minute` to 1-based integers instead of `"odd"`/`"even"`:
+
+```json
+{
+  "type": "emom",
+  "label": "EMOM 12",
+  "totalMinutes": 12,
+  "cycleLength": 3,
+  "pattern": [
+    { "minute": 1, "exercise": "12-15 KB Swings" },
+    { "minute": 2, "exercise": "6/side Single-Arm Row" },
+    { "minute": 3, "exercise": "30s Farmer March" }
+  ]
+}
+```
+
+With `cycleLength: 3`, minute 1 → position 1, minute 2 → position 2,
+minute 3 → position 3, minute 4 → position 1 again, and so on — one
+`pattern` entry per position, numbered 1 through `cycleLength`.
+`totalMinutes` doesn't need to be an exact multiple of `cycleLength`; it'll
+just stop mid-cycle if it isn't.
+
+- `totalMinutes` — how long the EMOM runs, in minutes, either shape.
 - The timer runs automatically start to finish: 60-second countdown per
   minute, an audio cue at the start of each new minute, and the active
   exercise name shown big. No pausing needed — it's designed to just run.
+- The Day preview lists every `pattern` entry in the order you wrote them,
+  labeled "Odd minute"/"Even minute" or "Minute 1"/"Minute 2"/... to match
+  whichever shape you used.
 
 ## Quick checklist for a new program file
 
