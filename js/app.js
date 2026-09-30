@@ -167,6 +167,8 @@ function renderDay() {
       <div class="day-id-label">${escapeHtml(day.day)}</div>
     </div>
 
+    ${renderProgressionCueHtml(day)}
+
     <details class="jump-panel">
       <summary>Jump to a different week/day</summary>
       <div class="jump-row">
@@ -229,6 +231,15 @@ function emomPatternEntryLabel(minute) {
 
 function renderBlockNoteHtml(block) {
   return block.note ? `<div class="block-note">${escapeHtml(block.note)}</div>` : '';
+}
+
+// A day-level progression instruction (e.g. "add a set this week"),
+// deliberately styled in red so it reads as distinct from the block-level
+// "note" field (which stays the neutral accent color).
+function renderProgressionCueHtml(day) {
+  return day.progressionCue
+    ? `<div class="progression-cue">${escapeHtml(day.progressionCue)}</div>`
+    : '';
 }
 
 function renderPreviewBlock(block) {
@@ -324,6 +335,12 @@ function restartProgram() {
 
 function buildWarmupExercises(day) {
   const warmup = App.activeProgram.warmup;
+  // Two warm-up shapes: a fixed "sequence" (same 6 exercises every day, no
+  // rotation), or the older "fixed" + "rotationByDay" pool (3 fixed + 3
+  // that vary by day). Whichever the program uses, just read it.
+  if (warmup.sequence) {
+    return warmup.sequence;
+  }
   const fixed = warmup.fixed || [];
   const rotating = (warmup.rotationByDay && warmup.rotationByDay[day.day]) || [];
   return fixed.concat(rotating);
@@ -501,6 +518,7 @@ function renderWorkout() {
       <span></span>
     </div>
     <h1>${escapeHtml(day.name)}</h1>
+    ${renderProgressionCueHtml(day)}
     ${blocksHtml}
     ${closerHtml}
     <div class="workout-footer">

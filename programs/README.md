@@ -59,7 +59,23 @@ don't care about (except `name`, which is required).
 
 Describes the 6-exercise warm-up run before a training session:
 50 seconds of work, 10 seconds of rest, one exercise per interval, one round
-through all 6 (auto-advancing timer, ~6 minutes total).
+through all 6 (auto-advancing timer, ~6 minutes total). Two shapes are
+supported — pick whichever fits your program.
+
+**Fixed sequence (same every day)** — use `"sequence"`:
+
+```json
+"warmup": {
+  "format": "free text, informational only",
+  "sequence": ["Exercise A", "Exercise B", "Exercise C", "Exercise D", "Exercise E", "Exercise F"]
+}
+```
+
+Exactly 6 exercises, run in this order, identical every training day —
+no per-day variation.
+
+**Fixed + rotating pool (3 same every day, 3 vary by day)** — use
+`"fixed"` + `"rotationByDay"` instead (omit `"sequence"` entirely):
 
 ```json
 "warmup": {
@@ -80,6 +96,9 @@ through all 6 (auto-advancing timer, ~6 minutes total).
 - The app's warm-up screen for a given day = `fixed` (3) + `rotationByDay[dayId]` (3) = 6 exercises, in that order.
 - `rotatingPool` is not read by the app — it's just a human-readable summary
   of every exercise that appears somewhere in `rotationByDay`. Optional.
+
+If `"sequence"` is present, the app uses it and ignores `fixed`/`rotationByDay`
+entirely (don't mix the two shapes in one file).
 
 **Skipping warm-up for a week:** if a week's `"phase"` is exactly `"Deload"`,
 the app skips the warm-up screen for every day in that week and goes
@@ -114,17 +133,24 @@ them — list them start to finish).
 {
   "day": "Day 1",
   "name": "Clean & Press",
+  "progressionCue": "optional — free text shown in red, e.g. a self-regulated progression rule for this session",
   "closer": "optional — free text shown as a final note after the last block",
   "blocks": [ ... ]
 }
 ```
 
 - `day` — a short id. Must match a key in `warmup.rotationByDay` for warm-up
-  lookup to work on training weeks. Doesn't have to be literally "Day N" —
-  just needs to be consistent between `days[].day` and
-  `warmup.rotationByDay`.
+  lookup to work on training weeks (only relevant if that warm-up shape is
+  in use — see `warmup` above). Doesn't have to be literally "Day N" — just
+  needs to be internally consistent.
 - `name` — the human-readable day title ("Clean & Press"), shown big in the
   UI.
+- `progressionCue` — optional, day-level (not per-block). Free text shown
+  prominently in red on both the Day preview and the workout screen,
+  visually distinct from the block-level `note` field (which stays the
+  normal accent color). Use it for something the athlete must actively
+  apply themselves that week — e.g. "add a set to the main lift" — rather
+  than baking a guessed/unapproved number into `sets`/`reps`/`rounds`.
 - `closer` — optional. A short free-text line (e.g. "Full-body stretch")
   displayed after the last block on the workout screen. Omit it if the day
   has no closing note.

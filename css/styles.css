@@ -371,6 +371,17 @@ select {
   line-height: 1.4;
 }
 
+.progression-cue {
+  background: color-mix(in srgb, var(--danger) 14%, var(--bg-elevated));
+  border-left: 4px solid var(--danger);
+  border-radius: 10px;
+  padding: 12px 16px;
+  margin-bottom: 14px;
+  color: var(--danger);
+  font-weight: 700;
+  line-height: 1.4;
+}
+
 .set-checklist, .circuit-rounds {
   display: flex;
   flex-direction: column;

@@ -1,0 +1,907 @@
+{
+  "program": {
+    "name": "Iron Foundations v4",
+    "format": "Straight-set main lift + flow/EMOM secondary (kettlebell flow-chain redesign)",
+    "targetSessionMinutes": 35,
+    "daysPerWeek": 4,
+    "totalWeeks": 7,
+    "note": "Weeks 1-6 son entrenamiento, semana 7 es deload. Warm-up compartido (ver abajo) antes de cada sesion de semana de entrenamiento. Reemplaza a Iron Foundations v1 y v2 como programa activo -- v1/v2 quedan archivados, no borrados. Semanas 3-6: los numeros (sets/reps/rondas) son IDENTICOS a Semana 2 a proposito -- no hay progresion numerica automatica ni calculada por mi. El atleta aplica manualmente, cada semana, la instruccion marcada en 'progressionCue' (pintar en rojo en la UI, distinto del campo 'note' normal). Esto es intencional: evita que se inventen numeros de semanas 3-6 que el usuario no aprobo explicitamente (solo aprobo la regla en prosa, no una tabla). Las cadenas de flow (flow chains) se representan con el tipo 'circuit' ya existente en el schema, no con un tipo nuevo -- ver nota en cada bloque."
+  },
+  "schemaNotes": {
+    "progressionCue": "Campo opcional en cualquier bloque de semanas 3-6. Es TEXTO LIBRE con la instruccion de progresion (ej. 'Sube 1 set a este main lift'), y debe renderizarse en rojo en la UI, visualmente distinto del campo 'note' (negro/gris, instrucciones tecnicas normales). No reemplaza a 'note' -- pueden coexistir ambos campos en el mismo bloque."
+  },
+  "warmup": {
+    "format": "50s on / 10s off, 6 exercises, 1 round (~6 min total)",
+    "sequence": [
+      "Lymphatic Hops",
+      "Golf Swings",
+      "Body Waves",
+      "Trunk Twist",
+      "World's Greatest Stretch - Right",
+      "World's Greatest Stretch - Left"
+    ],
+    "note": "Secuencia fija, sin rotacion (a diferencia del warm-up de v2, que tenia pool rotativo). Reemplaza el warm-up de v1/v2 para este programa."
+  },
+  "weeks": [
+    {
+      "week": 1,
+      "phase": "Base",
+      "days": [
+        {
+          "day": "Day 1",
+          "name": "Clean & Press",
+          "blocks": [
+            {
+              "type": "straight_sets",
+              "label": "Main lift",
+              "exercise": "Double KB Clean & Press",
+              "restSeconds": 90,
+              "reps": 5,
+              "sets": 5
+            },
+            {
+              "type": "emom",
+              "label": "Secondary EMOM",
+              "totalMinutes": 12,
+              "pattern": [
+                { "minute": "odd", "exercise": "15-20 Swings" },
+                { "minute": "even", "exercise": "10/side Ballistic Row" }
+              ]
+            },
+            {
+              "type": "circuit",
+              "label": "Core",
+              "rounds": 3,
+              "exercises": ["30s Plank"]
+            }
+          ]
+        },
+        {
+          "day": "Day 2",
+          "name": "Front Squat",
+          "blocks": [
+            {
+              "type": "straight_sets",
+              "label": "Main lift",
+              "exercise": "Double KB Front Squat",
+              "restSeconds": 90,
+              "reps": 5,
+              "sets": 5
+            },
+            {
+              "type": "circuit",
+              "label": "Secondary flow (flow chain)",
+              "rounds": 4,
+              "restSeconds": 60,
+              "exercises": ["5/side Swing", "5/side Snatch", "5/side Push Press"],
+              "note": "Cadena continua en orden (Swing -> Snatch -> Push Press), mismo kettlebell, sin soltarlo entre movimientos -- un lado completo antes de cambiar de lado. Descanso entre rondas no especificado en el documento original -- 60s es supuesto mio, ajustar a sensacion."
+            },
+            {
+              "type": "straight_sets",
+              "label": "Core",
+              "exercise": "Turkish Get-Up",
+              "reps": 2,
+              "sets": 3,
+              "restSeconds": 60,
+              "note": "2 por lado, x3 sets."
+            }
+          ]
+        },
+        {
+          "day": "Day 3",
+          "name": "Thruster",
+          "blocks": [
+            {
+              "type": "straight_sets",
+              "label": "Main lift",
+              "exercise": "Double KB Thruster",
+              "restSeconds": 90,
+              "reps": 5,
+              "sets": 5
+            },
+            {
+              "type": "circuit",
+              "label": "Secondary flow (flow chain)",
+              "rounds": 4,
+              "restSeconds": 60,
+              "exercises": ["5/side Swing", "5/side Clean", "5/side Row"],
+              "note": "Cadena continua en orden (Swing -> Clean -> Row), mismo kettlebell, sin soltarlo entre movimientos -- un lado completo antes de cambiar de lado. Descanso entre rondas no especificado en el documento original -- 60s es supuesto mio, ajustar a sensacion."
+            },
+            {
+              "type": "circuit",
+              "label": "Core",
+              "rounds": 3,
+              "exercises": ["20s/side Waiter's Carry"]
+            }
+          ]
+        },
+        {
+          "day": "Day 4",
+          "name": "Dead Snatch",
+          "blocks": [
+            {
+              "type": "straight_sets",
+              "label": "Main lift",
+              "exercise": "Dead Snatch",
+              "restSeconds": 90,
+              "reps": 5,
+              "sets": 5,
+              "note": "5/side x 5 sets."
+            },
+            {
+              "type": "circuit",
+              "label": "Secondary flow (flow chain)",
+              "rounds": 4,
+              "restSeconds": 60,
+              "exercises": ["7/side Clean", "7/side Front Squat"],
+              "note": "Cadena continua en orden (Clean -> Front Squat), mismo kettlebell, sin soltarlo entre movimientos -- un lado completo antes de cambiar de lado. Documento dice '6-8 reps each' -- se deja 7 como punto medio; ajustar libremente entre 6 y 8. Descanso entre rondas no especificado, 60s es supuesto mio."
+            },
+            {
+              "type": "circuit",
+              "label": "Core",
+              "rounds": 3,
+              "exercises": ["3/side Windmill"]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "week": 2,
+      "phase": "Base",
+      "days": [
+        {
+          "day": "Day 1",
+          "name": "Clean & Press",
+          "blocks": [
+            {
+              "type": "straight_sets",
+              "label": "Main lift",
+              "exercise": "Double KB Clean & Press",
+              "restSeconds": 90,
+              "reps": 6,
+              "sets": 5
+            },
+            {
+              "type": "emom",
+              "label": "Secondary EMOM",
+              "totalMinutes": 14,
+              "pattern": [
+                { "minute": "odd", "exercise": "15-20 Swings" },
+                { "minute": "even", "exercise": "10/side Ballistic Row" }
+              ],
+              "note": "Semana 2: +1 ronda respecto a semana 1, aplicado aqui como +2 minutos de EMOM (12->14)."
+            },
+            {
+              "type": "circuit",
+              "label": "Core",
+              "rounds": 3,
+              "exercises": ["30s Plank"]
+            }
+          ]
+        },
+        {
+          "day": "Day 2",
+          "name": "Front Squat",
+          "blocks": [
+            {
+              "type": "straight_sets",
+              "label": "Main lift",
+              "exercise": "Double KB Front Squat",
+              "restSeconds": 90,
+              "reps": 6,
+              "sets": 5
+            },
+            {
+              "type": "circuit",
+              "label": "Secondary flow (flow chain)",
+              "rounds": 5,
+              "restSeconds": 60,
+              "exercises": ["5/side Swing", "5/side Snatch", "5/side Push Press"],
+              "note": "Cadena continua en orden (Swing -> Snatch -> Push Press), mismo kettlebell, sin soltarlo entre movimientos -- un lado completo antes de cambiar de lado. Semana 2: +1 ronda (4->5)."
+            },
+            {
+              "type": "straight_sets",
+              "label": "Core",
+              "exercise": "Turkish Get-Up",
+              "reps": 2,
+              "sets": 3,
+              "restSeconds": 60
+            }
+          ]
+        },
+        {
+          "day": "Day 3",
+          "name": "Thruster",
+          "blocks": [
+            {
+              "type": "straight_sets",
+              "label": "Main lift",
+              "exercise": "Double KB Thruster",
+              "restSeconds": 90,
+              "reps": 6,
+              "sets": 5
+            },
+            {
+              "type": "circuit",
+              "label": "Secondary flow (flow chain)",
+              "rounds": 5,
+              "restSeconds": 60,
+              "exercises": ["5/side Swing", "5/side Clean", "5/side Row"],
+              "note": "Cadena continua en orden (Swing -> Clean -> Row), mismo kettlebell, sin soltarlo entre movimientos -- un lado completo antes de cambiar de lado. Semana 2: +1 ronda (4->5)."
+            },
+            {
+              "type": "circuit",
+              "label": "Core",
+              "rounds": 3,
+              "exercises": ["20s/side Waiter's Carry"]
+            }
+          ]
+        },
+        {
+          "day": "Day 4",
+          "name": "Dead Snatch",
+          "blocks": [
+            {
+              "type": "straight_sets",
+              "label": "Main lift",
+              "exercise": "Dead Snatch",
+              "restSeconds": 90,
+              "reps": 6,
+              "sets": 5,
+              "note": "6/side x 5 sets."
+            },
+            {
+              "type": "circuit",
+              "label": "Secondary flow (flow chain)",
+              "rounds": 5,
+              "restSeconds": 60,
+              "exercises": ["7/side Clean", "7/side Front Squat"],
+              "note": "Cadena continua en orden (Clean -> Front Squat), mismo kettlebell, sin soltarlo entre movimientos -- un lado completo antes de cambiar de lado. Semana 2: +1 ronda (4->5)."
+            },
+            {
+              "type": "circuit",
+              "label": "Core",
+              "rounds": 3,
+              "exercises": ["3/side Windmill"]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "week": 3,
+      "phase": "Build",
+      "note": "Numeros identicos a Semana 2, a proposito. Progresion la aplica el atleta manualmente segun 'progressionCue'.",
+      "days": [
+        {
+          "day": "Day 1",
+          "name": "Clean & Press",
+          "progressionCue": "Sube 1 set al main lift (6 reps x 6 sets). Sube 1 ronda/ciclo al bloque secundario.",
+          "blocks": [
+            {
+              "type": "straight_sets",
+              "label": "Main lift",
+              "exercise": "Double KB Clean & Press",
+              "restSeconds": 90,
+              "reps": 6,
+              "sets": 5
+            },
+            {
+              "type": "emom",
+              "label": "Secondary EMOM",
+              "totalMinutes": 14,
+              "pattern": [
+                { "minute": "odd", "exercise": "15-20 Swings" },
+                { "minute": "even", "exercise": "10/side Ballistic Row" }
+              ]
+            },
+            {
+              "type": "circuit",
+              "label": "Core",
+              "rounds": 3,
+              "exercises": ["30s Plank"]
+            }
+          ]
+        },
+        {
+          "day": "Day 2",
+          "name": "Front Squat",
+          "progressionCue": "Sube 1 set al main lift (6 reps x 6 sets). Sube 1 ronda al flow secundario (5->6).",
+          "blocks": [
+            {
+              "type": "straight_sets",
+              "label": "Main lift",
+              "exercise": "Double KB Front Squat",
+              "restSeconds": 90,
+              "reps": 6,
+              "sets": 5
+            },
+            {
+              "type": "circuit",
+              "label": "Secondary flow (flow chain)",
+              "rounds": 5,
+              "restSeconds": 60,
+              "exercises": ["5/side Swing", "5/side Snatch", "5/side Push Press"],
+              "note": "Cadena continua en orden (Swing -> Snatch -> Push Press), mismo kettlebell, sin soltarlo entre movimientos -- un lado completo antes de cambiar de lado."
+            },
+            {
+              "type": "straight_sets",
+              "label": "Core",
+              "exercise": "Turkish Get-Up",
+              "reps": 2,
+              "sets": 3,
+              "restSeconds": 60
+            }
+          ]
+        },
+        {
+          "day": "Day 3",
+          "name": "Thruster",
+          "progressionCue": "Sube 1 set al main lift (6 reps x 6 sets). Sube 1 ronda al flow secundario (5->6).",
+          "blocks": [
+            {
+              "type": "straight_sets",
+              "label": "Main lift",
+              "exercise": "Double KB Thruster",
+              "restSeconds": 90,
+              "reps": 6,
+              "sets": 5
+            },
+            {
+              "type": "circuit",
+              "label": "Secondary flow (flow chain)",
+              "rounds": 5,
+              "restSeconds": 60,
+              "exercises": ["5/side Swing", "5/side Clean", "5/side Row"],
+              "note": "Cadena continua en orden (Swing -> Clean -> Row), mismo kettlebell, sin soltarlo entre movimientos -- un lado completo antes de cambiar de lado."
+            },
+            {
+              "type": "circuit",
+              "label": "Core",
+              "rounds": 3,
+              "exercises": ["20s/side Waiter's Carry"]
+            }
+          ]
+        },
+        {
+          "day": "Day 4",
+          "name": "Dead Snatch",
+          "progressionCue": "Sube 1 set al main lift (6/side x 6 sets). Sube 1 ronda al flow secundario (5->6).",
+          "blocks": [
+            {
+              "type": "straight_sets",
+              "label": "Main lift",
+              "exercise": "Dead Snatch",
+              "restSeconds": 90,
+              "reps": 6,
+              "sets": 5,
+              "note": "6/side x 5 sets."
+            },
+            {
+              "type": "circuit",
+              "label": "Secondary flow (flow chain)",
+              "rounds": 5,
+              "restSeconds": 60,
+              "exercises": ["7/side Clean", "7/side Front Squat"],
+              "note": "Cadena continua en orden (Clean -> Front Squat), mismo kettlebell, sin soltarlo entre movimientos -- un lado completo antes de cambiar de lado."
+            },
+            {
+              "type": "circuit",
+              "label": "Core",
+              "rounds": 3,
+              "exercises": ["3/side Windmill"]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "week": 4,
+      "phase": "Build",
+      "note": "Identica a Semana 3 -- misma progressionCue (semanas 3-4 comparten la misma regla).",
+      "days": [
+        {
+          "day": "Day 1",
+          "name": "Clean & Press",
+          "progressionCue": "Sube 1 set al main lift (6 reps x 6 sets). Sube 1 ronda/ciclo al bloque secundario.",
+          "blocks": [
+            {
+              "type": "straight_sets",
+              "label": "Main lift",
+              "exercise": "Double KB Clean & Press",
+              "restSeconds": 90,
+              "reps": 6,
+              "sets": 5
+            },
+            {
+              "type": "emom",
+              "label": "Secondary EMOM",
+              "totalMinutes": 14,
+              "pattern": [
+                { "minute": "odd", "exercise": "15-20 Swings" },
+                { "minute": "even", "exercise": "10/side Ballistic Row" }
+              ]
+            },
+            {
+              "type": "circuit",
+              "label": "Core",
+              "rounds": 3,
+              "exercises": ["30s Plank"]
+            }
+          ]
+        },
+        {
+          "day": "Day 2",
+          "name": "Front Squat",
+          "progressionCue": "Sube 1 set al main lift (6 reps x 6 sets). Sube 1 ronda al flow secundario (5->6).",
+          "blocks": [
+            {
+              "type": "straight_sets",
+              "label": "Main lift",
+              "exercise": "Double KB Front Squat",
+              "restSeconds": 90,
+              "reps": 6,
+              "sets": 5
+            },
+            {
+              "type": "circuit",
+              "label": "Secondary flow (flow chain)",
+              "rounds": 5,
+              "restSeconds": 60,
+              "exercises": ["5/side Swing", "5/side Snatch", "5/side Push Press"],
+              "note": "Cadena continua en orden (Swing -> Snatch -> Push Press), mismo kettlebell, sin soltarlo entre movimientos -- un lado completo antes de cambiar de lado."
+            },
+            {
+              "type": "straight_sets",
+              "label": "Core",
+              "exercise": "Turkish Get-Up",
+              "reps": 2,
+              "sets": 3,
+              "restSeconds": 60
+            }
+          ]
+        },
+        {
+          "day": "Day 3",
+          "name": "Thruster",
+          "progressionCue": "Sube 1 set al main lift (6 reps x 6 sets). Sube 1 ronda al flow secundario (5->6).",
+          "blocks": [
+            {
+              "type": "straight_sets",
+              "label": "Main lift",
+              "exercise": "Double KB Thruster",
+              "restSeconds": 90,
+              "reps": 6,
+              "sets": 5
+            },
+            {
+              "type": "circuit",
+              "label": "Secondary flow (flow chain)",
+              "rounds": 5,
+              "restSeconds": 60,
+              "exercises": ["5/side Swing", "5/side Clean", "5/side Row"],
+              "note": "Cadena continua en orden (Swing -> Clean -> Row), mismo kettlebell, sin soltarlo entre movimientos -- un lado completo antes de cambiar de lado."
+            },
+            {
+              "type": "circuit",
+              "label": "Core",
+              "rounds": 3,
+              "exercises": ["20s/side Waiter's Carry"]
+            }
+          ]
+        },
+        {
+          "day": "Day 4",
+          "name": "Dead Snatch",
+          "progressionCue": "Sube 1 set al main lift (6/side x 6 sets). Sube 1 ronda al flow secundario (5->6).",
+          "blocks": [
+            {
+              "type": "straight_sets",
+              "label": "Main lift",
+              "exercise": "Dead Snatch",
+              "restSeconds": 90,
+              "reps": 6,
+              "sets": 5,
+              "note": "6/side x 5 sets."
+            },
+            {
+              "type": "circuit",
+              "label": "Secondary flow (flow chain)",
+              "rounds": 5,
+              "restSeconds": 60,
+              "exercises": ["7/side Clean", "7/side Front Squat"],
+              "note": "Cadena continua en orden (Clean -> Front Squat), mismo kettlebell, sin soltarlo entre movimientos -- un lado completo antes de cambiar de lado."
+            },
+            {
+              "type": "circuit",
+              "label": "Core",
+              "rounds": 3,
+              "exercises": ["3/side Windmill"]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "week": 5,
+      "phase": "Peak",
+      "note": "Numeros identicos a Semana 2/3/4. Progresion la aplica el atleta manualmente segun 'progressionCue' (nueva regla, semanas 5-6).",
+      "days": [
+        {
+          "day": "Day 1",
+          "name": "Clean & Press",
+          "progressionCue": "Usa el kettlebell mas pesado disponible en el main lift. Sube 1 ronda mas al bloque secundario (4a ronda). En los EMOM, reduce el descanso entre rondas 5-10s.",
+          "blocks": [
+            {
+              "type": "straight_sets",
+              "label": "Main lift",
+              "exercise": "Double KB Clean & Press",
+              "restSeconds": 90,
+              "reps": 6,
+              "sets": 5
+            },
+            {
+              "type": "emom",
+              "label": "Secondary EMOM",
+              "totalMinutes": 14,
+              "pattern": [
+                { "minute": "odd", "exercise": "15-20 Swings" },
+                { "minute": "even", "exercise": "10/side Ballistic Row" }
+              ]
+            },
+            {
+              "type": "circuit",
+              "label": "Core",
+              "rounds": 3,
+              "exercises": ["30s Plank"]
+            }
+          ]
+        },
+        {
+          "day": "Day 2",
+          "name": "Front Squat",
+          "progressionCue": "Usa el kettlebell mas pesado disponible en el main lift. Sube 1 ronda mas al flow secundario (5->6, 4a ronda extra).",
+          "blocks": [
+            {
+              "type": "straight_sets",
+              "label": "Main lift",
+              "exercise": "Double KB Front Squat",
+              "restSeconds": 90,
+              "reps": 6,
+              "sets": 5
+            },
+            {
+              "type": "circuit",
+              "label": "Secondary flow (flow chain)",
+              "rounds": 5,
+              "restSeconds": 60,
+              "exercises": ["5/side Swing", "5/side Snatch", "5/side Push Press"],
+              "note": "Cadena continua en orden (Swing -> Snatch -> Push Press), mismo kettlebell, sin soltarlo entre movimientos -- un lado completo antes de cambiar de lado."
+            },
+            {
+              "type": "straight_sets",
+              "label": "Core",
+              "exercise": "Turkish Get-Up",
+              "reps": 2,
+              "sets": 3,
+              "restSeconds": 60
+            }
+          ]
+        },
+        {
+          "day": "Day 3",
+          "name": "Thruster",
+          "progressionCue": "Usa el kettlebell mas pesado disponible en el main lift. Sube 1 ronda mas al flow secundario (5->6, 4a ronda extra).",
+          "blocks": [
+            {
+              "type": "straight_sets",
+              "label": "Main lift",
+              "exercise": "Double KB Thruster",
+              "restSeconds": 90,
+              "reps": 6,
+              "sets": 5
+            },
+            {
+              "type": "circuit",
+              "label": "Secondary flow (flow chain)",
+              "rounds": 5,
+              "restSeconds": 60,
+              "exercises": ["5/side Swing", "5/side Clean", "5/side Row"],
+              "note": "Cadena continua en orden (Swing -> Clean -> Row), mismo kettlebell, sin soltarlo entre movimientos -- un lado completo antes de cambiar de lado."
+            },
+            {
+              "type": "circuit",
+              "label": "Core",
+              "rounds": 3,
+              "exercises": ["20s/side Waiter's Carry"]
+            }
+          ]
+        },
+        {
+          "day": "Day 4",
+          "name": "Dead Snatch",
+          "progressionCue": "Usa el kettlebell mas pesado disponible en el main lift. Sube 1 ronda mas al flow secundario (5->6, 4a ronda extra).",
+          "blocks": [
+            {
+              "type": "straight_sets",
+              "label": "Main lift",
+              "exercise": "Dead Snatch",
+              "restSeconds": 90,
+              "reps": 6,
+              "sets": 5,
+              "note": "6/side x 5 sets."
+            },
+            {
+              "type": "circuit",
+              "label": "Secondary flow (flow chain)",
+              "rounds": 5,
+              "restSeconds": 60,
+              "exercises": ["7/side Clean", "7/side Front Squat"],
+              "note": "Cadena continua en orden (Clean -> Front Squat), mismo kettlebell, sin soltarlo entre movimientos -- un lado completo antes de cambiar de lado."
+            },
+            {
+              "type": "circuit",
+              "label": "Core",
+              "rounds": 3,
+              "exercises": ["3/side Windmill"]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "week": 6,
+      "phase": "Peak",
+      "note": "Identica a Semana 5 -- misma progressionCue (semanas 5-6 comparten la misma regla).",
+      "days": [
+        {
+          "day": "Day 1",
+          "name": "Clean & Press",
+          "progressionCue": "Usa el kettlebell mas pesado disponible en el main lift. Sube 1 ronda mas al bloque secundario (4a ronda). En los EMOM, reduce el descanso entre rondas 5-10s.",
+          "blocks": [
+            {
+              "type": "straight_sets",
+              "label": "Main lift",
+              "exercise": "Double KB Clean & Press",
+              "restSeconds": 90,
+              "reps": 6,
+              "sets": 5
+            },
+            {
+              "type": "emom",
+              "label": "Secondary EMOM",
+              "totalMinutes": 14,
+              "pattern": [
+                { "minute": "odd", "exercise": "15-20 Swings" },
+                { "minute": "even", "exercise": "10/side Ballistic Row" }
+              ]
+            },
+            {
+              "type": "circuit",
+              "label": "Core",
+              "rounds": 3,
+              "exercises": ["30s Plank"]
+            }
+          ]
+        },
+        {
+          "day": "Day 2",
+          "name": "Front Squat",
+          "progressionCue": "Usa el kettlebell mas pesado disponible en el main lift. Sube 1 ronda mas al flow secundario (5->6, 4a ronda extra).",
+          "blocks": [
+            {
+              "type": "straight_sets",
+              "label": "Main lift",
+              "exercise": "Double KB Front Squat",
+              "restSeconds": 90,
+              "reps": 6,
+              "sets": 5
+            },
+            {
+              "type": "circuit",
+              "label": "Secondary flow (flow chain)",
+              "rounds": 5,
+              "restSeconds": 60,
+              "exercises": ["5/side Swing", "5/side Snatch", "5/side Push Press"],
+              "note": "Cadena continua en orden (Swing -> Snatch -> Push Press), mismo kettlebell, sin soltarlo entre movimientos -- un lado completo antes de cambiar de lado."
+            },
+            {
+              "type": "straight_sets",
+              "label": "Core",
+              "exercise": "Turkish Get-Up",
+              "reps": 2,
+              "sets": 3,
+              "restSeconds": 60
+            }
+          ]
+        },
+        {
+          "day": "Day 3",
+          "name": "Thruster",
+          "progressionCue": "Usa el kettlebell mas pesado disponible en el main lift. Sube 1 ronda mas al flow secundario (5->6, 4a ronda extra).",
+          "blocks": [
+            {
+              "type": "straight_sets",
+              "label": "Main lift",
+              "exercise": "Double KB Thruster",
+              "restSeconds": 90,
+              "reps": 6,
+              "sets": 5
+            },
+            {
+              "type": "circuit",
+              "label": "Secondary flow (flow chain)",
+              "rounds": 5,
+              "restSeconds": 60,
+              "exercises": ["5/side Swing", "5/side Clean", "5/side Row"],
+              "note": "Cadena continua en orden (Swing -> Clean -> Row), mismo kettlebell, sin soltarlo entre movimientos -- un lado completo antes de cambiar de lado."
+            },
+            {
+              "type": "circuit",
+              "label": "Core",
+              "rounds": 3,
+              "exercises": ["20s/side Waiter's Carry"]
+            }
+          ]
+        },
+        {
+          "day": "Day 4",
+          "name": "Dead Snatch",
+          "progressionCue": "Usa el kettlebell mas pesado disponible en el main lift. Sube 1 ronda mas al flow secundario (5->6, 4a ronda extra).",
+          "blocks": [
+            {
+              "type": "straight_sets",
+              "label": "Main lift",
+              "exercise": "Dead Snatch",
+              "restSeconds": 90,
+              "reps": 6,
+              "sets": 5,
+              "note": "6/side x 5 sets."
+            },
+            {
+              "type": "circuit",
+              "label": "Secondary flow (flow chain)",
+              "rounds": 5,
+              "restSeconds": 60,
+              "exercises": ["7/side Clean", "7/side Front Squat"],
+              "note": "Cadena continua en orden (Clean -> Front Squat), mismo kettlebell, sin soltarlo entre movimientos -- un lado completo antes de cambiar de lado."
+            },
+            {
+              "type": "circuit",
+              "label": "Core",
+              "rounds": 3,
+              "exercises": ["3/side Windmill"]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "week": 7,
+      "phase": "Deload",
+      "note": "UNICA semana de esta version que SI tiene numeros calculados por mi (no copiados de tu documento, que no especifica deload por programa) -- reduccion aprox. 70-75% de volumen sobre Semana 1, mismo principio que el deload generico de v1/v2. Revisar antes de usar.",
+      "days": [
+        {
+          "day": "Day 1",
+          "name": "Clean & Press",
+          "blocks": [
+            {
+              "type": "straight_sets",
+              "label": "Main lift",
+              "exercise": "Double KB Clean & Press",
+              "restSeconds": 90,
+              "reps": 5,
+              "sets": 3,
+              "note": "Deload: KB mas ligero, RIR 4-5."
+            },
+            {
+              "type": "emom",
+              "label": "Secondary EMOM",
+              "totalMinutes": 8,
+              "pattern": [
+                { "minute": "odd", "exercise": "10-12 Swings" },
+                { "minute": "even", "exercise": "6/side Ballistic Row" }
+              ]
+            },
+            {
+              "type": "circuit",
+              "label": "Core",
+              "rounds": 2,
+              "exercises": ["20s Plank"]
+            }
+          ]
+        },
+        {
+          "day": "Day 2",
+          "name": "Front Squat",
+          "blocks": [
+            {
+              "type": "straight_sets",
+              "label": "Main lift",
+              "exercise": "Double KB Front Squat",
+              "restSeconds": 90,
+              "reps": 5,
+              "sets": 3,
+              "note": "Deload: KB mas ligero, RIR 4-5."
+            },
+            {
+              "type": "circuit",
+              "label": "Secondary flow (flow chain)",
+              "rounds": 3,
+              "restSeconds": 60,
+              "exercises": ["3/side Swing", "3/side Snatch", "3/side Push Press"],
+              "note": "Cadena continua en orden (Swing -> Snatch -> Push Press), mismo kettlebell, sin soltarlo entre movimientos -- un lado completo antes de cambiar de lado."
+            },
+            {
+              "type": "straight_sets",
+              "label": "Core",
+              "exercise": "Turkish Get-Up",
+              "reps": 1,
+              "sets": 2,
+              "restSeconds": 60
+            }
+          ]
+        },
+        {
+          "day": "Day 3",
+          "name": "Thruster",
+          "blocks": [
+            {
+              "type": "straight_sets",
+              "label": "Main lift",
+              "exercise": "Double KB Thruster",
+              "restSeconds": 90,
+              "reps": 5,
+              "sets": 3,
+              "note": "Deload: KB mas ligero, RIR 4-5."
+            },
+            {
+              "type": "circuit",
+              "label": "Secondary flow (flow chain)",
+              "rounds": 3,
+              "restSeconds": 60,
+              "exercises": ["3/side Swing", "3/side Clean", "3/side Row"],
+              "note": "Cadena continua en orden (Swing -> Clean -> Row), mismo kettlebell, sin soltarlo entre movimientos -- un lado completo antes de cambiar de lado."
+            },
+            {
+              "type": "circuit",
+              "label": "Core",
+              "rounds": 2,
+              "exercises": ["15s/side Waiter's Carry"]
+            }
+          ]
+        },
+        {
+          "day": "Day 4",
+          "name": "Dead Snatch",
+          "blocks": [
+            {
+              "type": "straight_sets",
+              "label": "Main lift",
+              "exercise": "Dead Snatch",
+              "restSeconds": 90,
+              "reps": 3,
+              "sets": 3,
+              "note": "Deload: 3/side x 3 sets, tecnica facil, KB mas ligero."
+            },
+            {
+              "type": "circuit",
+              "label": "Secondary flow (flow chain)",
+              "rounds": 3,
+              "restSeconds": 60,
+              "exercises": ["4/side Clean", "4/side Front Squat"],
+              "note": "Cadena continua en orden (Clean -> Front Squat), mismo kettlebell, sin soltarlo entre movimientos -- un lado completo antes de cambiar de lado."
+            },
+            {
+              "type": "circuit",
+              "label": "Core",
+              "rounds": 2,
+              "exercises": ["2/side Windmill"]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
