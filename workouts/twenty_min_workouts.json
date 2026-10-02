@@ -1,0 +1,113 @@
+{
+  "section": {
+    "name": "20-Min Workouts",
+    "note": "Standalone workouts, separate from the program (they never read or advance your week/day). The ORDER of the 'workouts' array is the suggested rotation: Core A, #1, Core B, #2, Core C, #3, then back to Core A. warmupFromProgram names the program file whose warm-up the optional warm-up uses.",
+    "warmupFromProgram": "iron_foundations_v4_data.json"
+  },
+  "workouts": [
+    {
+      "id": "core-a",
+      "name": "Core A",
+      "subtitle": "EMOM 20",
+      "block": {
+        "type": "emom",
+        "label": "EMOM 20",
+        "totalMinutes": 20,
+        "cycleLength": 4,
+        "note": "4 exercises, one per minute. Minute 5 starts the cycle over - 5 rounds of each.",
+        "pattern": [
+          { "minute": 1, "exercise": "15 Push-ups" },
+          { "minute": 2, "exercise": "20 KB Russian Twist (total)" },
+          { "minute": 3, "exercise": "10–12 KB Curl" },
+          { "minute": 4, "exercise": "15 Sit-ups" }
+        ]
+      }
+    },
+    {
+      "id": "w1",
+      "name": "#1",
+      "subtitle": "EMOM 20 · double kettlebell",
+      "block": {
+        "type": "emom",
+        "label": "EMOM 20",
+        "totalMinutes": 20,
+        "note": "Double kettlebell. Chains are continuous - don't set the kettlebells down.",
+        "pattern": [
+          { "minute": "odd", "from": 1, "to": 10, "exercise": "4x Swing → Clean → Front Squat" },
+          { "minute": "odd", "from": 11, "to": 20, "exercise": "3x Swing → Clean → Thruster" },
+          { "minute": "even", "exercise": "20 Push-ups" }
+        ]
+      }
+    },
+    {
+      "id": "core-b",
+      "name": "Core B",
+      "subtitle": "EMOM 20",
+      "block": {
+        "type": "emom",
+        "label": "EMOM 20",
+        "totalMinutes": 20,
+        "cycleLength": 4,
+        "note": "4 exercises, one per minute. Minute 5 starts the cycle over - 5 rounds of each.",
+        "pattern": [
+          { "minute": 1, "exercise": "10 Dips" },
+          { "minute": 2, "exercise": "12 Leg Raises" },
+          { "minute": 3, "exercise": "12 KB Pullover" },
+          { "minute": 4, "exercise": "6 KB Halos each direction" }
+        ]
+      }
+    },
+    {
+      "id": "w2",
+      "name": "#2",
+      "subtitle": "EMOM 20 · single kettlebell",
+      "block": {
+        "type": "emom",
+        "label": "EMOM 20",
+        "totalMinutes": 20,
+        "note": "Single kettlebell.",
+        "pattern": [
+          { "minute": "odd", "from": 1, "to": 10, "exercise": "5 Swings + 3 Snatch (right) → switch hands → 5 Swings + 3 Snatch (left)" },
+          { "minute": "odd", "from": 11, "to": 20, "exercise": "5 Clean & Press (right) + 5 Clean & Press (left)" },
+          { "minute": "even", "exercise": "20 Push-ups" }
+        ]
+      }
+    },
+    {
+      "id": "core-c",
+      "name": "Core C",
+      "subtitle": "EMOM 20",
+      "block": {
+        "type": "emom",
+        "label": "EMOM 20",
+        "totalMinutes": 20,
+        "cycleLength": 4,
+        "note": "4 exercises, one per minute. Minute 5 starts the cycle over - 5 rounds of each.",
+        "pattern": [
+          { "minute": 1, "exercise": "6/side Goblet Reverse Lunge" },
+          { "minute": 2, "exercise": "12 Captain's Chair Knee Raises" },
+          { "minute": 3, "exercise": "10–12 KB Curl" },
+          { "minute": 4, "exercise": "10/side KB Row" }
+        ]
+      }
+    },
+    {
+      "id": "w3",
+      "name": "#3",
+      "subtitle": "AMRAP 20 · double kettlebell",
+      "block": {
+        "type": "amrap",
+        "label": "AMRAP 20",
+        "totalMinutes": 20,
+        "note": "Double kettlebell. As many rounds as you can in 20 minutes, in this order.",
+        "exercises": [
+          "5x Swing → Clean → Press (continuous chain)",
+          "10 Double KB Thruster",
+          "5/side Reverse Lunge",
+          "10 Double KB Row",
+          "15 Push-ups"
+        ]
+      }
+    }
+  ]
+}

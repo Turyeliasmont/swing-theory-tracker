@@ -26,6 +26,21 @@ const Programs = {
     return data;
   },
 
+  // The 20-Min Workouts library (workouts/twenty_min_workouts.json). Loaded
+  // at boot so it gets cached for offline use on first visit. Returns null
+  // on any failure -- the rest of the app works fine without it.
+  async loadTwentyMin() {
+    try {
+      const res = await fetch('workouts/twenty_min_workouts.json', { cache: 'no-store' });
+      if (!res.ok) return null;
+      const data = await res.json();
+      return Array.isArray(data.workouts) && data.workouts.length > 0 ? data : null;
+    } catch (err) {
+      console.error('Could not load 20-Min Workouts:', err);
+      return null;
+    }
+  },
+
   // Loads every program listed in the manifest. Programs that fail to load
   // (bad JSON, missing file) are skipped with a console warning rather than
   // breaking the whole picker screen.

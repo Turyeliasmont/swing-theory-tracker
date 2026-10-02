@@ -58,6 +58,25 @@ If you ever forget to bump it and a change doesn't seem to show up, bump
 `CACHE_VERSION` and push again — that alone forces every open tab to pick
 up the latest files on its next reload.
 
+## 20-Min Workouts
+
+A separate section on the home screen: a small library of standalone
+workouts (`workouts/twenty_min_workouts.json`) that has nothing to do
+with your program. It never reads or advances your week/day, and has its
+own history (the "20-Min" tab on the History screen).
+
+- **Up next**: the workouts rotate in the order of the `workouts` array
+  in that file (Core A → #1 → Core B → #2 → Core C → #3 → back to Core A).
+  The app suggests the next one; you can pick any other. The suggestion
+  only moves on when you complete a workout (the timer runs out) and
+  continues from the workout you just did.
+- **Each workout**: preview → optional warm-up (the warm-up of the program
+  named in `section.warmupFromProgram`, with a button to skip it) → the
+  timer guides you minute by minute (EMOM) or counts down with a round
+  counter (AMRAP) → you log the result.
+- To edit a workout or add one, edit that JSON file (EMOM `pattern`
+  fields work like in programs — see `programs/README.md`).
+
 ## Adding a new program
 
 See [`programs/README.md`](programs/README.md) — in short: drop a new
@@ -72,6 +91,8 @@ host this app:
 - which program is active, and your current week/day position in each
   program you've used
 - your workout history (date, program, week/day, duration)
+- your 20-Min Workouts history and which one is "up next" (stored
+  separately from the above, so they never mix with program progress)
 
 There's no account, no sync, and no server component — if you clear your
 browser's site data (or switch browsers/devices), that history is gone.
@@ -86,10 +107,12 @@ js/audio.js             beep sounds (Web Audio API, no sound files)
 js/wakelock.js         keeps the screen on during a workout
 js/timer-engine.js     countdown/stopwatch timer helpers
 js/programs.js         loads programs/manifest.json + program files
+js/twenty-min.js       the 20-Min Workouts screens
 js/app.js               screens, navigation, rendering — start here to read the app
 manifest.webmanifest   PWA manifest (installability)
 sw.js                   service worker (offline caching)
 icons/                  app icons
 programs/               workout program data — see programs/README.md
+workouts/               the 20-Min Workouts library (twenty_min_workouts.json)
 serve.ps1               a tiny local static file server (no installs needed)
 ```

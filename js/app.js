@@ -65,6 +65,8 @@ async function boot() {
     return;
   }
 
+  App.twentyMin = await Programs.loadTwentyMin();
+
   renderPicker();
 }
 
@@ -113,10 +115,19 @@ function renderPicker() {
     `;
   }).join('');
 
+  const twentyMinCard = App.twentyMin
+    ? `
+      <button class="program-card twenty-min-card" data-action="go-20min-home">
+        <div class="program-card-name">${escapeHtml(App.twentyMin.section.name)}</div>
+        <div class="program-card-meta">${App.twentyMin.workouts.length} standalone workouts · separate from your program</div>
+        <div class="program-card-progress">Up next: ${escapeHtml(getSuggestedWorkout().name)}</div>
+      </button>`
+    : '';
+
   screenEl.innerHTML = `
     <h1>Swing Theory Tracker</h1>
     <p class="subtitle">Choose your active program</p>
-    <div class="program-list">${cards}</div>
+    <div class="program-list">${cards}${twentyMinCard}</div>
     <button class="secondary-btn" data-action="go-history">View History</button>
   `;
 }
@@ -221,12 +232,20 @@ function renderPreviewWarmup(week, day) {
   `;
 }
 
-// A pattern entry's "minute" is either the string "odd"/"even" (a simple
-// 2-minute alternating EMOM) or a 1-based integer position within a longer
-// cycle (see emomPositionForMinute below). Label each the same way in both
-// the preview and nowhere else needs to know the difference.
-function emomPatternEntryLabel(minute) {
-  return typeof minute === 'number' ? `Minute ${minute}` : `${minute.charAt(0).toUpperCase()}${minute.slice(1)} minute`;
+// Label for one EMOM pattern entry in the preview. Entries limited to part
+// of the block (from/to) list their exact minutes, e.g. "Minutes 1, 3, 5,
+// 7, 9"; otherwise "Odd minute" / "Even minute" / "Minute 2".
+function emomPatternEntryLabel(block, p) {
+  if (p.from !== undefined || p.to !== undefined) {
+    const minutes = [];
+    for (let m = 1; m <= block.totalMinutes; m++) {
+      if (emomEntryForMinute(block, m) === p) minutes.push(m);
+    }
+    return `Minutes ${minutes.join(', ')}`;
+  }
+  return typeof p.minute === 'number'
+    ? `Minute ${p.minute}`
+    : `${p.minute.charAt(0).toUpperCase()}${p.minute.slice(1)} minute`;
 }
 
 function renderBlockNoteHtml(block) {
@@ -274,13 +293,25 @@ function renderPreviewBlock(block) {
 
   if (block.type === 'emom') {
     const items = (block.pattern || [])
-      .map((p) => `<li><strong>${escapeHtml(emomPatternEntryLabel(p.minute))}:</strong> ${escapeHtml(p.exercise)}</li>`)
+      .map((p) => `<li><strong>${escapeHtml(emomPatternEntryLabel(block, p))}:</strong> ${escapeHtml(p.exercise)}</li>`)
       .join('');
     return `
       <section class="block">
         ${labelHtml}
         <div class="exercise-meta">${block.totalMinutes} min total</div>
         <ul class="preview-list">${items}</ul>
+        ${noteHtml}
+      </section>
+    `;
+  }
+
+  if (block.type === 'amrap') {
+    const items = (block.exercises || []).map((ex) => `<li>${escapeHtml(ex)}</li>`).join('');
+    return `
+      <section class="block">
+        ${labelHtml}
+        <div class="exercise-meta">${block.totalMinutes} min · as many rounds as possible, in this order</div>
+        <ol class="preview-list">${items}</ol>
         ${noteHtml}
       </section>
     `;
@@ -333,8 +364,8 @@ function restartProgram() {
 // Screen: Warm-up
 // ---------------------------------------------------------------------
 
-function buildWarmupExercises(day) {
-  const warmup = App.activeProgram.warmup;
+function buildWarmupExercises(day, program = App.activeProgram) {
+  const warmup = program.warmup;
   // Two warm-up shapes: a fixed "sequence" (same 6 exercises every day, no
   // rotation), or the older "fixed" + "rotationByDay" pool (3 fixed + 3
   // that vary by day). Whichever the program uses, just read it.
@@ -342,16 +373,23 @@ function buildWarmupExercises(day) {
     return warmup.sequence;
   }
   const fixed = warmup.fixed || [];
-  const rotating = (warmup.rotationByDay && warmup.rotationByDay[day.day]) || [];
+  const rotating = (warmup.rotationByDay && day && warmup.rotationByDay[day.day]) || [];
   return fixed.concat(rotating);
 }
 
-function renderWarmup() {
+// Runs the 50s/10s warm-up timer. With no options it's the program's warm-up
+// for the active day (ending in "Begin Workout" -> begin-workout). The
+// 20-Min Workouts pass their own exercises and actions:
+//   exercises, doneAction (button when finished), exitAction (top-left Exit),
+//   skipAllAction (optional extra "Skip warm-up" button).
+function renderWarmup(opts = {}) {
   resetTransientState();
   WakeLockCtl.acquire();
 
-  const day = getActiveDay();
-  const exercises = buildWarmupExercises(day);
+  const exercises = opts.exercises || buildWarmupExercises(getActiveDay());
+  const doneAction = opts.doneAction || 'begin-workout';
+  const exitAction = opts.exitAction || 'exit-warmup';
+  App.warmupSkipAllAction = opts.skipAllAction || null;
 
   // Flatten into a sequence of steps: work(50s), rest(10s), for each exercise.
   const steps = [];
@@ -362,16 +400,16 @@ function renderWarmup() {
 
   screenEl.innerHTML = `
     <div class="topbar">
-      <button class="link-btn" data-action="exit-warmup">&lsaquo; Exit</button>
+      <button class="link-btn" data-action="${exitAction}">&lsaquo; Exit</button>
       <span></span>
     </div>
     <div class="timer-focus" id="warmup-focus"></div>
   `;
 
-  runWarmupSteps(steps, 0);
+  runWarmupSteps(steps, 0, doneAction);
 }
 
-function runWarmupSteps(steps, stepIndex) {
+function runWarmupSteps(steps, stepIndex, doneAction) {
   const focusEl = document.getElementById('warmup-focus');
   if (!focusEl) return; // user navigated away
 
@@ -380,10 +418,14 @@ function runWarmupSteps(steps, stepIndex) {
     focusEl.innerHTML = `
       <div class="timer-phase-label">Warm-up complete</div>
       <div class="timer-exercise-name">Ready to work</div>
-      <button class="primary-btn big" data-action="begin-workout">Begin Workout</button>
+      <button class="primary-btn big" data-action="${doneAction}">Begin Workout</button>
     `;
     return;
   }
+
+  const skipAllHtml = App.warmupSkipAllAction
+    ? `<button class="small-btn" data-action="${App.warmupSkipAllAction}">Skip warm-up</button>`
+    : '';
 
   const step = steps[stepIndex];
   const total = steps.length;
@@ -397,6 +439,7 @@ function runWarmupSteps(steps, stepIndex) {
       <div class="timer-sub">Exercise ${step.index + 1} of ${Math.ceil(total / 2)}</div>
       <div class="timer-controls">
         <button class="small-btn" data-action="skip-warmup-step">Skip</button>
+        ${skipAllHtml}
       </div>
     `;
   } else {
@@ -409,6 +452,7 @@ function runWarmupSteps(steps, stepIndex) {
       <div class="timer-sub">Exercise ${step.index + 1} of ${Math.ceil(total / 2)}</div>
       <div class="timer-controls">
         <button class="small-btn" data-action="skip-warmup-step">Skip</button>
+        ${skipAllHtml}
       </div>
     `;
   }
@@ -417,7 +461,7 @@ function runWarmupSteps(steps, stepIndex) {
   const countdown = createCountdown(
     step.seconds,
     (remaining) => { if (countdownEl) countdownEl.textContent = remaining; },
-    () => runWarmupSteps(steps, stepIndex + 1)
+    () => runWarmupSteps(steps, stepIndex + 1, doneAction)
   );
   countdown.start();
 
@@ -568,6 +612,78 @@ function startRestTimer(button) {
   countdown.start();
 }
 
+// The one EMOM runner, used by program days and by 20-Min Workouts.
+// Draws into statusEl: "Minute N of M", the current exercise, a 60s
+// countdown, and a "Next exercise" line that is visible from second 0 of
+// every minute (the whole minute -> exercise list is built up front by
+// buildEmomSchedule). In the last 10s of a minute the Next line is
+// highlighted. In the last minute the Next line says "Next: <afterLabel>"
+// (the next block, if the EMOM is part of a longer session) or
+// "Next: Finish".
+// Time comes from the clock (Date.now), not from counting ticks, so the
+// timer stays correct even if the phone throttles it for a moment.
+function runEmom(block, statusEl, { afterLabel = null, onDone = null } = {}) {
+  const schedule = buildEmomSchedule(block);
+  const totalMinutes = block.totalMinutes;
+  const totalSeconds = totalMinutes * 60;
+  const startMs = Date.now();
+
+  statusEl.innerHTML = `
+    <div class="emom-minute"></div>
+    <div class="emom-exercise"></div>
+    <div class="emom-countdown"></div>
+    <div class="emom-next"></div>
+  `;
+  const minuteEl = statusEl.querySelector('.emom-minute');
+  const exerciseEl = statusEl.querySelector('.emom-exercise');
+  const countdownEl = statusEl.querySelector('.emom-countdown');
+  const nextEl = statusEl.querySelector('.emom-next');
+
+  function nextText(minuteNum) {
+    if (minuteNum >= totalMinutes) {
+      return afterLabel ? `Next: ${afterLabel}` : 'Next: Finish';
+    }
+    return `Next exercise: ${schedule[minuteNum]}`;
+  }
+
+  let shownMinute = 0;
+  let shownSeconds = -1;
+
+  function tick() {
+    const elapsed = Math.floor((Date.now() - startMs) / 1000);
+
+    if (elapsed >= totalSeconds) {
+      clearInterval(intervalId);
+      TimerRegistry.ids.delete(intervalId);
+      AudioCue.doneCue();
+      statusEl.innerHTML = `<div class="emom-done">EMOM complete ✓</div>`;
+      if (onDone) onDone();
+      return;
+    }
+
+    const minuteNum = Math.floor(elapsed / 60) + 1;
+    if (minuteNum !== shownMinute) {
+      if (shownMinute !== 0) AudioCue.cue();
+      shownMinute = minuteNum;
+      minuteEl.textContent = `Minute ${minuteNum} of ${totalMinutes}`;
+      exerciseEl.textContent = schedule[minuteNum - 1];
+      nextEl.textContent = nextText(minuteNum);
+    }
+
+    const secondsLeft = 60 - (elapsed % 60);
+    if (secondsLeft !== shownSeconds) {
+      shownSeconds = secondsLeft;
+      countdownEl.textContent = secondsLeft;
+      nextEl.classList.toggle('urgent', secondsLeft <= 10);
+    }
+  }
+
+  AudioCue.doneCue();
+  const intervalId = TimerRegistry.track(setInterval(tick, 250));
+  tick();
+}
+
+// Program-day wrapper: finds the block and what comes after it.
 function startEmomTimer(button) {
   const blockIndex = parseInt(button.dataset.block, 10);
   const day = getActiveDay();
@@ -575,56 +691,10 @@ function startEmomTimer(button) {
   const statusEl = document.getElementById('emom-status-' + blockIndex);
   if (!statusEl || !block) return;
 
-  const totalMinutes = block.totalMinutes;
-  const totalSeconds = totalMinutes * 60;
-  const patternMap = {};
-  (block.pattern || []).forEach((p) => { patternMap[p.minute] = p.exercise; });
-
-  // Two pattern shapes, picked by whether the block declares a cycleLength:
-  //  - no cycleLength (legacy): simple odd/even alternation, pattern.minute
-  //    is the string "odd" or "even".
-  //  - cycleLength present: an N-minute rotation, pattern.minute is a
-  //    1-based integer position within that cycle (e.g. cycleLength 3 with
-  //    minutes 1/2/3 repeating: minute 4 is position 1 again).
-  function exerciseForMinute(minuteNum) {
-    if (block.cycleLength) {
-      const position = ((minuteNum - 1) % block.cycleLength) + 1;
-      return patternMap[position] || '';
-    }
-    const key = (minuteNum % 2 === 1) ? 'odd' : 'even';
-    return patternMap[key] || '';
-  }
-
-  function renderMinute(minuteNum, secondsLeft) {
-    statusEl.innerHTML = `
-      <div class="emom-minute">Minute ${minuteNum} of ${totalMinutes}</div>
-      <div class="emom-exercise">${escapeHtml(exerciseForMinute(minuteNum))}</div>
-      <div class="emom-countdown">${secondsLeft}</div>
-    `;
-  }
-
-  let elapsedSeconds = 0;
-  AudioCue.doneCue();
-  renderMinute(1, 60);
-
-  const intervalId = TimerRegistry.track(setInterval(() => {
-    elapsedSeconds += 1;
-
-    if (elapsedSeconds >= totalSeconds) {
-      clearInterval(intervalId);
-      TimerRegistry.ids.delete(intervalId);
-      AudioCue.doneCue();
-      statusEl.innerHTML = `<div class="emom-done">EMOM complete ✓</div>`;
-      return;
-    }
-
-    const minuteNum = Math.floor(elapsedSeconds / 60) + 1;
-    if (elapsedSeconds % 60 === 0) {
-      AudioCue.cue();
-    }
-    const secondsLeft = 60 - (elapsedSeconds % 60);
-    renderMinute(minuteNum, secondsLeft);
-  }, 1000));
+  const nextBlock = day.blocks[blockIndex + 1];
+  runEmom(block, statusEl, {
+    afterLabel: nextBlock ? (nextBlock.label || nextBlock.exercise || 'next block') : null
+  });
 }
 
 // ---------------------------------------------------------------------
@@ -679,11 +749,22 @@ function renderFinishSummary(durationSeconds) {
 // Screen: History
 // ---------------------------------------------------------------------
 
-function renderHistory() {
+// kind: 'program' (default) or '20min'. The two lists are stored separately
+// so 20-min sessions never mix into program progress.
+function renderHistory(kind = 'program') {
   resetTransientState();
   const history = Storage.getHistory();
 
-  const rowsHtml = history.length === 0
+  const tabsHtml = App.twentyMin
+    ? `<div class="tab-row">
+         <button class="tab-btn ${kind === 'program' ? 'active' : ''}" data-action="history-tab" data-kind="program">Program</button>
+         <button class="tab-btn ${kind === '20min' ? 'active' : ''}" data-action="history-tab" data-kind="20min">20-Min</button>
+       </div>`
+    : '';
+
+  const rowsHtml = kind === '20min'
+    ? render20MinHistoryRows()
+    : history.length === 0
     ? `<div class="empty-state">No workouts logged yet.</div>`
     : `<div class="history-list">${history.map((entry) => {
         const date = new Date(entry.date);
@@ -705,6 +786,7 @@ function renderHistory() {
       <span></span>
     </div>
     <h1>History</h1>
+    ${tabsHtml}
     ${rowsHtml}
   `;
 }
@@ -722,12 +804,14 @@ function goDay() {
 }
 
 function goHistory() {
-  App.cameFromHistory = App.activeProgram ? 'day' : 'picker';
+  App.historyFrom = null;
   renderHistory();
 }
 
 function goBackFromHistory() {
-  if (App.activeProgram) {
+  if (App.historyFrom === '20min') {
+    render20MinHome();
+  } else if (App.activeProgram) {
     renderDay();
   } else {
     renderPicker();
@@ -800,7 +884,12 @@ screenEl.addEventListener('click', (e) => {
     case 'finish-workout':
       finishWorkout();
       break;
+    case 'history-tab':
+      renderHistory(actionEl.dataset.kind);
+      break;
     default:
+      // 20-Min Workouts screens (js/twenty-min.js) handle their own actions.
+      handleTwentyMinAction(action, actionEl);
       break;
   }
 });

@@ -262,13 +262,54 @@ minute 3 → position 3, minute 4 → position 1 again, and so on — one
 `totalMinutes` doesn't need to be an exact multiple of `cycleLength`; it'll
 just stop mid-cycle if it isn't.
 
+**Changing exercise partway through** — either shape: add optional `"from"`
+and/or `"to"` (1-based minute numbers, inclusive) to a pattern entry to
+limit it to part of the block. Entries are checked in order and the first
+one that matches a minute wins:
+
+```json
+"pattern": [
+  { "minute": "odd",  "from": 1,  "to": 10, "exercise": "4x Swing → Clean → Front Squat" },
+  { "minute": "odd",  "from": 11, "to": 20, "exercise": "3x Swing → Clean → Thruster" },
+  { "minute": "even", "exercise": "20 Push-ups" }
+]
+```
+
+Under the hood the app turns any EMOM into a plain minute-by-minute list
+(minute 1 → exercise, minute 2 → exercise, ...), and that list is what
+drives both the timer and the "Next exercise" line.
+
 - `totalMinutes` — how long the EMOM runs, in minutes, either shape.
+- While an EMOM runs, the screen always shows "Next exercise: ..." (from
+  second 0 of the minute; highlighted in the last 10 seconds). In the last
+  minute it says "Next: <next block's label>" if another block follows in
+  the day, or "Next: Finish".
 - The timer runs automatically start to finish: 60-second countdown per
   minute, an audio cue at the start of each new minute, and the active
   exercise name shown big. No pausing needed — it's designed to just run.
 - The Day preview lists every `pattern` entry in the order you wrote them,
   labeled "Odd minute"/"Even minute" or "Minute 1"/"Minute 2"/... to match
   whichever shape you used.
+
+#### `amrap`
+
+"As Many Rounds As Possible" — a countdown with a round counter. Currently
+used by the 20-Min Workouts library (`workouts/twenty_min_workouts.json`,
+see the main README); program days don't render it yet.
+
+```json
+{
+  "type": "amrap",
+  "label": "AMRAP 20",
+  "totalMinutes": 20,
+  "exercises": ["5x Swing → Clean → Press", "10 Thruster", "15 Push-ups"]
+}
+```
+
+- `exercises` — the ordered list for one round (always visible while the
+  timer counts down).
+- `totalMinutes` — the countdown length.
+- Also supports the optional `label` and `note`.
 
 ## Quick checklist for a new program file
 

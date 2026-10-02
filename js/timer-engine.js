@@ -92,3 +92,37 @@ function formatDuration(totalSeconds) {
   }
   return `${minutes}:${pad(seconds)}`;
 }
+
+// ---------------------------------------------------------------------
+// EMOM schedule: which exercise runs in which minute.
+//
+// An EMOM block's "pattern" entries each say which minutes they cover:
+//  - no block.cycleLength: entry.minute is "odd" or "even".
+//  - block.cycleLength N: entry.minute is a 1-based position in an N-minute
+//    cycle (minute 1 -> position 1, minute N+1 -> position 1 again...).
+// Either shape can add optional entry.from / entry.to (1-based, inclusive)
+// to limit the entry to part of the block, e.g. one exercise for odd
+// minutes 1-10 and a different one for odd minutes 11-20. If several
+// entries match a minute, the first one in the list wins.
+// ---------------------------------------------------------------------
+
+function emomEntryForMinute(block, minuteNum) {
+  const key = block.cycleLength
+    ? ((minuteNum - 1) % block.cycleLength) + 1
+    : (minuteNum % 2 === 1 ? 'odd' : 'even');
+  return (block.pattern || []).find((p) =>
+    p.minute === key &&
+    (p.from === undefined || minuteNum >= p.from) &&
+    (p.to === undefined || minuteNum <= p.to)
+  ) || null;
+}
+
+// Returns an array of block.totalMinutes strings: index 0 is minute 1.
+function buildEmomSchedule(block) {
+  const schedule = [];
+  for (let m = 1; m <= block.totalMinutes; m++) {
+    const entry = emomEntryForMinute(block, m);
+    schedule.push(entry ? entry.exercise : '');
+  }
+  return schedule;
+}
