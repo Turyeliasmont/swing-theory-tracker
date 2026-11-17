@@ -54,6 +54,25 @@ const Programs = {
         console.error('Skipping program file "' + filename + '":', err);
       }
     }
+    await this.resolveBorrowedWarmups(programs);
     return programs;
+  },
+
+  // A program can reuse another program's warm-up instead of repeating it:
+  //   "warmup": { "fromProgram": "iron_foundations_v4_data.json" }
+  // That program doesn't have to be listed in the manifest (archived ones
+  // work). Only the in-memory copy is changed; no file is touched.
+  async resolveBorrowedWarmups(programs) {
+    for (const program of programs) {
+      const from = program.warmup && program.warmup.fromProgram;
+      if (!from) continue;
+      try {
+        const source = programs.find((p) => p.__file === from) || await this.loadProgramFile(from);
+        program.warmup = Object.assign({}, source.warmup);
+      } catch (err) {
+        console.error('Could not borrow the warm-up from "' + from + '":', err);
+        program.warmup = {};
+      }
+    }
   }
 };

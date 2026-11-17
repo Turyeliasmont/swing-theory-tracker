@@ -723,6 +723,122 @@ select {
   color: var(--text);
 }
 
+/* Exercise logging (js/logbook.js) */
+.log-row {
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 4px 12px 10px;
+  margin-bottom: 8px;
+}
+
+.log-row.checked {
+  border-color: var(--success);
+  background: color-mix(in srgb, var(--success) 12%, var(--bg-elevated));
+}
+
+.log-line {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-height: 52px;
+  cursor: pointer;
+}
+
+.log-line input[type="checkbox"] {
+  width: 26px;
+  height: 26px;
+  flex-shrink: 0;
+  accent-color: var(--accent);
+}
+
+.log-inputs {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 2px;
+}
+
+.log-field {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.field-suffix {
+  color: var(--text-dim);
+  font-weight: 600;
+  font-size: 0.85rem;
+}
+
+.log-input {
+  flex: 1;
+  min-width: 0;
+  width: 100%;
+  font: inherit;
+  font-size: 1.1rem;
+  padding: 10px 12px;
+  min-height: 48px;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  background: var(--bg);
+  color: var(--text);
+}
+
+.unit-label {
+  color: var(--text-dim);
+  font-weight: 600;
+  min-width: 1.8em;
+}
+
+.last-week {
+  margin-top: 8px;
+  font-size: 0.85rem;
+  color: var(--text-dim);
+}
+
+.pill-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 4px 0 8px;
+}
+
+.pill {
+  min-height: 44px;
+  padding: 8px 14px;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: var(--bg);
+  color: var(--text);
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.pill.active {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: var(--accent-text);
+}
+
+.option-detail {
+  color: var(--text-dim);
+  font-size: 0.95rem;
+  line-height: 1.35;
+  margin-bottom: 10px;
+}
+
+.option-detail:empty {
+  display: none;
+}
+
+.log-emom {
+  margin-top: 12px;
+  padding-top: 6px;
+  border-top: 1px solid var(--border);
+}
+
 .empty-state {
   color: var(--text-dim);
   text-align: center;

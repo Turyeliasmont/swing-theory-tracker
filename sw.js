@@ -27,7 +27,7 @@
 // first). The very next time you open the app after that, you get the new
 // version — no manual cache-clearing or reinstalling needed.
 
-const CACHE_VERSION = 'v6';
+const CACHE_VERSION = 'v7';
 const SHELL_CACHE = 'stt-shell-' + CACHE_VERSION;
 const RUNTIME_CACHE = 'stt-runtime-' + CACHE_VERSION;
 
@@ -40,6 +40,7 @@ const SHELL_FILES = [
   './js/wakelock.js',
   './js/timer-engine.js',
   './js/programs.js',
+  './js/logbook.js',
   './js/twenty-min.js',
   './js/app.js',
   './manifest.webmanifest',

@@ -1,0 +1,379 @@
+{
+  "program": {
+    "name": "Block 2",
+    "format": "Strength + complexes + EMOM pumps (6 days/week)",
+    "daysPerWeek": 6,
+    "totalWeeks": 7,
+    "note": "Working name: \"Block 2\" (final name pending - change program.name). Weeks 1-6 training (week 1 = re-entry, 3 sets/rounds on every strength block and superset), week 7 deload (half the sets/rounds rounded up, 10-minute EMOMs, finisher swings = 50). Sunday is rest, so it has no entry. Test weeks: 1, 4, 6. Blocks with \"log\": true record reps/load (see programs/README.md). The leg complex is named \"Leg Complex (TBD)\" - search and replace that text in this file to rename it."
+  },
+  "warmup": { "fromProgram": "iron_foundations_v4_data.json" },
+  "weeks": [
+    {
+      "week": 1, "phase": "Re-entry",
+      "days": [
+        {
+          "day": "Mon", "name": "Strength A", "warmup": true,
+          "blocks": [
+            {"type":"straight_sets","label":"A) Main lift","exercise":"Snatch (20 kg)","reps":"8–10/side","sets":3,"restSeconds":90,"log":true,"note":"Ballistic: stop when technique degrades. Rest 60–90 s."},
+            {"type":"circuit","label":"B) Superset","rounds":3,"restSeconds":90,"log":true,"note":"Rest 60–90 s between rounds.","exercises":["DB Bench Press — 12–20 reps (1–2 RIR)","Double KB Front Squat (20+24 kg, switch hands each set) — 8–12 reps","Single-Arm KB Row (24 kg) — 10–15/side"]},
+            {"type":"emom","label":"Finisher — Swings","totalMinutes":5,"cycleLength":1,"log":true,"pattern":[{"minute":1,"exercise":"10 Swings (24 kg)"}]}
+          ]
+        },
+        {
+          "day": "Tue", "name": "Pump — Pull + Arms", "warmup": false,
+          "blocks": [
+            {"type":"emom","label":"EMOM 20","totalMinutes":20,"cycleLength":4,"log":true,"note":"~3 reps in reserve, never to failure.","pattern":[{"minute":1,"exercise":"Single-Arm KB Row 10/side (16–20 kg)"},{"minute":2,"exercise":"KB Pullover 15 (16 kg)"},{"minute":3,"exercise":"KB Curl 12–15 (12–16 kg)"},{"minute":4,"exercise":"KB Halos 8 each direction (12–16 kg)"}]},
+            {"type":"emom","label":"Finisher — Swings","totalMinutes":10,"cycleLength":1,"log":true,"pattern":[{"minute":1,"exercise":"10 Swings (20–24 kg)"}]}
+          ]
+        },
+        {
+          "day": "Wed", "name": "Complex Day", "warmup": true,
+          "blocks": [
+            {"type":"straight_sets","label":"Complex 1 (upper)","sets":3,"restSeconds":90,"log":true,"track":["load"],"note":"Rest 60–90 s. Pick today’s complex below.","options":[{"name":"Trial of the Swings","detail":"5 Swings → 5 Snatches → 5 Presses, then switch sides"},{"name":"Agent Michael Scarn","detail":"5 Rows → 5 Swings → 5 Snatches per side"}]},
+            {"type":"circuit","label":"Core between Complex 1 sets","rounds":2,"log":true,"track":[],"note":"Between the sets above: pick one each round (alternate them).","exercises":[{"label":"Core","options":[{"name":"TGU 1/side"},{"name":"Windmill 3/side"},{"name":"KB Dead Bug 8/side"}]}]},
+            {"type":"straight_sets","label":"Complex 2 (legs)","exercise":"Leg Complex (TBD)","sets":3,"restSeconds":90,"log":true,"track":["load"],"note":"Double KB (18+20 kg), no setting the bells down: 5 Front Squats → 5 RDL → 3/side Reverse Lunges (rack). Rest 60–90 s."},
+            {"type":"circuit","label":"Core between Complex 2 sets","rounds":2,"log":true,"track":[],"note":"Between the sets above: pick one each round (alternate them).","exercises":[{"label":"Core","options":[{"name":"TGU 1/side"},{"name":"Windmill 3/side"},{"name":"KB Dead Bug 8/side"}]}]}
+          ]
+        },
+        {
+          "day": "Thu", "name": "RDL + EMOM", "warmup": true,
+          "blocks": [
+            {"type":"straight_sets","label":"A) Main lift","exercise":"Double KB RDL (20+24 kg), pause at the bottom","reps":"12–20","sets":3,"restSeconds":90,"log":true},
+            {"type":"emom","label":"B) EMOM 20","totalMinutes":20,"cycleLength":4,"log":true,"note":"Test week: write your total reps below to compare with the other test weeks.","pattern":[{"minute":1,"exercise":"Double KB Row 10–12 (20+24 kg)"},{"minute":2,"exercise":"KB Dead Bug 8/side (16 kg)"},{"minute":3,"exercise":"Goblet Reverse Lunge 6–8/side (20 kg)"},{"minute":4,"exercise":"20 Swings (24 kg)"}]}
+          ]
+        },
+        {
+          "day": "Fri", "name": "Pump — Push + Shoulders/Traps", "warmup": false,
+          "blocks": [
+            {"type":"emom","label":"EMOM 20","totalMinutes":20,"cycleLength":4,"log":true,"note":"~3 reps in reserve, never to failure.","pattern":[{"minute":1,"exercise":"DB Bench Fly 15"},{"minute":2,"exercise":"Push-ups 15–20"},{"minute":3,"exercise":"Double KB High Pull 12–15 (16+18 kg)"},{"minute":4,"exercise":"Overhead Triceps Extension 15"}]},
+            {"type":"emom","label":"Finisher — Swings","totalMinutes":10,"cycleLength":1,"log":true,"pattern":[{"minute":1,"exercise":"10 Swings"}]}
+          ]
+        },
+        {
+          "day": "Sat", "name": "Strength B", "warmup": true,
+          "blocks": [
+            {"type":"straight_sets","label":"A) Main lift","exercise":"Double KB Clean & Press (16+18 → 18+20 kg)","reps":"6–10","sets":3,"restSeconds":90,"log":true},
+            {"type":"circuit","label":"B) Superset","rounds":3,"log":true,"note":"Pick pull-ups or gorilla rows each round; the variant is saved with the set.","exercises":["DB Bulgarian Split Squat — 8–12/leg",{"target":"6–12","options":[{"name":"Pull-ups","detail":"Weighted vest when you reach the top of the range"},{"name":"Gorilla Rows (20+24 kg)"}]},"Weighted-vest Push-ups — max, leave 2 in reserve"]},
+            {"type":"circuit","label":"Core","rounds":3,"exercises":["Windmill 3/side","Suitcase Carry (24 kg) 40 s/side"]},
+            {"type":"emom","label":"Finisher — Swings","totalMinutes":5,"cycleLength":1,"log":true,"pattern":[{"minute":1,"exercise":"15 Swings"}]},
+            {"type":"straight_sets","label":"Test (optional)","exercise":"Test: max push-ups (one set)","reps":"max","sets":1,"log":true,"track":["reps"],"note":"Optional. One all-out set; record the reps."}
+          ]
+        }
+      ]
+    },
+    {
+      "week": 2, "phase": "Training",
+      "days": [
+        {
+          "day": "Mon", "name": "Strength A", "warmup": true,
+          "blocks": [
+            {"type":"straight_sets","label":"A) Main lift","exercise":"Snatch (20 kg)","reps":"8–10/side","sets":5,"restSeconds":90,"log":true,"note":"Ballistic: stop when technique degrades. Rest 60–90 s."},
+            {"type":"circuit","label":"B) Superset","rounds":4,"restSeconds":90,"log":true,"note":"Rest 60–90 s between rounds.","exercises":["DB Bench Press — 12–20 reps (1–2 RIR)","Double KB Front Squat (20+24 kg, switch hands each set) — 8–12 reps","Single-Arm KB Row (24 kg) — 10–15/side"]},
+            {"type":"emom","label":"Finisher — Swings","totalMinutes":5,"cycleLength":1,"log":true,"pattern":[{"minute":1,"exercise":"10 Swings (24 kg)"}]}
+          ]
+        },
+        {
+          "day": "Tue", "name": "Pump — Pull + Arms", "warmup": false,
+          "blocks": [
+            {"type":"emom","label":"EMOM 20","totalMinutes":20,"cycleLength":4,"log":true,"note":"~3 reps in reserve, never to failure.","pattern":[{"minute":1,"exercise":"Single-Arm KB Row 10/side (16–20 kg)"},{"minute":2,"exercise":"KB Pullover 15 (16 kg)"},{"minute":3,"exercise":"KB Curl 12–15 (12–16 kg)"},{"minute":4,"exercise":"KB Halos 8 each direction (12–16 kg)"}]},
+            {"type":"emom","label":"Finisher — Swings","totalMinutes":10,"cycleLength":1,"log":true,"pattern":[{"minute":1,"exercise":"10 Swings (20–24 kg)"}]}
+          ]
+        },
+        {
+          "day": "Wed", "name": "Complex Day", "warmup": true,
+          "blocks": [
+            {"type":"straight_sets","label":"Complex 1 (upper)","sets":5,"restSeconds":90,"log":true,"track":["load"],"note":"Rest 60–90 s. Pick today’s complex below.","options":[{"name":"Trial of the Swings","detail":"5 Swings → 5 Snatches → 5 Presses, then switch sides"},{"name":"Agent Michael Scarn","detail":"5 Rows → 5 Swings → 5 Snatches per side"}]},
+            {"type":"circuit","label":"Core between Complex 1 sets","rounds":4,"log":true,"track":[],"note":"Between the sets above: pick one each round (alternate them).","exercises":[{"label":"Core","options":[{"name":"TGU 1/side"},{"name":"Windmill 3/side"},{"name":"KB Dead Bug 8/side"}]}]},
+            {"type":"straight_sets","label":"Complex 2 (legs)","exercise":"Leg Complex (TBD)","sets":5,"restSeconds":90,"log":true,"track":["load"],"note":"Double KB (18+20 kg), no setting the bells down: 5 Front Squats → 5 RDL → 3/side Reverse Lunges (rack). Rest 60–90 s."},
+            {"type":"circuit","label":"Core between Complex 2 sets","rounds":4,"log":true,"track":[],"note":"Between the sets above: pick one each round (alternate them).","exercises":[{"label":"Core","options":[{"name":"TGU 1/side"},{"name":"Windmill 3/side"},{"name":"KB Dead Bug 8/side"}]}]}
+          ]
+        },
+        {
+          "day": "Thu", "name": "RDL + EMOM", "warmup": true,
+          "blocks": [
+            {"type":"straight_sets","label":"A) Main lift","exercise":"Double KB RDL (20+24 kg), pause at the bottom","reps":"12–20","sets":4,"restSeconds":90,"log":true,"note":"Progression: when all 4 sets reach 20 reps, switch to Single-Leg RDL (24 kg), 8–12/side."},
+            {"type":"emom","label":"B) EMOM 20","totalMinutes":20,"cycleLength":4,"log":true,"pattern":[{"minute":1,"exercise":"Double KB Row 10–12 (20+24 kg)"},{"minute":2,"exercise":"KB Dead Bug 8/side (16 kg)"},{"minute":3,"exercise":"Goblet Reverse Lunge 6–8/side (20 kg)"},{"minute":4,"exercise":"20 Swings (24 kg)"}]}
+          ]
+        },
+        {
+          "day": "Fri", "name": "Pump — Push + Shoulders/Traps", "warmup": false,
+          "blocks": [
+            {"type":"emom","label":"EMOM 20","totalMinutes":20,"cycleLength":4,"log":true,"note":"~3 reps in reserve, never to failure.","pattern":[{"minute":1,"exercise":"DB Bench Fly 15"},{"minute":2,"exercise":"Push-ups 15–20"},{"minute":3,"exercise":"Double KB High Pull 12–15 (16+18 kg)"},{"minute":4,"exercise":"Overhead Triceps Extension 15"}]},
+            {"type":"emom","label":"Finisher — Swings","totalMinutes":10,"cycleLength":1,"log":true,"pattern":[{"minute":1,"exercise":"10 Swings"}]}
+          ]
+        },
+        {
+          "day": "Sat", "name": "Strength B", "warmup": true,
+          "blocks": [
+            {"type":"straight_sets","label":"A) Main lift","exercise":"Double KB Clean & Press (16+18 → 18+20 kg)","reps":"6–10","sets":5,"restSeconds":90,"log":true},
+            {"type":"circuit","label":"B) Superset","rounds":4,"log":true,"note":"Pick pull-ups or gorilla rows each round; the variant is saved with the set.","exercises":["DB Bulgarian Split Squat — 8–12/leg",{"target":"6–12","options":[{"name":"Pull-ups","detail":"Weighted vest when you reach the top of the range"},{"name":"Gorilla Rows (20+24 kg)"}]},"Weighted-vest Push-ups — max, leave 2 in reserve"]},
+            {"type":"circuit","label":"Core","rounds":3,"exercises":["Windmill 3/side","Suitcase Carry (24 kg) 40 s/side"]},
+            {"type":"emom","label":"Finisher — Swings","totalMinutes":5,"cycleLength":1,"log":true,"pattern":[{"minute":1,"exercise":"15 Swings"}]}
+          ]
+        }
+      ]
+    },
+    {
+      "week": 3, "phase": "Training",
+      "days": [
+        {
+          "day": "Mon", "name": "Strength A", "warmup": true,
+          "blocks": [
+            {"type":"straight_sets","label":"A) Main lift","exercise":"Snatch (20 kg)","reps":"8–10/side","sets":5,"restSeconds":90,"log":true,"note":"Ballistic: stop when technique degrades. Rest 60–90 s."},
+            {"type":"circuit","label":"B) Superset","rounds":4,"restSeconds":90,"log":true,"note":"Rest 60–90 s between rounds.","exercises":["DB Bench Press — 12–20 reps (1–2 RIR)","Double KB Front Squat (20+24 kg, switch hands each set) — 8–12 reps","Single-Arm KB Row (24 kg) — 10–15/side"]},
+            {"type":"emom","label":"Finisher — Swings","totalMinutes":5,"cycleLength":1,"log":true,"pattern":[{"minute":1,"exercise":"10 Swings (24 kg)"}]}
+          ]
+        },
+        {
+          "day": "Tue", "name": "Pump — Pull + Arms", "warmup": false,
+          "blocks": [
+            {"type":"emom","label":"EMOM 20","totalMinutes":20,"cycleLength":4,"log":true,"note":"~3 reps in reserve, never to failure.","pattern":[{"minute":1,"exercise":"Single-Arm KB Row 10/side (16–20 kg)"},{"minute":2,"exercise":"KB Pullover 15 (16 kg)"},{"minute":3,"exercise":"KB Curl 12–15 (12–16 kg)"},{"minute":4,"exercise":"KB Halos 8 each direction (12–16 kg)"}]},
+            {"type":"emom","label":"Finisher — Swings","totalMinutes":10,"cycleLength":1,"log":true,"pattern":[{"minute":1,"exercise":"10 Swings (20–24 kg)"}]}
+          ]
+        },
+        {
+          "day": "Wed", "name": "Complex Day", "warmup": true,
+          "blocks": [
+            {"type":"straight_sets","label":"Complex 1 (upper)","sets":5,"restSeconds":90,"log":true,"track":["load"],"note":"Rest 60–90 s. Pick today’s complex below.","options":[{"name":"Trial of the Swings","detail":"5 Swings → 5 Snatches → 5 Presses, then switch sides"},{"name":"Agent Michael Scarn","detail":"5 Rows → 5 Swings → 5 Snatches per side"}]},
+            {"type":"circuit","label":"Core between Complex 1 sets","rounds":4,"log":true,"track":[],"note":"Between the sets above: pick one each round (alternate them).","exercises":[{"label":"Core","options":[{"name":"TGU 1/side"},{"name":"Windmill 3/side"},{"name":"KB Dead Bug 8/side"}]}]},
+            {"type":"straight_sets","label":"Complex 2 (legs)","exercise":"Leg Complex (TBD)","sets":5,"restSeconds":90,"log":true,"track":["load"],"note":"Double KB (18+20 kg), no setting the bells down: 5 Front Squats → 5 RDL → 3/side Reverse Lunges (rack). Rest 60–90 s."},
+            {"type":"circuit","label":"Core between Complex 2 sets","rounds":4,"log":true,"track":[],"note":"Between the sets above: pick one each round (alternate them).","exercises":[{"label":"Core","options":[{"name":"TGU 1/side"},{"name":"Windmill 3/side"},{"name":"KB Dead Bug 8/side"}]}]}
+          ]
+        },
+        {
+          "day": "Thu", "name": "RDL + EMOM", "warmup": true,
+          "blocks": [
+            {"type":"straight_sets","label":"A) Main lift","exercise":"Double KB RDL (20+24 kg), pause at the bottom","reps":"12–20","sets":4,"restSeconds":90,"log":true,"note":"Progression: when all 4 sets reach 20 reps, switch to Single-Leg RDL (24 kg), 8–12/side."},
+            {"type":"emom","label":"B) EMOM 20","totalMinutes":20,"cycleLength":4,"log":true,"pattern":[{"minute":1,"exercise":"Double KB Row 10–12 (20+24 kg)"},{"minute":2,"exercise":"KB Dead Bug 8/side (16 kg)"},{"minute":3,"exercise":"Goblet Reverse Lunge 6–8/side (20 kg)"},{"minute":4,"exercise":"20 Swings (24 kg)"}]}
+          ]
+        },
+        {
+          "day": "Fri", "name": "Pump — Push + Shoulders/Traps", "warmup": false,
+          "blocks": [
+            {"type":"emom","label":"EMOM 20","totalMinutes":20,"cycleLength":4,"log":true,"note":"~3 reps in reserve, never to failure.","pattern":[{"minute":1,"exercise":"DB Bench Fly 15"},{"minute":2,"exercise":"Push-ups 15–20"},{"minute":3,"exercise":"Double KB High Pull 12–15 (16+18 kg)"},{"minute":4,"exercise":"Overhead Triceps Extension 15"}]},
+            {"type":"emom","label":"Finisher — Swings","totalMinutes":10,"cycleLength":1,"log":true,"pattern":[{"minute":1,"exercise":"10 Swings"}]}
+          ]
+        },
+        {
+          "day": "Sat", "name": "Strength B", "warmup": true,
+          "blocks": [
+            {"type":"straight_sets","label":"A) Main lift","exercise":"Double KB Clean & Press (16+18 → 18+20 kg)","reps":"6–10","sets":5,"restSeconds":90,"log":true},
+            {"type":"circuit","label":"B) Superset","rounds":4,"log":true,"note":"Pick pull-ups or gorilla rows each round; the variant is saved with the set.","exercises":["DB Bulgarian Split Squat — 8–12/leg",{"target":"6–12","options":[{"name":"Pull-ups","detail":"Weighted vest when you reach the top of the range"},{"name":"Gorilla Rows (20+24 kg)"}]},"Weighted-vest Push-ups — max, leave 2 in reserve"]},
+            {"type":"circuit","label":"Core","rounds":3,"exercises":["Windmill 3/side","Suitcase Carry (24 kg) 40 s/side"]},
+            {"type":"emom","label":"Finisher — Swings","totalMinutes":5,"cycleLength":1,"log":true,"pattern":[{"minute":1,"exercise":"15 Swings"}]}
+          ]
+        }
+      ]
+    },
+    {
+      "week": 4, "phase": "Training",
+      "days": [
+        {
+          "day": "Mon", "name": "Strength A", "warmup": true,
+          "blocks": [
+            {"type":"straight_sets","label":"A) Main lift","exercise":"Snatch (20 kg)","reps":"8–10/side","sets":5,"restSeconds":90,"log":true,"note":"Ballistic: stop when technique degrades. Rest 60–90 s."},
+            {"type":"circuit","label":"B) Superset","rounds":4,"restSeconds":90,"log":true,"note":"Rest 60–90 s between rounds.","exercises":["DB Bench Press — 12–20 reps (1–2 RIR)","Double KB Front Squat (20+24 kg, switch hands each set) — 8–12 reps","Single-Arm KB Row (24 kg) — 10–15/side"]},
+            {"type":"emom","label":"Finisher — Swings","totalMinutes":5,"cycleLength":1,"log":true,"pattern":[{"minute":1,"exercise":"10 Swings (24 kg)"}]}
+          ]
+        },
+        {
+          "day": "Tue", "name": "Pump — Pull + Arms", "warmup": false,
+          "blocks": [
+            {"type":"emom","label":"EMOM 20","totalMinutes":20,"cycleLength":4,"log":true,"note":"~3 reps in reserve, never to failure.","pattern":[{"minute":1,"exercise":"Single-Arm KB Row 10/side (16–20 kg)"},{"minute":2,"exercise":"KB Pullover 15 (16 kg)"},{"minute":3,"exercise":"KB Curl 12–15 (12–16 kg)"},{"minute":4,"exercise":"KB Halos 8 each direction (12–16 kg)"}]},
+            {"type":"emom","label":"Finisher — Swings","totalMinutes":10,"cycleLength":1,"log":true,"pattern":[{"minute":1,"exercise":"10 Swings (20–24 kg)"}]}
+          ]
+        },
+        {
+          "day": "Wed", "name": "Complex Day", "warmup": true,
+          "blocks": [
+            {"type":"straight_sets","label":"Complex 1 (upper)","sets":5,"restSeconds":90,"log":true,"track":["load"],"note":"Rest 60–90 s. Pick today’s complex below.","options":[{"name":"Trial of the Swings","detail":"5 Swings → 5 Snatches → 5 Presses, then switch sides"},{"name":"Agent Michael Scarn","detail":"5 Rows → 5 Swings → 5 Snatches per side"}]},
+            {"type":"circuit","label":"Core between Complex 1 sets","rounds":4,"log":true,"track":[],"note":"Between the sets above: pick one each round (alternate them).","exercises":[{"label":"Core","options":[{"name":"TGU 1/side"},{"name":"Windmill 3/side"},{"name":"KB Dead Bug 8/side"}]}]},
+            {"type":"straight_sets","label":"Complex 2 (legs)","exercise":"Leg Complex (TBD)","sets":5,"restSeconds":90,"log":true,"track":["load"],"note":"Double KB (18+20 kg), no setting the bells down: 5 Front Squats → 5 RDL → 3/side Reverse Lunges (rack). Rest 60–90 s."},
+            {"type":"circuit","label":"Core between Complex 2 sets","rounds":4,"log":true,"track":[],"note":"Between the sets above: pick one each round (alternate them).","exercises":[{"label":"Core","options":[{"name":"TGU 1/side"},{"name":"Windmill 3/side"},{"name":"KB Dead Bug 8/side"}]}]}
+          ]
+        },
+        {
+          "day": "Thu", "name": "RDL + EMOM", "warmup": true,
+          "blocks": [
+            {"type":"straight_sets","label":"A) Main lift","exercise":"Double KB RDL (20+24 kg), pause at the bottom","reps":"12–20","sets":4,"restSeconds":90,"log":true,"note":"Progression: when all 4 sets reach 20 reps, switch to Single-Leg RDL (24 kg), 8–12/side."},
+            {"type":"emom","label":"B) EMOM 20","totalMinutes":20,"cycleLength":4,"log":true,"note":"Test week: write your total reps below to compare with the other test weeks.","pattern":[{"minute":1,"exercise":"Double KB Row 10–12 (20+24 kg)"},{"minute":2,"exercise":"KB Dead Bug 8/side (16 kg)"},{"minute":3,"exercise":"Goblet Reverse Lunge 6–8/side (20 kg)"},{"minute":4,"exercise":"20 Swings (24 kg)"}]}
+          ]
+        },
+        {
+          "day": "Fri", "name": "Pump — Push + Shoulders/Traps", "warmup": false,
+          "blocks": [
+            {"type":"emom","label":"EMOM 20","totalMinutes":20,"cycleLength":4,"log":true,"note":"~3 reps in reserve, never to failure.","pattern":[{"minute":1,"exercise":"DB Bench Fly 15"},{"minute":2,"exercise":"Push-ups 15–20"},{"minute":3,"exercise":"Double KB High Pull 12–15 (16+18 kg)"},{"minute":4,"exercise":"Overhead Triceps Extension 15"}]},
+            {"type":"emom","label":"Finisher — Swings","totalMinutes":10,"cycleLength":1,"log":true,"pattern":[{"minute":1,"exercise":"10 Swings"}]}
+          ]
+        },
+        {
+          "day": "Sat", "name": "Strength B", "warmup": true,
+          "blocks": [
+            {"type":"straight_sets","label":"A) Main lift","exercise":"Double KB Clean & Press (16+18 → 18+20 kg)","reps":"6–10","sets":5,"restSeconds":90,"log":true},
+            {"type":"circuit","label":"B) Superset","rounds":4,"log":true,"note":"Pick pull-ups or gorilla rows each round; the variant is saved with the set.","exercises":["DB Bulgarian Split Squat — 8–12/leg",{"target":"6–12","options":[{"name":"Pull-ups","detail":"Weighted vest when you reach the top of the range"},{"name":"Gorilla Rows (20+24 kg)"}]},"Weighted-vest Push-ups — max, leave 2 in reserve"]},
+            {"type":"circuit","label":"Core","rounds":3,"exercises":["Windmill 3/side","Suitcase Carry (24 kg) 40 s/side"]},
+            {"type":"emom","label":"Finisher — Swings","totalMinutes":5,"cycleLength":1,"log":true,"pattern":[{"minute":1,"exercise":"15 Swings"}]},
+            {"type":"straight_sets","label":"Test (optional)","exercise":"Test: max push-ups (one set)","reps":"max","sets":1,"log":true,"track":["reps"],"note":"Optional. One all-out set; record the reps."}
+          ]
+        }
+      ]
+    },
+    {
+      "week": 5, "phase": "Training",
+      "days": [
+        {
+          "day": "Mon", "name": "Strength A", "warmup": true,
+          "blocks": [
+            {"type":"straight_sets","label":"A) Main lift","exercise":"Snatch (20 kg)","reps":"8–10/side","sets":5,"restSeconds":90,"log":true,"note":"Ballistic: stop when technique degrades. Rest 60–90 s."},
+            {"type":"circuit","label":"B) Superset","rounds":4,"restSeconds":90,"log":true,"note":"Rest 60–90 s between rounds.","exercises":["DB Bench Press — 12–20 reps (1–2 RIR)","Double KB Front Squat (20+24 kg, switch hands each set) — 8–12 reps","Single-Arm KB Row (24 kg) — 10–15/side"]},
+            {"type":"emom","label":"Finisher — Swings","totalMinutes":5,"cycleLength":1,"log":true,"pattern":[{"minute":1,"exercise":"10 Swings (24 kg)"}]}
+          ]
+        },
+        {
+          "day": "Tue", "name": "Pump — Pull + Arms", "warmup": false,
+          "blocks": [
+            {"type":"emom","label":"EMOM 20","totalMinutes":20,"cycleLength":4,"log":true,"note":"~3 reps in reserve, never to failure.","pattern":[{"minute":1,"exercise":"Single-Arm KB Row 10/side (16–20 kg)"},{"minute":2,"exercise":"KB Pullover 15 (16 kg)"},{"minute":3,"exercise":"KB Curl 12–15 (12–16 kg)"},{"minute":4,"exercise":"KB Halos 8 each direction (12–16 kg)"}]},
+            {"type":"emom","label":"Finisher — Swings","totalMinutes":10,"cycleLength":1,"log":true,"pattern":[{"minute":1,"exercise":"10 Swings (20–24 kg)"}]}
+          ]
+        },
+        {
+          "day": "Wed", "name": "Complex Day", "warmup": true,
+          "blocks": [
+            {"type":"straight_sets","label":"Complex 1 (upper)","sets":5,"restSeconds":90,"log":true,"track":["load"],"note":"Rest 60–90 s. Pick today’s complex below.","options":[{"name":"Trial of the Swings","detail":"5 Swings → 5 Snatches → 5 Presses, then switch sides"},{"name":"Agent Michael Scarn","detail":"5 Rows → 5 Swings → 5 Snatches per side"}]},
+            {"type":"circuit","label":"Core between Complex 1 sets","rounds":4,"log":true,"track":[],"note":"Between the sets above: pick one each round (alternate them).","exercises":[{"label":"Core","options":[{"name":"TGU 1/side"},{"name":"Windmill 3/side"},{"name":"KB Dead Bug 8/side"}]}]},
+            {"type":"straight_sets","label":"Complex 2 (legs)","exercise":"Leg Complex (TBD)","sets":5,"restSeconds":90,"log":true,"track":["load"],"note":"Double KB (18+20 kg), no setting the bells down: 5 Front Squats → 5 RDL → 3/side Reverse Lunges (rack). Rest 60–90 s."},
+            {"type":"circuit","label":"Core between Complex 2 sets","rounds":4,"log":true,"track":[],"note":"Between the sets above: pick one each round (alternate them).","exercises":[{"label":"Core","options":[{"name":"TGU 1/side"},{"name":"Windmill 3/side"},{"name":"KB Dead Bug 8/side"}]}]}
+          ]
+        },
+        {
+          "day": "Thu", "name": "RDL + EMOM", "warmup": true,
+          "blocks": [
+            {"type":"straight_sets","label":"A) Main lift","exercise":"Double KB RDL (20+24 kg), pause at the bottom","reps":"12–20","sets":4,"restSeconds":90,"log":true,"note":"Progression: when all 4 sets reach 20 reps, switch to Single-Leg RDL (24 kg), 8–12/side."},
+            {"type":"emom","label":"B) EMOM 20","totalMinutes":20,"cycleLength":4,"log":true,"pattern":[{"minute":1,"exercise":"Double KB Row 10–12 (20+24 kg)"},{"minute":2,"exercise":"KB Dead Bug 8/side (16 kg)"},{"minute":3,"exercise":"Goblet Reverse Lunge 6–8/side (20 kg)"},{"minute":4,"exercise":"20 Swings (24 kg)"}]}
+          ]
+        },
+        {
+          "day": "Fri", "name": "Pump — Push + Shoulders/Traps", "warmup": false,
+          "blocks": [
+            {"type":"emom","label":"EMOM 20","totalMinutes":20,"cycleLength":4,"log":true,"note":"~3 reps in reserve, never to failure.","pattern":[{"minute":1,"exercise":"DB Bench Fly 15"},{"minute":2,"exercise":"Push-ups 15–20"},{"minute":3,"exercise":"Double KB High Pull 12–15 (16+18 kg)"},{"minute":4,"exercise":"Overhead Triceps Extension 15"}]},
+            {"type":"emom","label":"Finisher — Swings","totalMinutes":10,"cycleLength":1,"log":true,"pattern":[{"minute":1,"exercise":"10 Swings"}]}
+          ]
+        },
+        {
+          "day": "Sat", "name": "Strength B", "warmup": true,
+          "blocks": [
+            {"type":"straight_sets","label":"A) Main lift","exercise":"Double KB Clean & Press (16+18 → 18+20 kg)","reps":"6–10","sets":5,"restSeconds":90,"log":true},
+            {"type":"circuit","label":"B) Superset","rounds":4,"log":true,"note":"Pick pull-ups or gorilla rows each round; the variant is saved with the set.","exercises":["DB Bulgarian Split Squat — 8–12/leg",{"target":"6–12","options":[{"name":"Pull-ups","detail":"Weighted vest when you reach the top of the range"},{"name":"Gorilla Rows (20+24 kg)"}]},"Weighted-vest Push-ups — max, leave 2 in reserve"]},
+            {"type":"circuit","label":"Core","rounds":3,"exercises":["Windmill 3/side","Suitcase Carry (24 kg) 40 s/side"]},
+            {"type":"emom","label":"Finisher — Swings","totalMinutes":5,"cycleLength":1,"log":true,"pattern":[{"minute":1,"exercise":"15 Swings"}]}
+          ]
+        }
+      ]
+    },
+    {
+      "week": 6, "phase": "Training",
+      "days": [
+        {
+          "day": "Mon", "name": "Strength A", "warmup": true,
+          "blocks": [
+            {"type":"straight_sets","label":"A) Main lift","exercise":"Snatch (20 kg)","reps":"8–10/side","sets":5,"restSeconds":90,"log":true,"note":"Ballistic: stop when technique degrades. Rest 60–90 s."},
+            {"type":"circuit","label":"B) Superset","rounds":4,"restSeconds":90,"log":true,"note":"Rest 60–90 s between rounds.","exercises":["DB Bench Press — 12–20 reps (1–2 RIR)","Double KB Front Squat (20+24 kg, switch hands each set) — 8–12 reps","Single-Arm KB Row (24 kg) — 10–15/side"]},
+            {"type":"emom","label":"Finisher — Swings","totalMinutes":5,"cycleLength":1,"log":true,"pattern":[{"minute":1,"exercise":"10 Swings (24 kg)"}]}
+          ]
+        },
+        {
+          "day": "Tue", "name": "Pump — Pull + Arms", "warmup": false,
+          "blocks": [
+            {"type":"emom","label":"EMOM 20","totalMinutes":20,"cycleLength":4,"log":true,"note":"~3 reps in reserve, never to failure.","pattern":[{"minute":1,"exercise":"Single-Arm KB Row 10/side (16–20 kg)"},{"minute":2,"exercise":"KB Pullover 15 (16 kg)"},{"minute":3,"exercise":"KB Curl 12–15 (12–16 kg)"},{"minute":4,"exercise":"KB Halos 8 each direction (12–16 kg)"}]},
+            {"type":"emom","label":"Finisher — Swings","totalMinutes":10,"cycleLength":1,"log":true,"pattern":[{"minute":1,"exercise":"10 Swings (20–24 kg)"}]}
+          ]
+        },
+        {
+          "day": "Wed", "name": "Complex Day", "warmup": true,
+          "blocks": [
+            {"type":"straight_sets","label":"Complex 1 (upper)","sets":5,"restSeconds":90,"log":true,"track":["load"],"note":"Rest 60–90 s. Pick today’s complex below.","options":[{"name":"Trial of the Swings","detail":"5 Swings → 5 Snatches → 5 Presses, then switch sides"},{"name":"Agent Michael Scarn","detail":"5 Rows → 5 Swings → 5 Snatches per side"}]},
+            {"type":"circuit","label":"Core between Complex 1 sets","rounds":4,"log":true,"track":[],"note":"Between the sets above: pick one each round (alternate them).","exercises":[{"label":"Core","options":[{"name":"TGU 1/side"},{"name":"Windmill 3/side"},{"name":"KB Dead Bug 8/side"}]}]},
+            {"type":"straight_sets","label":"Complex 2 (legs)","exercise":"Leg Complex (TBD)","sets":5,"restSeconds":90,"log":true,"track":["load"],"note":"Double KB (18+20 kg), no setting the bells down: 5 Front Squats → 5 RDL → 3/side Reverse Lunges (rack). Rest 60–90 s."},
+            {"type":"circuit","label":"Core between Complex 2 sets","rounds":4,"log":true,"track":[],"note":"Between the sets above: pick one each round (alternate them).","exercises":[{"label":"Core","options":[{"name":"TGU 1/side"},{"name":"Windmill 3/side"},{"name":"KB Dead Bug 8/side"}]}]}
+          ]
+        },
+        {
+          "day": "Thu", "name": "RDL + EMOM", "warmup": true,
+          "blocks": [
+            {"type":"straight_sets","label":"A) Main lift","exercise":"Double KB RDL (20+24 kg), pause at the bottom","reps":"12–20","sets":4,"restSeconds":90,"log":true,"note":"Progression: when all 4 sets reach 20 reps, switch to Single-Leg RDL (24 kg), 8–12/side."},
+            {"type":"emom","label":"B) EMOM 20","totalMinutes":20,"cycleLength":4,"log":true,"note":"Test week: write your total reps below to compare with the other test weeks.","pattern":[{"minute":1,"exercise":"Double KB Row 10–12 (20+24 kg)"},{"minute":2,"exercise":"KB Dead Bug 8/side (16 kg)"},{"minute":3,"exercise":"Goblet Reverse Lunge 6–8/side (20 kg)"},{"minute":4,"exercise":"20 Swings (24 kg)"}]}
+          ]
+        },
+        {
+          "day": "Fri", "name": "Pump — Push + Shoulders/Traps", "warmup": false,
+          "blocks": [
+            {"type":"emom","label":"EMOM 20","totalMinutes":20,"cycleLength":4,"log":true,"note":"~3 reps in reserve, never to failure.","pattern":[{"minute":1,"exercise":"DB Bench Fly 15"},{"minute":2,"exercise":"Push-ups 15–20"},{"minute":3,"exercise":"Double KB High Pull 12–15 (16+18 kg)"},{"minute":4,"exercise":"Overhead Triceps Extension 15"}]},
+            {"type":"emom","label":"Finisher — Swings","totalMinutes":10,"cycleLength":1,"log":true,"pattern":[{"minute":1,"exercise":"10 Swings"}]}
+          ]
+        },
+        {
+          "day": "Sat", "name": "Strength B", "warmup": true,
+          "blocks": [
+            {"type":"straight_sets","label":"A) Main lift","exercise":"Double KB Clean & Press (16+18 → 18+20 kg)","reps":"6–10","sets":5,"restSeconds":90,"log":true},
+            {"type":"circuit","label":"B) Superset","rounds":4,"log":true,"note":"Pick pull-ups or gorilla rows each round; the variant is saved with the set.","exercises":["DB Bulgarian Split Squat — 8–12/leg",{"target":"6–12","options":[{"name":"Pull-ups","detail":"Weighted vest when you reach the top of the range"},{"name":"Gorilla Rows (20+24 kg)"}]},"Weighted-vest Push-ups — max, leave 2 in reserve"]},
+            {"type":"circuit","label":"Core","rounds":3,"exercises":["Windmill 3/side","Suitcase Carry (24 kg) 40 s/side"]},
+            {"type":"emom","label":"Finisher — Swings","totalMinutes":5,"cycleLength":1,"log":true,"pattern":[{"minute":1,"exercise":"15 Swings"}]},
+            {"type":"straight_sets","label":"Test (optional)","exercise":"Test: max push-ups (one set)","reps":"max","sets":1,"log":true,"track":["reps"],"note":"Optional. One all-out set; record the reps."}
+          ]
+        }
+      ]
+    },
+    {
+      "week": 7, "phase": "Deload",
+      "days": [
+        {
+          "day": "Mon", "name": "Strength A", "warmup": true,
+          "blocks": [
+            {"type":"straight_sets","label":"A) Main lift","exercise":"Snatch (20 kg)","reps":"8–10/side","sets":3,"restSeconds":90,"log":true,"note":"Ballistic: stop when technique degrades. Rest 60–90 s."},
+            {"type":"circuit","label":"B) Superset","rounds":2,"restSeconds":90,"log":true,"note":"Rest 60–90 s between rounds.","exercises":["DB Bench Press — 12–20 reps (1–2 RIR)","Double KB Front Squat (20+24 kg, switch hands each set) — 8–12 reps","Single-Arm KB Row (24 kg) — 10–15/side"]},
+            {"type":"emom","label":"Finisher — Swings","totalMinutes":5,"cycleLength":1,"log":true,"pattern":[{"minute":1,"exercise":"10 Swings (24 kg)"}]}
+          ]
+        },
+        {
+          "day": "Tue", "name": "Pump — Pull + Arms", "warmup": false,
+          "blocks": [
+            {"type":"emom","label":"EMOM 10","totalMinutes":10,"cycleLength":4,"log":true,"note":"~3 reps in reserve, never to failure.","pattern":[{"minute":1,"exercise":"Single-Arm KB Row 10/side (16–20 kg)"},{"minute":2,"exercise":"KB Pullover 15 (16 kg)"},{"minute":3,"exercise":"KB Curl 12–15 (12–16 kg)"},{"minute":4,"exercise":"KB Halos 8 each direction (12–16 kg)"}]},
+            {"type":"emom","label":"Finisher — Swings","totalMinutes":5,"cycleLength":1,"log":true,"pattern":[{"minute":1,"exercise":"10 Swings (20–24 kg)"}]}
+          ]
+        },
+        {
+          "day": "Wed", "name": "Complex Day", "warmup": true,
+          "blocks": [
+            {"type":"straight_sets","label":"Complex 1 (upper)","sets":3,"restSeconds":90,"log":true,"track":["load"],"note":"Rest 60–90 s. Pick today’s complex below.","options":[{"name":"Trial of the Swings","detail":"5 Swings → 5 Snatches → 5 Presses, then switch sides"},{"name":"Agent Michael Scarn","detail":"5 Rows → 5 Swings → 5 Snatches per side"}]},
+            {"type":"circuit","label":"Core between Complex 1 sets","rounds":2,"log":true,"track":[],"note":"Between the sets above: pick one each round (alternate them).","exercises":[{"label":"Core","options":[{"name":"TGU 1/side"},{"name":"Windmill 3/side"},{"name":"KB Dead Bug 8/side"}]}]},
+            {"type":"straight_sets","label":"Complex 2 (legs)","exercise":"Leg Complex (TBD)","sets":3,"restSeconds":90,"log":true,"track":["load"],"note":"Double KB (18+20 kg), no setting the bells down: 5 Front Squats → 5 RDL → 3/side Reverse Lunges (rack). Rest 60–90 s."},
+            {"type":"circuit","label":"Core between Complex 2 sets","rounds":2,"log":true,"track":[],"note":"Between the sets above: pick one each round (alternate them).","exercises":[{"label":"Core","options":[{"name":"TGU 1/side"},{"name":"Windmill 3/side"},{"name":"KB Dead Bug 8/side"}]}]}
+          ]
+        },
+        {
+          "day": "Thu", "name": "RDL + EMOM", "warmup": true,
+          "blocks": [
+            {"type":"straight_sets","label":"A) Main lift","exercise":"Double KB RDL (20+24 kg), pause at the bottom","reps":"12–20","sets":2,"restSeconds":90,"log":true},
+            {"type":"emom","label":"B) EMOM 10","totalMinutes":10,"cycleLength":4,"log":true,"pattern":[{"minute":1,"exercise":"Double KB Row 10–12 (20+24 kg)"},{"minute":2,"exercise":"KB Dead Bug 8/side (16 kg)"},{"minute":3,"exercise":"Goblet Reverse Lunge 6–8/side (20 kg)"},{"minute":4,"exercise":"20 Swings (24 kg)"}]}
+          ]
+        },
+        {
+          "day": "Fri", "name": "Pump — Push + Shoulders/Traps", "warmup": false,
+          "blocks": [
+            {"type":"emom","label":"EMOM 10","totalMinutes":10,"cycleLength":4,"log":true,"note":"~3 reps in reserve, never to failure.","pattern":[{"minute":1,"exercise":"DB Bench Fly 15"},{"minute":2,"exercise":"Push-ups 15–20"},{"minute":3,"exercise":"Double KB High Pull 12–15 (16+18 kg)"},{"minute":4,"exercise":"Overhead Triceps Extension 15"}]},
+            {"type":"emom","label":"Finisher — Swings","totalMinutes":5,"cycleLength":1,"log":true,"pattern":[{"minute":1,"exercise":"10 Swings"}]}
+          ]
+        },
+        {
+          "day": "Sat", "name": "Strength B", "warmup": true,
+          "blocks": [
+            {"type":"straight_sets","label":"A) Main lift","exercise":"Double KB Clean & Press (16+18 → 18+20 kg)","reps":"6–10","sets":3,"restSeconds":90,"log":true},
+            {"type":"circuit","label":"B) Superset","rounds":2,"log":true,"note":"Pick pull-ups or gorilla rows each round; the variant is saved with the set.","exercises":["DB Bulgarian Split Squat — 8–12/leg",{"target":"6–12","options":[{"name":"Pull-ups","detail":"Weighted vest when you reach the top of the range"},{"name":"Gorilla Rows (20+24 kg)"}]},"Weighted-vest Push-ups — max, leave 2 in reserve"]},
+            {"type":"circuit","label":"Core","rounds":2,"exercises":["Windmill 3/side","Suitcase Carry (24 kg) 40 s/side"]},
+            {"type":"emom","label":"Finisher — Swings","totalMinutes":5,"cycleLength":1,"log":true,"pattern":[{"minute":1,"exercise":"10 Swings"}]}
+          ]
+        }
+      ]
+    }
+  ]
+}

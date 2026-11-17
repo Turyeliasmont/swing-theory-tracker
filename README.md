@@ -91,6 +91,8 @@ host this app:
 - which program is active, and your current week/day position in each
   program you've used
 - your workout history (date, program, week/day, duration)
+- your exercise logs (reps, load, completed, chosen variant) for programs
+  that use `"log": true` blocks, like Block 2, and your kg/lb choice
 - your 20-Min Workouts history and which one is "up next" (stored
   separately from the above, so they never mix with program progress)
 
@@ -107,6 +109,7 @@ js/audio.js             beep sounds (Web Audio API, no sound files)
 js/wakelock.js         keeps the screen on during a workout
 js/timer-engine.js     countdown/stopwatch timer helpers
 js/programs.js         loads programs/manifest.json + program files
+js/logbook.js          reps/load logging, variant choices, "last week" lines
 js/twenty-min.js       the 20-Min Workouts screens
 js/app.js               screens, navigation, rendering — start here to read the app
 manifest.webmanifest   PWA manifest (installability)

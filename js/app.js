@@ -212,8 +212,20 @@ function renderDay() {
 // shown on the Day view before "Start Workout". Mirrors the wording of the
 // actual warm-up/workout screens so the preview matches what you'll see.
 
+// "1 set" / "2 sets"
+function plural(n, word) {
+  return `${n} ${word}${n === 1 ? '' : 's'}`;
+}
+
+// Does this day have a warm-up? A day can say so itself ("warmup": true /
+// false); otherwise the default is: yes, except in a "Deload" week.
+function dayWantsWarmup(week, day) {
+  return day.warmup !== undefined ? Boolean(day.warmup) : week.phase !== 'Deload';
+}
+
 function renderPreviewWarmup(week, day) {
-  if (week.phase === 'Deload') {
+  if (!dayWantsWarmup(week, day)) {
+    if (day.warmup === false) return '';
     return `
       <section class="block">
         <h3>Warm-up</h3>
@@ -265,6 +277,20 @@ function renderPreviewBlock(block) {
   const labelHtml = block.label ? `<h3>${escapeHtml(block.label)}</h3>` : '';
   const noteHtml = renderBlockNoteHtml(block);
 
+  if (block.type === 'straight_sets' && block.options) {
+    const items = block.options
+      .map((o) => `<li><strong>${escapeHtml(o.name)}</strong>${o.detail ? ' — ' + escapeHtml(o.detail) : ''}</li>`)
+      .join('');
+    return `
+      <section class="block">
+        ${labelHtml}
+        <div class="exercise-meta">${plural(block.sets, 'set')} · choose one on the day:</div>
+        <ul class="preview-list">${items}</ul>
+        ${noteHtml}
+      </section>
+    `;
+  }
+
   if (block.type === 'straight_sets') {
     const repsText = (block.reps === null || block.reps === undefined || block.reps === '')
       ? ''
@@ -273,18 +299,18 @@ function renderPreviewBlock(block) {
       <section class="block">
         ${labelHtml}
         <div class="exercise-name">${escapeHtml(block.exercise)}</div>
-        <div class="exercise-meta">${block.sets} sets${repsText ? ' × ' + repsText : ''}</div>
+        <div class="exercise-meta">${plural(block.sets, 'set')}${repsText ? ' × ' + repsText : ''}</div>
         ${noteHtml}
       </section>
     `;
   }
 
   if (block.type === 'circuit') {
-    const items = (block.exercises || []).map((ex) => `<li>${escapeHtml(ex)}</li>`).join('');
+    const items = (block.exercises || []).map((ex) => `<li>${escapeHtml(exerciseText(ex))}</li>`).join('');
     return `
       <section class="block">
         ${labelHtml}
-        <div class="exercise-meta">${block.rounds} rounds</div>
+        <div class="exercise-meta">${plural(block.rounds, 'round')}</div>
         <ul class="preview-list">${items}</ul>
         ${noteHtml}
       </section>
@@ -381,7 +407,8 @@ function buildWarmupExercises(day, program = App.activeProgram) {
 // for the active day (ending in "Begin Workout" -> begin-workout). The
 // 20-Min Workouts pass their own exercises and actions:
 //   exercises, doneAction (button when finished), exitAction (top-left Exit),
-//   skipAllAction (optional extra "Skip warm-up" button).
+//   skipAllAction (the "Skip warm-up" button; for a program day it
+//   defaults to going straight to the workout).
 function renderWarmup(opts = {}) {
   resetTransientState();
   WakeLockCtl.acquire();
@@ -389,7 +416,7 @@ function renderWarmup(opts = {}) {
   const exercises = opts.exercises || buildWarmupExercises(getActiveDay());
   const doneAction = opts.doneAction || 'begin-workout';
   const exitAction = opts.exitAction || 'exit-warmup';
-  App.warmupSkipAllAction = opts.skipAllAction || null;
+  App.warmupSkipAllAction = 'skipAllAction' in opts ? opts.skipAllAction : 'begin-workout';
 
   // Flatten into a sequence of steps: work(50s), rest(10s), for each exercise.
   const steps = [];
@@ -480,6 +507,14 @@ function renderWorkoutBlock(block, blockIndex) {
        <div id="rest-${blockIndex}"></div>`
     : '';
 
+  // Blocks that opt in with "log": true get reps/load inputs (js/logbook.js).
+  if (block.log && block.type === 'straight_sets') {
+    return renderLoggedStraightSets(block, blockIndex, { labelHtml, noteHtml, restBtnHtml });
+  }
+  if (block.log && block.type === 'circuit') {
+    return renderLoggedCircuit(block, blockIndex, { labelHtml, noteHtml, restBtnHtml });
+  }
+
   if (block.type === 'straight_sets') {
     const repsText = (block.reps === null || block.reps === undefined || block.reps === '')
       ? ''
@@ -497,7 +532,7 @@ function renderWorkoutBlock(block, blockIndex) {
       <section class="block">
         ${labelHtml}
         <div class="exercise-name">${escapeHtml(block.exercise)}</div>
-        <div class="exercise-meta">${block.sets} sets${repsText ? ' × ' + repsText : ''}</div>
+        <div class="exercise-meta">${plural(block.sets, 'set')}${repsText ? ' × ' + repsText : ''}</div>
         ${noteHtml}
         <div class="set-checklist">${rows.join('')}</div>
         ${restBtnHtml}
@@ -511,7 +546,7 @@ function renderWorkoutBlock(block, blockIndex) {
       const exRows = (block.exercises || []).map((ex) => `
         <label class="set-row">
           <input type="checkbox" class="set-checkbox" />
-          <span>${escapeHtml(ex)}</span>
+          <span>${escapeHtml(exerciseText(ex))}</span>
         </label>
       `).join('');
       rounds.push(`
@@ -533,7 +568,7 @@ function renderWorkoutBlock(block, blockIndex) {
 
   if (block.type === 'emom') {
     return `
-      <section class="block" data-emom-block="${blockIndex}">
+      <section class="block" data-emom-block="${blockIndex}"${block.log ? ` data-log-block="${blockIndex}"` : ''}>
         ${labelHtml}
         ${noteHtml}
         <div class="emom-status" id="emom-status-${blockIndex}">
@@ -541,6 +576,7 @@ function renderWorkoutBlock(block, blockIndex) {
             Start EMOM (${block.totalMinutes} min)
           </button>
         </div>
+        ${block.log ? renderLoggedEmomExtras(block, blockIndex) : ''}
       </section>
     `;
   }
@@ -559,7 +595,7 @@ function renderWorkout() {
   screenEl.innerHTML = `
     <div class="topbar">
       <button class="link-btn" data-action="exit-workout">&lsaquo; Exit</button>
-      <span></span>
+      ${unitToggleHtml(day)}
     </div>
     <h1>${escapeHtml(day.name)}</h1>
     ${renderProgressionCueHtml(day)}
@@ -693,7 +729,8 @@ function startEmomTimer(button) {
 
   const nextBlock = day.blocks[blockIndex + 1];
   runEmom(block, statusEl, {
-    afterLabel: nextBlock ? (nextBlock.label || nextBlock.exercise || 'next block') : null
+    afterLabel: nextBlock ? (nextBlock.label || nextBlock.exercise || 'next block') : null,
+    onDone: block.log ? () => markEmomLogDone(blockIndex) : null
   });
 }
 
@@ -819,12 +856,11 @@ function goBackFromHistory() {
 }
 
 function startDay() {
-  const week = getActiveWeek();
-  if (week.phase === 'Deload') {
-    // Deload weeks skip the warm-up protocol entirely (see programs/README.md).
-    beginWorkout();
-  } else {
+  if (dayWantsWarmup(getActiveWeek(), getActiveDay())) {
     renderWarmup();
+  } else {
+    // No warm-up today (deload week, or the day says "warmup": false).
+    beginWorkout();
   }
 }
 
@@ -887,6 +923,15 @@ screenEl.addEventListener('click', (e) => {
     case 'history-tab':
       renderHistory(actionEl.dataset.kind);
       break;
+    case 'log-block-choice':
+      onLogPill(actionEl, 'block');
+      break;
+    case 'log-entry-choice':
+      onLogPill(actionEl, 'entry');
+      break;
+    case 'toggle-unit':
+      toggleUnit(actionEl);
+      break;
     default:
       // 20-Min Workouts screens (js/twenty-min.js) handle their own actions.
       handleTwentyMinAction(action, actionEl);
@@ -897,6 +942,15 @@ screenEl.addEventListener('click', (e) => {
 screenEl.addEventListener('change', (e) => {
   if (e.target.matches('input.set-checkbox')) {
     handleSetCheckboxChange(e.target);
+  } else if (e.target.matches('input.log-done, input.log-emom-done')) {
+    onLogDoneChange(e.target);
+  }
+});
+
+// Typing in a reps / load field saves immediately (see js/logbook.js).
+screenEl.addEventListener('input', (e) => {
+  if (e.target.matches('input.log-input')) {
+    onLogInput(e.target);
   }
 });
 

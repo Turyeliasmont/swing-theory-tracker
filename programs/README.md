@@ -100,6 +100,16 @@ no per-day variation.
 If `"sequence"` is present, the app uses it and ignores `fixed`/`rotationByDay`
 entirely (don't mix the two shapes in one file).
 
+**Reusing another program's warm-up** — instead of any of the above:
+
+```json
+"warmup": { "fromProgram": "iron_foundations_v4_data.json" }
+```
+
+The app copies that program's warm-up (whichever shape it uses) at load
+time. The other program doesn't need to be listed in `manifest.json`
+(archived ones work), and its file isn't modified.
+
 **Skipping warm-up for a week:** if a week's `"phase"` is exactly `"Deload"`,
 the app skips the warm-up screen for every day in that week and goes
 straight from the Day screen into the workout. This matches how Iron
@@ -145,6 +155,11 @@ them — list them start to finish).
   needs to be internally consistent.
 - `name` — the human-readable day title ("Clean & Press"), shown big in the
   UI.
+- `warmup` — optional boolean. `true` = this day has the warm-up, `false` =
+  it doesn't. If omitted: warm-up on every day, except in a week whose
+  `phase` is `"Deload"` (the rule described above). Set it explicitly when a
+  program wants a warm-up only on some days (e.g. no warm-up on "pump"
+  days), or a warm-up even in the deload week.
 - `progressionCue` — optional, day-level (not per-block). Free text shown
   prominently in red on both the Day preview and the workout screen,
   visually distinct from the block-level `note` field (which stays the
@@ -310,6 +325,54 @@ see the main README); program days don't render it yet.
   timer counts down).
 - `totalMinutes` — the countdown length.
 - Also supports the optional `label` and `note`.
+
+### Logging reps and load (`log`, `track`, `options`)
+
+Everything in this section is opt-in: a block without `"log": true` looks
+and works exactly as described above.
+
+```json
+{ "type": "straight_sets", "label": "A) Main lift", "exercise": "Snatch (20 kg)",
+  "reps": "8-10/side", "sets": 5, "restSeconds": 90, "log": true }
+```
+
+- `"log": true` — on `straight_sets` and `circuit` blocks, every set (or
+  every exercise of every round) gets a done checkbox plus **reps** and
+  **load** inputs. On `emom` blocks you get a "Completed" checkbox (ticked
+  automatically when the timer runs out) and an optional "Total reps"
+  field. Whatever you type is saved immediately, per week and day.
+- Under every set / round the app shows **last week's** value for the same
+  set (from the nearest earlier week that has a log for that day and block),
+  e.g. "Last week (W2): 12 @ 20 kg". That's for double progression.
+- A "Units: kg/lb" button (top right of the workout screen) sets the unit
+  for new entries; each saved load remembers the unit it was typed in.
+- `"track": ["load"]` / `["reps"]` / `[]` — which inputs to show. Default is
+  both. `[]` shows only the checkbox (and variant choice, below).
+
+**Picking a variant.** Two ways, both saved with the log:
+
+```json
+{ "type": "straight_sets", "label": "Complex 1", "sets": 5, "log": true, "track": ["load"],
+  "options": [
+    { "name": "Trial of the Swings", "detail": "5 Swings → 5 Snatches → 5 Presses" },
+    { "name": "Agent Michael Scarn", "detail": "5 Rows → 5 Swings → 5 Snatches per side" }
+  ] }
+```
+
+`options` on a `straight_sets` block (use it instead of `exercise`): you pick
+**one** variant for the whole block, on the day. `detail` is optional.
+
+```json
+{ "type": "circuit", "label": "B) Superset", "rounds": 4, "log": true,
+  "exercises": [
+    "DB Bulgarian Split Squat — 8-12/leg",
+    { "target": "6-12", "options": [ { "name": "Pull-ups" }, { "name": "Gorilla Rows (20+24 kg)" } ] }
+  ] }
+```
+
+An exercise entry in a `circuit` can be an object with `options` (and an
+optional `target` and `label`) instead of a string: you pick a variant in
+**every round**. (Without `log`, the entry is just shown as text.)
 
 ## Quick checklist for a new program file
 

@@ -9,7 +9,12 @@ const StorageKeys = {
   // 20-Min Workouts are separate from the program: their own history list
   // and their own "up next" pointer, so they never touch program progress.
   history20: 'stt_history_20min',
-  next20: 'stt_20min_next'
+  next20: 'stt_20min_next',
+  // Per-exercise logs (reps / load / completed / chosen variant) for blocks
+  // with "log": true. Shape: { [programFile]: { [weekIndex]: { [dayIndex]:
+  // { [blockIndex]: blockLog } } } } -- see js/logbook.js.
+  logs: 'stt_logs',
+  unit: 'stt_unit'
 };
 
 const Storage = {
@@ -74,5 +79,37 @@ const Storage = {
 
   setNext20Id(id) {
     localStorage.setItem(StorageKeys.next20, id);
+  },
+
+  getAllLogs() {
+    try {
+      return JSON.parse(localStorage.getItem(StorageKeys.logs) || '{}');
+    } catch (e) {
+      return {};
+    }
+  },
+
+  getBlockLog(file, weekIndex, dayIndex, blockIndex) {
+    const logs = this.getAllLogs();
+    const w = logs[file] && logs[file][weekIndex];
+    const d = w && w[dayIndex];
+    return (d && d[blockIndex]) || {};
+  },
+
+  setBlockLog(file, weekIndex, dayIndex, blockIndex, blockLog) {
+    const logs = this.getAllLogs();
+    logs[file] = logs[file] || {};
+    logs[file][weekIndex] = logs[file][weekIndex] || {};
+    logs[file][weekIndex][dayIndex] = logs[file][weekIndex][dayIndex] || {};
+    logs[file][weekIndex][dayIndex][blockIndex] = blockLog;
+    localStorage.setItem(StorageKeys.logs, JSON.stringify(logs));
+  },
+
+  getUnit() {
+    return localStorage.getItem(StorageKeys.unit) === 'lb' ? 'lb' : 'kg';
+  },
+
+  setUnit(unit) {
+    localStorage.setItem(StorageKeys.unit, unit === 'lb' ? 'lb' : 'kg');
   }
 };
